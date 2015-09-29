@@ -1,5 +1,5 @@
 				<div class="widget-header">
-					<i class="icon-star"></i>
+					<i class="icon-user"></i>
 					<h3>Cliente</h3>
 				</div> <!-- /widget-header -->
 				

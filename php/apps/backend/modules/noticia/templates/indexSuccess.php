@@ -1,5 +1,5 @@
 				<div class="widget-header">
-					<i class="icon-star"></i>
+					<i class="icon-globe"></i>
 					<h3>Noticias</h3>
 				</div> <!-- /widget-header -->
 				
@@ -18,7 +18,7 @@
 						          </tr>
 						        </thead>
 						        <tbody>
-						        <?php foreach($a=1;$a<=4;$a++){ ?>
+						        <?php for($a=1;$a<=4;$a++){ ?>
 						          <tr>
 						            <td class="col-md-1"><?php echo $a; ?></td>
 						            <td class="col-md-7">Noticia titulo yxz</td>
