@@ -104,6 +104,21 @@
 							<li><a href="<?php echo url_for("cliente/agregar");?>">Agregar</a></li>
 						</ul> 				
 					</li>
+					
+					<li class="dropdown">					
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="icon-folder-open"></i>
+							<span>Proyectos</span>
+							<b class="caret"></b>
+						</a>	    
+					
+						<ul class="dropdown-menu">
+							<li><a href="<?php echo url_for("proyecto/index");?>">Todos</a></li>
+							<li><a href="<?php echo url_for("proyecto/agregar");?>">Agregar</a></li>
+							<li class="divider"></li>
+							<li><a href="<?php echo url_for("proyecto/tipo");?>">Tipos</a></li>
+						</ul> 				
+					</li>
 									
 					<li>
 						<a href="<?php echo url_for("noticia/index");?>">
@@ -173,7 +188,9 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="<?php echo public_path("js/libs/jquery-1.9.1.min.js"); ?>"></script>
 <script src="<?php echo public_path("js/libs/jquery-ui-1.10.0.custom.min.js"); ?>"></script>
+<script src="<?php echo public_path("js/datepicker-es.js"); ?>"></script>
 <script src="<?php echo public_path("js/libs/bootstrap.min.js"); ?>"></script>
+<script src="<?php echo public_path("js/base.js"); ?>"></script>
 
   </body>
 </html>
