@@ -27,8 +27,8 @@
 					            <td class="col-md-3">j@empresa.cl</td>
 					            <td class="col-md-2">Empresa</td>
 					            <td class="col-md-2">
-					            	<a tabindex="-1" href="javascript:;"><i class="icon-edit"></i> Editar</a>
-					            	<a tabindex="-1" href="javascript:;"><i class="icon-times"></i> Eliminar</a>
+					            	<a tabindex="-1" href="javascript:;"><i class="icon-edit"></i> Editar</a> 
+					            	<a tabindex="-1" href="javascript:;"><i class="icon-remove"></i> Eliminar</a>
 					            </td>
 					          </tr>
 					          <?php } ?>

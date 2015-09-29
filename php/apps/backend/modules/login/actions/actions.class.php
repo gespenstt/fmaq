@@ -22,4 +22,8 @@ class loginActions extends sfActions
   		$this->redirect("home/index");
   	}
   }
+  public function executeSalir(sfWebRequest $request)
+  {
+    $this->redirect("login/index");
+  }
 }

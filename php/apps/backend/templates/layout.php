@@ -48,15 +48,14 @@
 						
 			<a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
 				<i class="icon-cog"></i>
-				Settings
+				Opciones
 				<b class="caret"></b>
 			</a>
 			
 			<ul class="dropdown-menu">
-				<li><a href="./account.html">Account Settings</a></li>
-				<li><a href="javascript:;">Privacy Settings</a></li>
+				<li><a href="<?php echo url_for("cuenta/index");?>">Mi cuenta</a></li>
 				<li class="divider"></li>
-				<li><a href="javascript:;">Help</a></li>
+				<li><a href="<?php echo url_for("login/salir");?>">Salir</a></li>
 			</ul>
 			
 		</li>
@@ -95,7 +94,7 @@
 					
 					<li class="dropdown">					
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-							<i class="icon-th"></i>
+							<i class="icon-user"></i>
 							<span>Clientes</span>
 							<b class="caret"></b>
 						</a>	    
@@ -108,7 +107,7 @@
 									
 					<li>
 						<a href="<?php echo url_for("noticia/index");?>">
-							<i class="icon-home"></i>
+							<i class="icon-globe"></i>
 							<span>Noticias</span>
 						</a>	    				
 					</li>

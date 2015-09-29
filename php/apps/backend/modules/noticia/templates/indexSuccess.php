@@ -18,30 +18,16 @@
 						          </tr>
 						        </thead>
 						        <tbody>
+						        <?php foreach($a=1;$a<=4;$a++){ ?>
 						          <tr>
-						            <td class="col-md-1">1</td>
+						            <td class="col-md-1"><?php echo $a; ?></td>
 						            <td class="col-md-7">Noticia titulo yxz</td>
 						            <td class="col-md-4">
-						            	<a tabindex="-1" href="javascript:;"><i class="icon-edit"></i> Editar</a>
-						            	<a tabindex="-1" href="javascript:;"><i class="icon-times"></i> Eliminar</a>
+						            	<a tabindex="-1" href="javascript:;"><i class="icon-edit"></i> Editar</a> 
+						            	<a tabindex="-1" href="javascript:;"><i class="icon-remove"></i> Eliminar</a>
 						            </td>
 						          </tr>
-						          <tr>
-						            <td class="col-md-1">2</td>
-						            <td class="col-md-7">Noticia titulo yxz</td>
-						            <td class="col-md-4">
-						            	<a tabindex="-1" href="javascript:;"><i class="icon-edit"></i> Editar</a>
-						            	<a tabindex="-1" href="javascript:;"><i class="icon-times"></i> Eliminar</a>
-						            </td>
-						          </tr>
-						          <tr>
-						            <td class="col-md-1">3</td>
-						            <td class="col-md-7">Noticia titulo yxz</td>
-						            <td class="col-md-4">
-						            	<a tabindex="-1" href="javascript:;"><i class="icon-edit"></i> Editar</a>
-						            	<a tabindex="-1" href="javascript:;"><i class="icon-times"></i> Eliminar</a>
-						            </td>
-						          </tr>
+						          <?php } ?>
 						        </tbody>
 					      	</table>
 					  	</div>
