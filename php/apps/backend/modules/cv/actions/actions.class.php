@@ -1,14 +1,14 @@
 <?php
 
 /**
- * proyecto actions.
+ * cv actions.
  *
  * @package    Futumaq
- * @subpackage proyecto
+ * @subpackage cv
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class proyectoActions extends sfActions
+class cvActions extends sfActions
 {
  /**
   * Executes index action
@@ -18,17 +18,5 @@ class proyectoActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {
   	
-  }
-  public function executeAgregar(sfWebRequest $request)
-  {
-  	
-  }
-  public function executeTipo(sfWebRequest $request)
-  {
-    
-  }
-  public function executeArchivo(sfWebRequest $request)
-  {
-    
   }
 }

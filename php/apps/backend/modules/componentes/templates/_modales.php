@@ -124,3 +124,62 @@
 							</div>
 						</div>
 					</div>
+
+
+					<div id="modal-cv" class="modal fade" tabindex="-1" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								<h4 class="modal-title">CV</h4>
+							</div>
+							<div class="modal-body">
+
+							<div class="col-md-12 form-horizontal ">
+
+								<div class="form-group">
+									<label class="col-md-4">Nombre</label>
+									<div class="col-md-8">
+										Felipe Joaquín Flores Delgado
+									</div>
+								</div> <!-- /.form-group -->
+
+								<div class="form-group">
+									<label class="col-md-4">Rut</label>
+									<div class="col-md-8">
+										1.111.111-1
+									</div>
+								</div> <!-- /.form-group -->
+
+								<div class="form-group">
+									<label class="col-md-4">Telefono</label>
+									<div class="col-md-8">
+										99999999
+									</div>
+								</div> <!-- /.form-group -->
+
+								<div class="form-group">
+									<label class="col-md-4">Carta presentación</label>
+									<div class="col-md-8">
+										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+									</div>
+								</div> <!-- /.form-group -->
+
+								<hr />
+
+								<div class="form-group">
+									<label class="col-md-4">Adjunto</label>
+									<div class="col-md-8">
+										<a tabindex="-1" href="javascript:;"><i class="icon-download-alt"></i> Descargar</a> 
+									</div>
+								</div> <!-- /.form-group -->
+
+							</div>
+
+							</div>
+
+
+							</div>
+						</div>
+					</div>

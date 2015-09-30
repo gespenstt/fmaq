@@ -126,6 +126,13 @@
 							<span>Noticias</span>
 						</a>	    				
 					</li>
+									
+					<li>
+						<a href="<?php echo url_for("cv/index");?>">
+							<i class="icon-briefcase"></i>
+							<span>CV</span>
+						</a>	    				
+					</li>
 				
 				</ul>
 			</div> <!-- /.subnav-collapse -->

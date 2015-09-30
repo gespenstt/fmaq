@@ -23,6 +23,15 @@
 							</div> <!-- /.form-group -->
 
 							<div class="form-group">
+								<label class="col-md-4">Tipo proyecto</label>
+								<div class="col-md-8">
+									<select class="form-control" required="required">
+										<option>Seleccione...</option>
+									</select>
+								</div>
+							</div> <!-- /.form-group -->
+
+							<div class="form-group">
 								<label class="col-md-4">Fecha</label>
 								<div class="col-md-8">
 									<input type="text" name="input1" placeholder="" required="required" value="" class="form-control fecha" />
@@ -46,6 +55,7 @@
 									<button type="submit" class="btn btn-success">Crear</button>
 
 									<button class="btn btn-default">Cancelar</button>
+
 								</div>
 
 							</div> <!-- /.form-group -->
@@ -86,6 +96,16 @@
 									</select>
 								</div>
 							</div> <!-- /.form-group -->
+
+							<hr />
+
+							<h4>Archivos</h4>
+
+							<div class="col-md-12">
+								<div class="float-right">
+								<a class="btn btn-md" href="<?php echo url_for("proyecto/archivo");?>"><i class="icon-file"></i> Administrar archivos del proyecto</a>
+								</div>
+							</div>
 
 					</div>
 
