@@ -6,3 +6,4 @@
 
 
 php/config/propel.ini
+php/config/databases.yml
