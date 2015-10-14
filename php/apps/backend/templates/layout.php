@@ -157,6 +157,13 @@
 							<li><a href="<?php echo url_for("maquinaria/marcas");?>">Marcas</a></li>
 						</ul>     				
 					</li>
+									
+					<li>
+						<a href="<?php echo url_for("usuario/index");?>">
+							<i class="icon-cog"></i>
+							<span>Administradores</span>
+						</a>	    				
+					</li>
 				
 				</ul>
 			</div> <!-- /.subnav-collapse -->
