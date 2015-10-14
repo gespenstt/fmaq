@@ -18,7 +18,7 @@
     <link href="<?php echo public_path("css/base-admin-3.css");?>" rel="stylesheet">
     <link href="<?php echo public_path("css/base-admin-3-responsive.css");?>" rel="stylesheet">
 
-    <link href="<?php echo public_path("css/custom.css");?>" rel="stylesheet">
+    <link href="<?php echo public_path("css/custom.css");?>?v=1.0" rel="stylesheet">
 
     <?php include_stylesheets(); ?>
 
