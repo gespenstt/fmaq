@@ -129,8 +129,15 @@
 									
 					<li>
 						<a href="<?php echo url_for("cv/index");?>">
-							<i class="icon-briefcase"></i>
+							<i class="icon-shopping-cart"></i>
 							<span>CV</span>
+						</a>	    				
+					</li>
+									
+					<li>
+						<a href="<?php echo url_for("promocion/index");?>">
+							<i class="icon-briefcase"></i>
+							<span>Promoción</span>
 						</a>	    				
 					</li>
 				
