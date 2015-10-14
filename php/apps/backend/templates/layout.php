@@ -20,6 +20,8 @@
 
     <link href="<?php echo public_path("css/custom.css");?>" rel="stylesheet">
 
+    <?php include_stylesheets(); ?>
+
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -140,6 +142,21 @@
 							<span>Promoción</span>
 						</a>	    				
 					</li>
+									
+					<li class="dropdown">					
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="icon-wrench"></i>
+							<span>Maquinaria</span>
+							<b class="caret"></b>
+						</a>	    
+					
+						<ul class="dropdown-menu">
+							<li><a href="<?php echo url_for("maquinaria/index");?>">Todos</a></li>
+							<li><a href="<?php echo url_for("maquinaria/agregar");?>">Agregar</a></li>
+							<li class="divider"></li>
+							<li><a href="<?php echo url_for("maquinaria/marcas");?>">Marcas</a></li>
+						</ul>     				
+					</li>
 				
 				</ul>
 			</div> <!-- /.subnav-collapse -->
@@ -205,6 +222,6 @@
 <script src="<?php echo public_path("js/datepicker-es.js"); ?>"></script>
 <script src="<?php echo public_path("js/libs/bootstrap.min.js"); ?>"></script>
 <script src="<?php echo public_path("js/base.js"); ?>"></script>
-
+<?php include_javascripts(); ?>
   </body>
 </html>

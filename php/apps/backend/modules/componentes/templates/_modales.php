@@ -183,3 +183,33 @@
 							</div>
 						</div>
 					</div>
+
+
+					<div id="modal-imagen" class="modal fade" tabindex="-1" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								<h4 class="modal-title">Imagen</h4>
+							</div>
+							<div class="modal-body">
+
+							<div class="col-md-12 form-horizontal ">
+
+								<img width="100%" src="<?php echo public_path("img/gallery/lr1_large.png"); ?>" />
+
+								<hr />
+
+								<form action="/" method="post">
+								<input type="submit" value="Eliminar imagen" class="btn btn-danger" />
+								</form>
+
+							</div>
+
+							</div>
+
+
+							</div>
+						</div>
+					</div>
