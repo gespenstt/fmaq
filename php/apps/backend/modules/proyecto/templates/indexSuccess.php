@@ -42,7 +42,9 @@
 						          <tr>
 						            <th>#</th>
 						            <th>Proyecto</th>
-						            <th>Fecha</th>
+						            <th>Cliente</th>
+						            <th>Campo</th>
+						            <th>Potrero</th>
 						            <th>Acciones</th>
 						          </tr>
 						        </thead>
@@ -50,9 +52,11 @@
 						        <?php for($a=1;$a<=4;$a++){ ?>
 						          <tr>
 						            <td class="col-md-1"><?php echo $a; ?></td>
-						            <td class="col-md-5">Proyecto yxz</td>
-						            <td class="col-md-2">24-12-2015</td>
-						            <td class="col-md-4">
+						            <td class="col-md-3">Proyecto yxz</td>
+						            <td class="col-md-2">Cliente yxz</td>
+						            <td class="col-md-2">Campo yxz</td>
+						            <td class="col-md-2">Potrero yxz</td>
+						            <td class="col-md-3">
 						            	<a tabindex="-1" href="javascript:;"><i class="icon-edit"></i> Editar</a> 
 						            	<a tabindex="-1" href="javascript:;"><i class="icon-remove"></i> Eliminar</a>
 						            </td>
