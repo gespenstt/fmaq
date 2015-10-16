@@ -4,7 +4,7 @@
 # default rules
 homepage:
   url:   /
-  param: { module: login, action: index }
+  param: { module: proyecto, action: index }
 
 # generic rules
 # please, remove them by adding more specific rules

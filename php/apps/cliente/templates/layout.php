@@ -83,30 +83,7 @@
 		    </a>
 
 			<div class="collapse subnav-collapse">
-				<ul class="mainnav">
-				
-					<li class="active">
-						<a href="<?php echo url_for("proyecto/index");?>">
-							<i class="icon-folder-open"></i>
-							<span>Mis Proyectos</span>
-						</a>	    				
-					</li>
-							
-					<li>
-						<a href="<?php echo url_for("cuenta/index");?>">
-							<i class="icon-user"></i>
-							<span>Mi cuenta</span>
-						</a>	    				
-					</li>
-									
-					<li>
-						<a href="<?php echo url_for("login/salir");?>">
-							<i class="icon-off"></i>
-							<span>Salir</span>
-						</a>	    				
-					</li>
-				
-				</ul>
+				<?php include_component("componentes", "menu"); ?>
 			</div> <!-- /.subnav-collapse -->
 
 		</div> <!-- /container -->
