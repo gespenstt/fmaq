@@ -7,6 +7,35 @@
 
 						<h3>Listado</h3>
 						<br>
+						<div class="col-md-12">
+
+							<form action="" method="post">
+							
+								<div class="form-group col-md-5">
+									<label class="col-md-2">Cliente:</label>
+									<div class="col-md-10">
+										<select class="form-control">
+											<option>Seleccione...</option>
+										</select>
+									</div>
+								</div> <!-- /.form-group -->
+							
+								<div class="form-group  col-md-5">
+									<label class="col-md-2">Buscar:</label>
+									<div class="col-md-10">
+										<input type="text" name="input1" placeholder="Ingrese texto a buscar" value="" class="form-control" />
+									</div>
+								</div> <!-- /.form-group -->
+
+								<div class="form-group col-md-2">
+									<input type="submit" name="input1" value="Buscar" class="btn btn-success" />
+								</div>
+
+							</form>
+
+						</div>
+						<br>
+						<br>
 						<div class="table-responsive">
 							<table class="table table-bordered table-hover table-striped">
 						        <thead>
