@@ -1,0 +1,30 @@
+/*------------------------------------------------------------------
+
+[Custom Stylesheet]
+
+
+Last change:	03/25/2013
+Assigned to:	You
+
+-------------------------------------------------------------------*/
+.border-right {
+	border-right: 1px solid #E9E9E9;
+}
+.border-left {
+	border-left: 1px solid #E9E9E9;
+}
+.padding-bt {
+	padding-bottom: 5px;
+}
+.padding-rg{
+	padding-right: 5px;
+}
+.float-left {
+	float: left;
+}
+.float-right {
+	float: right;
+}
+.gallery-container li {
+	width: 120px;
+}
