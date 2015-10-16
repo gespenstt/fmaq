@@ -1,14 +1,14 @@
 <?php
 
 /**
- * login actions.
+ * cuenta actions.
  *
  * @package    Futumaq
- * @subpackage login
+ * @subpackage cuenta
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class loginActions extends sfActions
+class cuentaActions extends sfActions
 {
  /**
   * Executes index action
@@ -17,13 +17,6 @@ class loginActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-  	$this->setLayout("layout_login");
-  	if($request->isMethod("post")){
-  		$this->redirect("proyecto/index");
-  	}
-  }
-  public function executeSalir(sfWebRequest $request)
-  {
-    $this->redirect("login/index");
+  	
   }
 }

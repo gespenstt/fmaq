@@ -55,8 +55,6 @@
 			</a>
 			
 			<ul class="dropdown-menu">
-				<li><a href="<?php echo url_for("cuenta/index");?>">Mi cuenta</a></li>
-				<li class="divider"></li>
 				<li><a href="<?php echo url_for("login/salir");?>">Salir</a></li>
 			</ul>
 			
@@ -88,80 +86,23 @@
 				<ul class="mainnav">
 				
 					<li class="active">
-						<a href="<?php echo url_for("home/index");?>">
-							<i class="icon-home"></i>
-							<span>Home</span>
-						</a>	    				
-					</li>
-					
-					<li class="dropdown">					
-						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-							<i class="icon-user"></i>
-							<span>Clientes</span>
-							<b class="caret"></b>
-						</a>	    
-					
-						<ul class="dropdown-menu">
-							<li><a href="<?php echo url_for("cliente/index");?>">Todos</a></li>
-							<li><a href="<?php echo url_for("cliente/agregar");?>">Agregar</a></li>
-						</ul> 				
-					</li>
-					
-					<li class="dropdown">					
-						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+						<a href="<?php echo url_for("proyecto/index");?>">
 							<i class="icon-folder-open"></i>
-							<span>Proyectos</span>
-							<b class="caret"></b>
-						</a>	    
-					
-						<ul class="dropdown-menu">
-							<li><a href="<?php echo url_for("proyecto/index");?>">Todos</a></li>
-							<li><a href="<?php echo url_for("proyecto/agregar");?>">Agregar</a></li>
-							<li class="divider"></li>
-							<li><a href="<?php echo url_for("proyecto/tipo");?>">Tipos</a></li>
-						</ul> 				
+							<span>Mis Proyectos</span>
+						</a>	    				
 					</li>
-									
+							
 					<li>
-						<a href="<?php echo url_for("noticia/index");?>">
-							<i class="icon-globe"></i>
-							<span>Noticias</span>
+						<a href="<?php echo url_for("cuenta/index");?>">
+							<i class="icon-user"></i>
+							<span>Mi cuenta</span>
 						</a>	    				
 					</li>
 									
 					<li>
-						<a href="<?php echo url_for("cv/index");?>">
-							<i class="icon-shopping-cart"></i>
-							<span>CV</span>
-						</a>	    				
-					</li>
-									
-					<li>
-						<a href="<?php echo url_for("promocion/index");?>">
-							<i class="icon-briefcase"></i>
-							<span>Promoción</span>
-						</a>	    				
-					</li>
-									
-					<li class="dropdown">					
-						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-							<i class="icon-wrench"></i>
-							<span>Maquinaria</span>
-							<b class="caret"></b>
-						</a>	    
-					
-						<ul class="dropdown-menu">
-							<li><a href="<?php echo url_for("maquinaria/index");?>">Todos</a></li>
-							<li><a href="<?php echo url_for("maquinaria/agregar");?>">Agregar</a></li>
-							<li class="divider"></li>
-							<li><a href="<?php echo url_for("maquinaria/marcas");?>">Marcas</a></li>
-						</ul>     				
-					</li>
-									
-					<li>
-						<a href="<?php echo url_for("usuario/index");?>">
-							<i class="icon-cog"></i>
-							<span>Administradores</span>
+						<a href="<?php echo url_for("login/salir");?>">
+							<i class="icon-off"></i>
+							<span>Salir</span>
 						</a>	    				
 					</li>
 				
@@ -216,8 +157,6 @@
 	</div> <!-- /container -->
 	
 </div> <!-- /footer -->
-
-<?php include_component("componentes", "modales"); ?>
 
     
 
