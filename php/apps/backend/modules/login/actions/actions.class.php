@@ -17,13 +17,44 @@ class loginActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-  	$this->setLayout("layout_login");
-  	if($request->isMethod("post")){
-  		$this->redirect("home/index");
-  	}
+    $this->setLayout("layout_login");
+    $this->msg = false;
+    
+    if($request->isMethod("post")){
+        $tra_id = date("U").rand(111,999);
+        $util = new Util();
+        $log = $util->setLog("loginIndex[$tra_id]");
+
+        $log->debug("executeIndex");
+        $usuario = $request->getPostParameter("usuario");
+        $password = $request->getPostParameter("password");
+        
+        $log->debug("Datos de entrada | usuario=$usuario | password(largo)=".strlen($password));
+        
+        $cu = new Criteria();
+        $cu->add(UsuarioPeer::USU_USUARIO,$usuario);
+        $cu->setIgnoreCase(true);
+        $resCu = UsuarioPeer::doSelectOne($cu);
+        
+        if($resCu){
+            $log->debug("Usuario encontrado | usu_id=".$resCu->getUsuId());
+            if(md5($password) == $resCu->getUsuPassword()){
+                $log->debug("Contrasena valida | Login OK");
+                $this->getUser()->setAuthenticated(true);
+                $this->redirect("home/index");
+            }else{
+                $this->msg = "La contraseña ingresada es incorrecta.";
+                $log->warning("Contraseña ingresada incorrecta");
+            }
+        }else{
+            $this->msg = "El usuario ingresado es incorrecto.";
+            $log->warning("Usuario incorrecto");
+        }
+    }
   }
   public function executeSalir(sfWebRequest $request)
   {
+    $this->getUser()->setAuthenticated(false);
     $this->redirect("login/index");
   }
 }

@@ -17,6 +17,8 @@
     
     <link href="<?php echo public_path("css/base-admin-3.css");?>" rel="stylesheet">
     <link href="<?php echo public_path("css/base-admin-3-responsive.css");?>" rel="stylesheet">
+    
+    <link href="<?php echo public_path("js/plugins/msgbox/jquery.msgbox.css");?>" rel="stylesheet">
 
     <link href="<?php echo public_path("css/custom.css");?>?v=1.0" rel="stylesheet">
 
@@ -104,7 +106,9 @@
       	<div class="col-md-12 col-xs-12">
       		
       		<div class="widget stacked">
-					
+			
+                <?php include_component("componentes", "mensaje"); ?>
+                    
       		<?php echo $sf_content; ?>
 					
 			</div> <!-- /widget -->			
@@ -148,6 +152,7 @@
 <script src="<?php echo public_path("js/libs/jquery-ui-1.10.0.custom.min.js"); ?>"></script>
 <script src="<?php echo public_path("js/datepicker-es.js"); ?>"></script>
 <script src="<?php echo public_path("js/libs/bootstrap.min.js"); ?>"></script>
+<script src="<?php echo public_path("js/plugins/msgbox/jquery.msgbox.min.js"); ?>"></script>
 <script src="<?php echo public_path("js/base.js"); ?>"></script>
 <?php include_javascripts(); ?>
   </body>

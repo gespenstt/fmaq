@@ -3,17 +3,23 @@
       <h1>Login</h1>    
       
       <div class="login-fields">
+          
+        <?php if($msg){ ?>
+          <div class="alert alert-danger">
+             <?php echo $msg; ?>
+          </div>
+        <?php } ?>
         
         <p>Ingrese con sus credenciales:</p>
         
         <div class="field">
           <label for="username">Usuario:</label>
-          <input type="text" id="username" name="username" value="" placeholder="Usuario" class="form-control input-lg username-field" required="required" />
+          <input type="text" name="usuario" value="" placeholder="Usuario" class="form-control input-lg username-field" required="required" />
         </div> <!-- /field -->
         
         <div class="field">
           <label for="password">Contraseña:</label>
-          <input type="password" id="password" name="password" value="" placeholder="Contraseña" class="form-control input-lg password-field" required="required"/>
+          <input type="password" name="password" value="" placeholder="Contraseña" class="form-control input-lg password-field" required="required"/>
         </div> <!-- /password -->
         
       </div> <!-- /login-fields -->

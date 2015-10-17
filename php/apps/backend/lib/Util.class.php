@@ -4,7 +4,7 @@ class Util{
     
    
     
-    public function setLog($modulo="",$archivo="frontend"){
+    public function setLog($modulo="",$archivo="backend"){
         
         //LOG
         $logFechaNombre = $archivo."_".date("Ymd").".log";
@@ -17,11 +17,11 @@ class Util{
 
 
 
-	public function checkMenu($current_modulo,$modulo){
-		if($current_modulo==$modulo){
-			return "active";
-		}else{
-			return "";
-		}
-	}
+    public function checkMenu($current_modulo,$modulo){
+            if($current_modulo==$modulo){
+                    return "active";
+            }else{
+                    return "";
+            }
+    }
 }
