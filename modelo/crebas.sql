@@ -1,283 +1,310 @@
-/*==============================================================*/
-/* DBMS name:      MySQL 5.0                                    */
-/* Created on:     14/10/2015 19:19:14                          */
-/*==============================================================*/
+-- phpMyAdmin SQL Dump
+-- version 4.1.14
+-- http://www.phpmyadmin.net
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 17-10-2015 a las 00:57:57
+-- Versión del servidor: 5.6.17
+-- Versión de PHP: 5.5.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
-drop table if exists campo;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
-drop table if exists cliente;
+--
+-- Base de datos: `futumaq`
+--
 
-drop table if exists curriculum;
+-- --------------------------------------------------------
 
-drop table if exists maquinaria;
+--
+-- Estructura de tabla para la tabla `campo`
+--
 
-drop table if exists maquinaria_foto;
+CREATE TABLE IF NOT EXISTS `campo` (
+  `cam_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cli_id` int(11) DEFAULT NULL,
+  `cam_nombre` varchar(50) DEFAULT NULL,
+  `cam_direccion` varchar(100) DEFAULT NULL,
+  `cam_contacto` varchar(50) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`cam_id`),
+  KEY `fk_relationship_7` (`cli_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-drop table if exists marca_maquinaria;
+-- --------------------------------------------------------
 
-drop table if exists noticia;
+--
+-- Estructura de tabla para la tabla `cliente`
+--
 
-drop table if exists potrero;
+CREATE TABLE IF NOT EXISTS `cliente` (
+  `cli_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cli_nombre` varchar(50) DEFAULT NULL,
+  `cli_apellido` varchar(50) DEFAULT NULL,
+  `cli_usuario` varchar(20) DEFAULT NULL,
+  `cli_password` varchar(30) DEFAULT NULL,
+  `cli_empresa` varchar(100) DEFAULT NULL,
+  `cli_correo` varchar(100) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`cli_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-drop table if exists promocion;
+-- --------------------------------------------------------
 
-drop table if exists proyecto;
+--
+-- Estructura de tabla para la tabla `curriculum`
+--
 
-drop table if exists proyecto_archivo;
+CREATE TABLE IF NOT EXISTS `curriculum` (
+  `cur_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cur_carta_presentacion` varchar(1024) DEFAULT NULL,
+  `cur_nombre_archivo` varchar(100) DEFAULT NULL,
+  `cur_ruta` varchar(100) DEFAULT NULL,
+  `cur_nombre` varchar(100) DEFAULT NULL,
+  `cur_rut` varchar(15) DEFAULT NULL,
+  `cur_telefono` varchar(15) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`cur_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-drop table if exists seccion;
+-- --------------------------------------------------------
 
-drop table if exists tipo_proyecto;
+--
+-- Estructura de tabla para la tabla `maquinaria`
+--
 
-drop table if exists usuario;
+CREATE TABLE IF NOT EXISTS `maquinaria` (
+  `maq_id` int(11) NOT NULL AUTO_INCREMENT,
+  `mar_id` int(11) DEFAULT NULL,
+  `maq_modelo` varchar(50) DEFAULT NULL,
+  `maq_descripcion` varchar(1024) DEFAULT NULL,
+  `maq_precio` int(11) DEFAULT NULL,
+  `maq_fono` varchar(15) DEFAULT NULL,
+  `maq_contacto` varchar(100) DEFAULT NULL,
+  `maq_correo` varchar(100) DEFAULT NULL,
+  `maq_ano` varchar(10) DEFAULT NULL,
+  `maq_horas` varchar(15) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`maq_id`),
+  KEY `fk_relationship_6` (`mar_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-/*==============================================================*/
-/* Table: campo                                                 */
-/*==============================================================*/
-create table campo
-(
-   cam_id               int not null auto_increment,
-   cli_id               int,
-   cam_nombre           varchar(50),
-   cam_direccion        varchar(100),
-   cam_contacto         varchar(50),
-   created_at           datetime,
-   updated_at           datetime,
-   primary key (cam_id)
-)
-engine = innodb;
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Table: cliente                                               */
-/*==============================================================*/
-create table cliente
-(
-   cli_id               int not null auto_increment,
-   cli_nombre           varchar(50),
-   cli_apellido         varchar(50),
-   cli_usuario          varchar(20),
-   cli_password         varchar(30),
-   cli_empresa          varchar(100),
-   cli_correo           varchar(100),
-   created_at           datetime,
-   primary key (cli_id)
-)
-engine = innodb;
+--
+-- Estructura de tabla para la tabla `maquinaria_foto`
+--
 
-/*==============================================================*/
-/* Table: curriculum                                            */
-/*==============================================================*/
-create table curriculum
-(
-   cur_id               int not null auto_increment,
-   cur_carta_presentacion varchar(1024),
-   cur_nombre_archivo   varchar(100),
-   cur_ruta             varchar(100),
-   cur_nombre           varchar(100),
-   cur_rut              varchar(15),
-   cur_telefono         varchar(15),
-   created_at           datetime,
-   primary key (cur_id)
-)
-engine = innodb;
+CREATE TABLE IF NOT EXISTS `maquinaria_foto` (
+  `mfo_id` int(11) NOT NULL AUTO_INCREMENT,
+  `maq_id` int(11) DEFAULT NULL,
+  `mfo_nombre` varchar(100) DEFAULT NULL,
+  `mfo_ruta` varchar(100) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`mfo_id`),
+  KEY `fk_relationship_5` (`maq_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-/*==============================================================*/
-/* Table: maquinaria                                            */
-/*==============================================================*/
-create table maquinaria
-(
-   maq_id               int not null auto_increment,
-   mar_id               int,
-   maq_modelo           varchar(50),
-   maq_descripcion      varchar(1024),
-   maq_precio           int,
-   maq_fono             varchar(15),
-   maq_contacto         varchar(100),
-   maq_correo           varchar(100),
-   maq_ano              varchar(10),
-   maq_horas            varchar(15),
-   created_at           datetime,
-   updated_at           datetime,
-   primary key (maq_id)
-)
-engine = innodb;
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Table: maquinaria_foto                                       */
-/*==============================================================*/
-create table maquinaria_foto
-(
-   mfo_id               int not null auto_increment,
-   maq_id               int,
-   mfo_nombre           varchar(100),
-   mfo_ruta             varchar(100),
-   created_at           datetime,
-   primary key (mfo_id)
-)
-engine = innodb;
+--
+-- Estructura de tabla para la tabla `marca_maquinaria`
+--
 
-/*==============================================================*/
-/* Table: marca_maquinaria                                      */
-/*==============================================================*/
-create table marca_maquinaria
-(
-   mar_id               int not null auto_increment,
-   mar_nombre           varchar(100),
-   created_at           datetime,
-   primary key (mar_id)
-)
-engine = innodb;
+CREATE TABLE IF NOT EXISTS `marca_maquinaria` (
+  `mar_id` int(11) NOT NULL AUTO_INCREMENT,
+  `mar_nombre` varchar(100) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`mar_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-/*==============================================================*/
-/* Table: noticia                                               */
-/*==============================================================*/
-create table noticia
-(
-   not_id               int not null auto_increment,
-   not_titulo           varchar(255),
-   not_url              varchar(255),
-   not_imagen           varchar(255),
-   not_descripcion      varchar(255),
-   created_at           datetime,
-   updated_at           datetime,
-   primary key (not_id)
-)
-engine = innodb;
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Table: potrero                                               */
-/*==============================================================*/
-create table potrero
-(
-   pot_id               int not null auto_increment,
-   cam_id               int,
-   pot_nombre           varchar(100),
-   pot_ubicacion        varchar(100),
-   pot_cantidad_hectareas varchar(50),
-   created_at           datetime,
-   updated_at           datetime,
-   primary key (pot_id)
-)
-engine = innodb;
+--
+-- Estructura de tabla para la tabla `noticia`
+--
 
-/*==============================================================*/
-/* Table: promocion                                             */
-/*==============================================================*/
-create table promocion
-(
-   prom_id              int not null auto_increment,
-   prom_titulo          varchar(50),
-   prom_descripcion     varchar(255),
-   prom_urlvideo        varchar(100),
-   created_at           datetime,
-   updated_at           datetime,
-   primary key (prom_id)
-)
-engine = innodb;
+CREATE TABLE IF NOT EXISTS `noticia` (
+  `not_id` int(11) NOT NULL AUTO_INCREMENT,
+  `not_titulo` varchar(255) DEFAULT NULL,
+  `not_url` varchar(255) DEFAULT NULL,
+  `not_imagen` varchar(255) DEFAULT NULL,
+  `not_descripcion` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`not_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-/*==============================================================*/
-/* Table: proyecto                                              */
-/*==============================================================*/
-create table proyecto
-(
-   pro_id               int not null auto_increment,
-   pot_id               int,
-   tpr_id               int,
-   pro_nombre           varchar(1024),
-   pro_fecha            datetime,
-   pro_descripcion      varchar(1024),
-   created_at           datetime,
-   primary key (pro_id)
-)
-engine = innodb;
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Table: proyecto_archivo                                      */
-/*==============================================================*/
-create table proyecto_archivo
-(
-   par_id               int not null auto_increment,
-   pro_id               int,
-   par_nombre           varchar(100),
-   par_ruta             varchar(100),
-   par_descripcion      varchar(255),
-   created_at           datetime,
-   primary key (par_id)
-)
-engine = innodb;
+--
+-- Estructura de tabla para la tabla `potrero`
+--
 
-/*==============================================================*/
-/* Table: seccion                                               */
-/*==============================================================*/
-create table seccion
-(
-   sec_id               int not null auto_increment,
-   sec_nombre           varchar(20),
-   created_at           datetime,
-   updated_at           datetime,
-   primary key (sec_id)
-)
-engine = innodb;
+CREATE TABLE IF NOT EXISTS `potrero` (
+  `pot_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cam_id` int(11) DEFAULT NULL,
+  `pot_nombre` varchar(100) DEFAULT NULL,
+  `pot_ubicacion` varchar(100) DEFAULT NULL,
+  `pot_cantidad_hectareas` varchar(50) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`pot_id`),
+  KEY `fk_relationship_8` (`cam_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-alter table seccion comment 'quienes somos
-home
-galeria
-servicios
-                            -&#&';
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Table: tipo_proyecto                                         */
-/*==============================================================*/
-create table tipo_proyecto
-(
-   tpr_id               int not null auto_increment,
-   tpr_nombre           varchar(100),
-   created_at           datetime,
-   primary key (tpr_id)
-)
-engine = innodb;
+--
+-- Estructura de tabla para la tabla `promocion`
+--
 
-alter table tipo_proyecto comment 'Siembra
-Cosecha
-Fumigacion
-Fertilizacion
-                                  ';
+CREATE TABLE IF NOT EXISTS `promocion` (
+  `prom_id` int(11) NOT NULL AUTO_INCREMENT,
+  `prom_titulo` varchar(50) DEFAULT NULL,
+  `prom_descripcion` varchar(255) DEFAULT NULL,
+  `prom_urlvideo` varchar(100) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`prom_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-/*==============================================================*/
-/* Table: usuario                                               */
-/*==============================================================*/
-create table usuario
-(
-   usu_id               int not null auto_increment,
-   usu_nombre           varchar(100),
-   usu_apellido         varchar(100),
-   usu_correo           varchar(100),
-   usu_usuario          varchar(50),
-   usu_password         varchar(50),
-   created_at           datetime,
-   primary key (usu_id)
-)
-engine = innodb;
+-- --------------------------------------------------------
 
-alter table campo add constraint fk_relationship_7 foreign key (cli_id)
-      references cliente (cli_id) on delete restrict on update restrict;
+--
+-- Estructura de tabla para la tabla `proyecto`
+--
 
-alter table maquinaria add constraint fk_relationship_6 foreign key (mar_id)
-      references marca_maquinaria (mar_id) on delete restrict on update restrict;
+CREATE TABLE IF NOT EXISTS `proyecto` (
+  `pro_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pot_id` int(11) DEFAULT NULL,
+  `tpr_id` int(11) DEFAULT NULL,
+  `pro_nombre` varchar(1024) DEFAULT NULL,
+  `pro_fecha` datetime DEFAULT NULL,
+  `pro_descripcion` varchar(1024) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`pro_id`),
+  KEY `fk_relationship_11` (`tpr_id`),
+  KEY `fk_relationship_9` (`pot_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-alter table maquinaria_foto add constraint fk_relationship_5 foreign key (maq_id)
-      references maquinaria (maq_id) on delete restrict on update restrict;
+-- --------------------------------------------------------
 
-alter table potrero add constraint fk_relationship_8 foreign key (cam_id)
-      references campo (cam_id) on delete restrict on update restrict;
+--
+-- Estructura de tabla para la tabla `proyecto_archivo`
+--
 
-alter table proyecto add constraint fk_relationship_11 foreign key (tpr_id)
-      references tipo_proyecto (tpr_id) on delete restrict on update restrict;
+CREATE TABLE IF NOT EXISTS `proyecto_archivo` (
+  `par_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pro_id` int(11) DEFAULT NULL,
+  `par_nombre` varchar(100) DEFAULT NULL,
+  `par_ruta` varchar(100) DEFAULT NULL,
+  `par_descripcion` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`par_id`),
+  KEY `fk_relationship_10` (`pro_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-alter table proyecto add constraint fk_relationship_9 foreign key (pot_id)
-      references potrero (pot_id) on delete restrict on update restrict;
+-- --------------------------------------------------------
 
-alter table proyecto_archivo add constraint fk_relationship_10 foreign key (pro_id)
-      references proyecto (pro_id) on delete restrict on update restrict;
+--
+-- Estructura de tabla para la tabla `seccion`
+--
 
+CREATE TABLE IF NOT EXISTS `seccion` (
+  `sec_id` int(11) NOT NULL AUTO_INCREMENT,
+  `sec_nombre` varchar(20) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`sec_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='quienes somos\r\nhome\r\ngaleria\r\nservicios\r\n                            -&#&' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_proyecto`
+--
+
+CREATE TABLE IF NOT EXISTS `tipo_proyecto` (
+  `tpr_id` int(11) NOT NULL AUTO_INCREMENT,
+  `tpr_nombre` varchar(100) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`tpr_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Siembra\r\nCosecha\r\nFumigacion\r\nFertilizacion\r\n                                  ' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `usu_id` int(11) NOT NULL AUTO_INCREMENT,
+  `usu_nombre` varchar(100) DEFAULT NULL,
+  `usu_apellido` varchar(100) DEFAULT NULL,
+  `usu_correo` varchar(100) DEFAULT NULL,
+  `usu_usuario` varchar(50) DEFAULT NULL,
+  `usu_password` varchar(50) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`usu_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`usu_id`, `usu_nombre`, `usu_apellido`, `usu_correo`, `usu_usuario`, `usu_password`, `created_at`) VALUES
+(1, 'Admin', 'Futumaq', 'admin@futumaq.cl', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2015-10-17 00:57:23');
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `campo`
+--
+ALTER TABLE `campo`
+  ADD CONSTRAINT `fk_relationship_7` FOREIGN KEY (`cli_id`) REFERENCES `cliente` (`cli_id`);
+
+--
+-- Filtros para la tabla `maquinaria`
+--
+ALTER TABLE `maquinaria`
+  ADD CONSTRAINT `fk_relationship_6` FOREIGN KEY (`mar_id`) REFERENCES `marca_maquinaria` (`mar_id`);
+
+--
+-- Filtros para la tabla `maquinaria_foto`
+--
+ALTER TABLE `maquinaria_foto`
+  ADD CONSTRAINT `fk_relationship_5` FOREIGN KEY (`maq_id`) REFERENCES `maquinaria` (`maq_id`);
+
+--
+-- Filtros para la tabla `potrero`
+--
+ALTER TABLE `potrero`
+  ADD CONSTRAINT `fk_relationship_8` FOREIGN KEY (`cam_id`) REFERENCES `campo` (`cam_id`);
+
+--
+-- Filtros para la tabla `proyecto`
+--
+ALTER TABLE `proyecto`
+  ADD CONSTRAINT `fk_relationship_9` FOREIGN KEY (`pot_id`) REFERENCES `potrero` (`pot_id`),
+  ADD CONSTRAINT `fk_relationship_11` FOREIGN KEY (`tpr_id`) REFERENCES `tipo_proyecto` (`tpr_id`);
+
+--
+-- Filtros para la tabla `proyecto_archivo`
+--
+ALTER TABLE `proyecto_archivo`
+  ADD CONSTRAINT `fk_relationship_10` FOREIGN KEY (`pro_id`) REFERENCES `proyecto` (`pro_id`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
