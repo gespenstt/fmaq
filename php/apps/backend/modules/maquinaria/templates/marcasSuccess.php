@@ -9,6 +9,7 @@
 						<h3>Marcas</h3>
 						<br>
 						<div class="table-responsive">
+                                                    <?php if($pager->count()>0){ ?>
 							<table class="table table-bordered table-hover table-striped">
 						        <thead>
 						          <tr>
@@ -18,31 +19,63 @@
 						          </tr>
 						        </thead>
 						        <tbody>
-						        <?php for($a=1;$a<=4;$a++){ ?>
+						        <?php $count = 1; 
+                                                        foreach ($pager->getResults() as $p){ ?>
 						          <tr>
-						            <td class="col-md-1"><?php echo $a; ?></td>
-						            <td class="col-md-7">Marca abc</td>
+						            <td class="col-md-1"><?php echo $count; ?></td>
+						            <td class="col-md-7"><?php echo $p->getMarNombre(); ?></td>
 						            <td class="col-md-4">
-						            	<a tabindex="-1" href="javascript:;"><i class="icon-edit"></i> Editar</a> 
-						            	<a tabindex="-1" href="javascript:;"><i class="icon-remove"></i> Eliminar</a>
+                                                                <form action="<?php echo url_for("maquinaria/marcasAcciones");?>" method="post">
+                                                                    <input type="hidden" name="accion" value="eliminar" />
+                                                                    <input type="hidden" name="mar_id" value="<?php echo $p->getMarId(); ?>" />
+                                                                    <a href="<?php echo url_for("maquinaria/marcasEditar/?mar_id=".$p->getMarId()); ?>"><i class="icon-edit"></i> Editar</a>
+                                                                    <a href="javascript:;" class="msgbox-eliminar" data-msg="¿Está seguro de eliminar la marca?"><i class="icon-remove"></i> Eliminar</a>
+                                                                </form>
 						            </td>
 						          </tr>
-						          <?php } ?>
+						          <?php $count++;                                                           
+                                                        } ?>
 						        </tbody>
 					      	</table>
+                                                    <?php }else{ ?>
+                                                    <p>No existen registros de marcas.</p>
+                                                    <?php } ?>
 					  	</div>
 
 					  	<div align="right">
           
-				          <ul class="pagination">
-				            <li><a href="javascript:;">&laquo;</a></li>
-				            <li class="active"><a href="#">1</a></li>
-				            <li><a href="javascript:;">2</a></li>
-				            <li><a href="javascript:;">3</a></li>
-				            <li><a href="javascript:;">4</a></li>
-				            <li><a href="javascript:;">5</a></li>
-				            <li><a href="javascript:;">&raquo;</a></li>
-				          </ul>	
+				    <?php if ($pager->haveToPaginate()){ ?>
+                                    <ul class="pagination">
+                                        <?php                                         
+                                        $actualPagina = $pager->getPage();
+                                        $ultimaPagina = $pager->getLastPage();
+                                        $minimo = $actualPagina - 1;
+                                        $maximo = $actualPagina + 2;
+                                        $linkSaltoPrimero = $actualPagina - 3;
+                                        $linkSaltoUltimo = $actualPagina + 3;
+                                        $links = $pager->getLinks();
+                                        
+                                        if($linkSaltoPrimero >= 1):
+                                            echo '<li><a href="'.url_for("maquinaria/marcas/?p=1").'">«</a></li>';
+                                        endif;
+                                        
+                                        foreach ($links as $e): 
+                                            $current = '';
+                                            if($actualPagina == $e):
+                                                $current = ' active';
+                                            endif;
+                                            if(($e < $minimo && $minimo > 1) || ($e <= $maximo)):
+                                            echo '<li class="'.$current.'"><a href="'.url_for("maquinaria/marcas/?p=$e").'">'.$e.'</a></li>';
+                                            endif;
+                                        endforeach; 
+                                        
+                                        if($linkSaltoUltimo <= $ultimaPagina):                                            
+                                            echo '<li><a href="'.url_for("maquinaria/marcas/?p=$ultimaPagina").'">»</a></li>';
+                                        endif;
+                                        
+                                        ?>                                         
+                                    </ul>
+                                    <?php } ?>    
 
 						</div> 
 
@@ -51,12 +84,12 @@
 					
 						<h4>Agregar</h4>
 						<br>
-						<form action="/" role="form" class="form-horizontal col-md-12">
-
+                                                <form method="post" action="<?php echo url_for("maquinaria/marcasAcciones"); ?>" role="form" class="form-horizontal col-md-12">
+                                                    <input type="hidden" name="accion" value="agregar" />
 							<div class="form-group">
 								<label class="col-md-4">Marca</label>
 								<div class="col-md-8">
-									<input type="text" name="input1" placeholder="Ingrese marca" required="required" value="" class="form-control" />
+									<input type="text" name="marca" placeholder="Ingrese marca" required="required" value="" class="form-control" />
 								</div>
 							</div> <!-- /.form-group -->
 
