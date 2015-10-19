@@ -21,5 +21,16 @@ $(document).ready(function(){
             }
         });
     });
+    
+    $(".modal-imagen").on('click',function(){
+        var _this = $(this),
+            _img = _this.data("img"),
+            _id = _this.data("id");
+        
+        $("#modal-imagen-img-src").attr("src",_img);
+        $("#modal-imagen-id").val(_id);
+        
+        $("#modal-imagen").modal();
+    })
 	
 })

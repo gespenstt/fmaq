@@ -197,11 +197,12 @@
 
 							<div class="col-md-12 form-horizontal ">
 
-								<img width="100%" src="<?php echo public_path("img/gallery/lr1_large.png"); ?>" />
+								<img id="modal-imagen-img-src" width="100%" src="<?php echo public_path("img/gallery/lr1_large.png"); ?>" />
 
 								<hr />
 
-								<form action="/" method="post">
+								<form action="<?php echo url_for("maquinaria/eliminarimagen"); ?>" method="post">
+                                                                    <input type="hidden" id="modal-imagen-id" name="mfo_id" value="" />
 								<input type="submit" value="Eliminar imagen" class="btn btn-danger" />
 								</form>
 

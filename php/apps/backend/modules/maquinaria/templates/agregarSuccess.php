@@ -24,15 +24,18 @@
 							<div class="form-group">
 								<label class="col-md-4">Modelo</label>
 								<div class="col-md-8">
-									<input type="text" name="input1" placeholder="Modelo" required="required" value="" class="form-control" />
+									<input type="text" name="modelo" placeholder="Modelo" required="required" value="" class="form-control" />
 								</div>
 							</div> <!-- /.form-group -->
 
 							<div class="form-group">
 								<label class="col-md-4">Marca</label>
 								<div class="col-md-8">
-									<select class="form-control" required="required">
-										<option>Seleccione...</option>
+									<select name="marca" class="form-control" required="required">
+                                                                            <option>Seleccione...</option>
+                                                                            <?php foreach($marcas as $m){ ?>
+                                                                            <option value="<?php echo $m->getMarId();?>"><?php echo $m->getMarNombre();?></option>
+                                                                            <?php } ?>
 									</select>
 								</div>
 							</div> <!-- /.form-group -->
@@ -40,49 +43,49 @@
 							<div class="form-group">
 								<label class="col-md-4">Descripción</label>
 								<div class="col-md-8">
-									<textarea required="required" class="form-control fecha"></textarea>
+									<textarea name="descripcion" required="required" class="form-control"></textarea>
 								</div>
 							</div> <!-- /.form-group -->
 
 							<div class="form-group">
 								<label class="col-md-4">Precio</label>
 								<div class="col-md-8">
-									<input type="text" name="input1" placeholder="" required="required" value="" class="form-control" />
+									<input type="number" name="precio" placeholder="Ingrese solo numeros" required="required" value="" class="form-control" />
 								</div>
 							</div> <!-- /.form-group -->
 
 							<div class="form-group">
 								<label class="col-md-4">Fono</label>
 								<div class="col-md-8">
-									<input type="text" name="input1" placeholder="" required="required" value="" class="form-control" />
+									<input type="text" name="fono" placeholder="Ingrese teléfono" required="required" value="" class="form-control" />
 								</div>
 							</div> <!-- /.form-group -->
 
 							<div class="form-group">
 								<label class="col-md-4">Contacto</label>
 								<div class="col-md-8">
-									<input type="text" name="input1" placeholder="" required="required" value="" class="form-control" />
+									<input type="text" name="contacto" placeholder="Ingrese contacto" required="required" value="" class="form-control" />
 								</div>
 							</div> <!-- /.form-group -->
 
 							<div class="form-group">
 								<label class="col-md-4">Correo</label>
 								<div class="col-md-8">
-									<input type="email" name="input1" placeholder="" required="required" value="" class="form-control" />
+									<input type="email" name="email" placeholder="usuario@dominio.tld" required="required" value="" class="form-control" />
 								</div>
 							</div> <!-- /.form-group -->
 
 							<div class="form-group">
 								<label class="col-md-4">Año</label>
 								<div class="col-md-8">
-									<input type="number" name="input1" placeholder="" required="required" value="" class="form-control" />
+									<input type="number" name="ano" placeholder="" required="required" value="" class="form-control" />
 								</div>
 							</div> <!-- /.form-group -->
 
 							<div class="form-group">
 								<label class="col-md-4">Horas</label>
 								<div class="col-md-8">
-									<input type="number" name="input1" placeholder="" required="required" value="" class="form-control" />
+									<input type="number" name="hora" placeholder="" required="required" value="" class="form-control" />
 								</div>
 							</div> <!-- /.form-group -->
 
@@ -95,7 +98,7 @@
 
 									<button type="submit" class="btn btn-success">Crear</button>
 
-									<button class="btn btn-default">Cancelar</button>
+									<a href="<?php echo url_for("maquinaria/index");?>" class="btn btn-default">Cancelar</a>
 
 								</div>
 
@@ -108,43 +111,8 @@
 
 					<div class="col-md-6 border-left">
 
-						<h4>Imágenes</h4>
-						<br>
-						<ul class="gallery-container">
-							<li>
-								<a data-toggle="modal" href="#modal-imagen">
-								<img src="<?php echo public_path("img/gallery/lr1_large.png"); ?>" />
-								</a>
-							</li>	
-							<li>
-								<a data-toggle="modal" href="#modal-imagen">
-								<img src="<?php echo public_path("img/gallery/lr1_large.png"); ?>" />
-								</a>
-							</li>	
-							<li>
-								<a data-toggle="modal" href="#modal-imagen">
-								<img src="<?php echo public_path("img/gallery/lr1_large.png"); ?>" />
-								</a>
-							</li>	
-							<li>
-								<a data-toggle="modal" href="#modal-imagen">
-								<img src="<?php echo public_path("img/gallery/lr1_large.png"); ?>" />
-								</a>
-							</li>	
-							<li>
-								<a data-toggle="modal" href="#modal-imagen">
-								<img src="<?php echo public_path("img/gallery/lr1_large.png"); ?>" />
-								</a>
-							</li>	
-							<li>
-								<a data-toggle="modal" href="#modal-imagen">
-								<img src="<?php echo public_path("img/gallery/lr1_large.png"); ?>" />
-								</a>
-							</li>							
-						</ul>
-						<hr />
 						<h4>Cargar imágenes</h4>
-						<input type="file" id="input-upload" name="imagenes[]" multiple=true class="file-loading" />
+						<input type="file" id="input-upload" name="imagenes[]" multiple=true class="file-loading" data-show-upload="false" />
 
 					</div>
 
