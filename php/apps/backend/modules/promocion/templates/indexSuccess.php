@@ -25,8 +25,11 @@
                                     <td class="col-md-1"><?php echo $count; ?></td>
                                     <td class="col-md-7"><?php echo $p->getPromTitulo();?></td>
                                     <td class="col-md-4">
-                                        <a tabindex="-1" href="javascript:;"><i class="icon-edit"></i> Editar</a> 
-                                        <a tabindex="-1" href="javascript:;"><i class="icon-remove"></i> Eliminar</a>
+                                    <form action="<?php echo url_for("promocion/eliminar");?>" method="post">
+                                        <input type="hidden" name="prom_id" value="<?php echo $p->getPromId(); ?>" />
+                                        <a href="<?php echo url_for("promocion/editar/?prom_id=".$p->getPromId()) ?>"><i class="icon-edit"></i> Editar</a>
+                                        <a href="javascript:;" class="msgbox-eliminar" data-msg="¿Está seguro de eliminar la promoción?"><i class="icon-remove"></i> Eliminar</a>
+                                    </form>
                                     </td>
                                   </tr>
                                 <?php $count++;                                                           

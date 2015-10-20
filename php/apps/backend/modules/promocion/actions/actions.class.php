@@ -66,6 +66,52 @@ class promocionActions extends sfActions
   }
   public function executeEditar(sfWebRequest $request)
   {
+    $tra_id = date("U").rand(111,999);
+    $util = new Util();
+    $log = $util->setLog("promocionEditar[$tra_id]"); 
+
+    $log->debug("executeEditar");
+    
+    try{
+        
+        $prom_id = $request->getParameter("prom_id");
+        $log->debug("Datos de entrada | prom_id=$prom_id");
+        
+        $promocion = PromocionPeer::retrieveByPK($prom_id);
+        
+        if(!$promocion){
+            throw new Exception("La promoción seleccionada no existe.");
+        }
+        
+        if($request->isMethod("post")){            
+            
+            $titulo = $request->getPostParameter("titulo");
+            $link = $request->getPostParameter("link");
+            $descripcion = $request->getPostParameter("descripcion");
+
+            $log->debug("Datos de entrada | titulo=$titulo | link=$link | descripcion=$descripcion");
+            
+            $promocion->setPromTitulo($titulo);
+            $promocion->setPromUrlvideo($link);
+            $promocion->setPromDescripcion($descripcion);
+            $promocion->save();
+            
+            $log->debug("Promocion actualizada");
+            
+            $this->getUser()->setFlash("flag_msg","Los datos han sido actualizados.",true);
+            $this->getUser()->setFlash("flag_tipo","success",true);
+            
+        }
+        
+        $this->promocion = $promocion;
+        
+        
+    }  catch (Exception $ex){
+        $log->err($ex->getMessage());
+        $this->getUser()->setFlash("flag_msg",$ex->getMessage(),true);
+        $this->getUser()->setFlash("flag_tipo","danger",true);
+        $this->redirect("promocion/index");        
+    }
       
   }
 }
