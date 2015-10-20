@@ -114,4 +114,38 @@ class promocionActions extends sfActions
     }
       
   }
+  public function executeEliminar(sfWebRequest $request)
+  {
+    $tra_id = date("U").rand(111,999);
+    $util = new Util();
+    $log = $util->setLog("promocionEliminar[$tra_id]"); 
+
+    $log->debug("executeEliminar");
+    
+    try{
+        
+        $prom_id = $request->getParameter("prom_id");
+        $log->debug("Datos de entrada | prom_id=$prom_id");
+        
+        $promocion = PromocionPeer::retrieveByPK($prom_id);
+        
+        if(!$promocion){
+            throw new Exception("La promoción seleccionada no existe.");
+        }
+        
+        $promocion->delete();
+        $log->debug("Promocion eliminada");
+            
+        $this->getUser()->setFlash("flag_msg","La promoción ha sido eliminada.",true);
+        $this->getUser()->setFlash("flag_tipo","success",true);
+        
+        
+    }  catch (Exception $ex){
+        $log->err($ex->getMessage());
+        $this->getUser()->setFlash("flag_msg",$ex->getMessage(),true);
+        $this->getUser()->setFlash("flag_tipo","danger",true);      
+    }
+    $this->redirect("promocion/index");  
+    
+  }
 }
