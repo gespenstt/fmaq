@@ -89,7 +89,60 @@ class clienteActions extends sfActions
   }
   public function executeEditar(sfWebRequest $request)
   {
-  	
+    $tra_id = date("U").rand(111,999);
+    $util = new Util();
+    $log = $util->setLog("clienteEditar[$tra_id]"); 
+
+    $log->debug("executeEditar");
+
+    try{
+        
+        $cli_id = $request->getPostParameter("cli_id");
+        $log->debug("Datos de entrada | cli_id=$cli_id");
+        
+        $cliente = ClientePeer::retrieveByPK($cli_id);
+        
+        if(!$cliente){
+            throw new Exception("El cliente seleccionado no existe.");
+        }
+        
+        if($request->isMethod("post")){
+            
+            $nombre = $request->getPostParameter("nombre");
+            $apellido = $request->getPostParameter("apellido");
+            $contacto = $request->getPostParameter("contacto");
+            $empresa = $request->getPostParameter("empresa");
+            $usuario = $request->getPostParameter("usuario");
+            $password = $request->getPostParameter("password");
+
+            $log->debug("Datos de entrada | nombre=$nombre | apellido=$apellido | contacto=$contacto | empresa=$empresa | ".
+                    "usuario=$usuario | password(largo)=".strlen($password));
+                        
+            $cliente->setCliNombre($nombre);
+            $cliente->setCliApellido($apellido);
+            $cliente->setCliCorreo($contacto);
+            $cliente->setCliEmpresa($empresa);
+            $cliente->setCliUsuario($usuario);
+            if(strlen($password)>0){
+                $cliente->setCliPassword(md5($password));
+            }
+            
+            $cliente->save();
+            
+            $log->debug("Cliente actualizado"); 
+            
+        }
+        
+        $this->cliente = $cliente;
+        
+    } catch (Exception $ex) {
+
+        $log->err($ex->getMessage());
+        $this->getUser()->setFlash("flag_msg",$ex->getMessage(),true);
+        $this->getUser()->setFlash("flag_tipo","danger",true);
+        $this->redirect("cliente/index");
+
+    }
   }
   public function executeEliminar(sfWebRequest $request)
   {
