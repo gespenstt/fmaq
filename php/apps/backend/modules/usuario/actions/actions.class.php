@@ -158,7 +158,6 @@ class usuarioActions extends sfActions
           $criterion->addOr($cb->getNewCriterion(UsuarioPeer::USU_CORREO,$usuario_email));
           $cb->add($criterion);
           $cb->setIgnoreCase(true);
-          $log->debug(print_r(UsuarioPeer::doSelectStmt($cb),true));
           $resCb = UsuarioPeer::doSelectOne($cb);
           if($resCb){
               throw new Exception("Usuario ya existe en sistema");
