@@ -31,6 +31,32 @@ $(document).ready(function(){
         $("#modal-imagen-id").val(_id);
         
         $("#modal-imagen").modal();
+    });
+    
+    $(".modal-cv").on('click',function(){
+        var _this = $(this),
+            _url = _this.data("url"),
+            _id = _this.data("id");  
+
+        $.ajax({
+            url: _url,
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+                if(data.estado=="ok"&&data.contenido){
+        
+                    $("#modal-cv-nombre").html(data.contenido.nombre);
+                    $("#modal-cv-rut").html(data.contenido.rut);
+                    $("#modal-cv-telefono").html(data.contenido.telefono);
+                    $("#modal-cv-carta").html(data.contenido.carta_presentacion);
+                    $("#modal-cv-archivo").attr("href",data.contenido.ruta);
+
+                    $("#modal-cv").modal();
+                    
+                }
+            },
+            data: {cur_id:_id,metodo:"getCv"}
+        });
     })
 	
 })

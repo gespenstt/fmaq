@@ -18,21 +18,47 @@ class apiActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {
 
-  	$array_out = array();
+    $array_out = array();
 
-  	if($request->isMethod("get")){
+    if($request->isMethod("post")){
+        
+        try{
 
-  		$metodo = $request->getPostParameter("metodo");
-  		switch($metodo){
-  			default:
-  				$array_out["estado"] = "ok";
-  			break;
-  		}  		
+            $metodo = $request->getPostParameter("metodo");
+            switch($metodo){
 
-  	}
+                case "getCv":
+                    $cur_id = $request->getPostParameter("cur_id");
+                    $curriculum = CurriculumPeer::retrieveByPK($cur_id);
+                    if(!$curriculum){
+                        throw new Exception("No se ha encontrado el CV solicitado.");
+                    }
+                    $array_out["estado"] = "ok";
+                    $array_out["contenido"] = array(
+                        "id" => $curriculum->getCurId(),
+                        "carta_presentacion" => $curriculum->getCurCartaPresentacion(),
+                        "nombre_archivo" => $curriculum->getCurNombreArchivo(),
+                        "ruta" => $curriculum->getCurRuta(),
+                        "nombre" => $curriculum->getCurNombre(),
+                        "rut" => $curriculum->getCurRut(),
+                        "telefono" => $curriculum->getCurTelefono(),
+                    );
+                break;
 
-  	echo json_encode($array_out);
+                default:
+                    $array_out["estado"] = "ok";
+                break;
+            }  
+            
+        } catch (Exception $ex) {            
+            $array_out["estado"] = "nok";
+            $array_out["mensaje"] = $ex->getMessage();
+        }		
 
-  	return sfView::NONE;
+    }
+
+    echo json_encode($array_out);
+
+    return sfView::NONE;
   }
 }
