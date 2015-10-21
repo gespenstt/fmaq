@@ -37,7 +37,7 @@
                                 </tbody>
                         </table>
                             <?php }else{ ?>
-                            <p>No existen registros de usuarios.</p>
+                            <p>No existen registros de promociones.</p>
                             <?php } ?>
                         </div>
 
