@@ -41,8 +41,8 @@ class Util{
             $log->debug("Procesando $idx | tmp=$f_tmp | name=$f_name");
             //UPLOAD DIR FRONTEND(WEB)/UPLOADS
             
-            $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR.$mqid.DIRECTORY_SEPARATOR;
-            $path_db = "uploads/$mqid/$f_name";
+            $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."maquinaria".DIRECTORY_SEPARATOR.$mqid.DIRECTORY_SEPARATOR;
+            $path_db = "uploads/maquinaria/$mqid/$f_name";
             $path_file = $path.$f_name;            
             
             $log->debug("path=$path | path_db=$path_db | path_file=$path_file");
