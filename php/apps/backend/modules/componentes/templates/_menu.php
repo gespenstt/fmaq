@@ -44,14 +44,14 @@
 									
 					<li class="<?php echo $util->checkMenu($modulo,"cv");?>">
 						<a href="<?php echo url_for("cv/index");?>">
-							<i class="icon-shopping-cart"></i>
+							<i class="icon-briefcase"></i>
 							<span>CV</span>
 						</a>	    				
 					</li>
 									
 					<li class="<?php echo $util->checkMenu($modulo,"promocion");?>">
 						<a href="<?php echo url_for("promocion/index");?>">
-							<i class="icon-briefcase"></i>
+							<i class="icon-shopping-cart"></i>
 							<span>Promoción</span>
 						</a>	    				
 					</li>
