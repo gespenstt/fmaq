@@ -62,4 +62,95 @@ class Util{
         }        
         
     }
+    
+    public function getMetas($url){
+        $html = file_get_contents($url);
+
+	//parsing begins here:
+	$doc = new DOMDocument();
+	@$doc->loadHTML($html);
+	$nodes = $doc->getElementsByTagName('title');
+
+	//get and display what you need:
+	//$title = $nodes->item(0)->nodeValue;
+
+	$metas = $doc->getElementsByTagName('meta');
+	$titulo = "";
+	$bajada = "";
+	$imagen = "";
+	//print_r($metas); exit;
+	for ($i = 0; $i < $metas->length; $i++)
+	{
+	    $meta = $metas->item($i);
+	    $property = $meta->getAttribute('property');
+	    if($property!=""){
+	    	//facebook
+	    	switch($property){
+	    		case "og:title":
+	    			if($titulo==""){
+	    				$titulo = $meta->getAttribute('content');
+	    			}
+	    		break;
+	    		case "og:url":
+	    			if($url==""){
+	    				$url = $meta->getAttribute('content');
+	    			}
+	    		break;
+	    		case "og:image":
+	    			if($imagen==""){
+	    				$imagen = $meta->getAttribute('content');
+	    			}
+	    		break;
+	    		case "og:description":
+	    			if($bajada==""){
+	    				$bajada = $meta->getAttribute('content');
+	    			}
+	    		break;
+	    	}
+
+	    }else{
+
+	    	$name = $meta->getAttribute('name');
+	    	switch($name){
+	    		case "title":
+	    			if($titulo==""){
+	    				$titulo = $meta->getAttribute('content');
+	    			}
+	    		break;
+	    		case "description":
+	    			if($bajada==""){
+	    				$bajada = $meta->getAttribute('content');
+	    			}
+	    		break;
+	    		case "og:title":
+	    			if($titulo==""){
+	    				$titulo = $meta->getAttribute('content');
+	    			}
+	    		break;
+	    		case "og:url":
+	    			if($url==""){
+	    				$url = $meta->getAttribute('content');
+	    			}
+	    		break;
+	    		case "og:image":
+	    			if($imagen==""){
+	    				$imagen = $meta->getAttribute('content');
+	    			}
+	    		break;
+	    		case "og:description":
+	    			if($bajada==""){
+	    				$bajada = $meta->getAttribute('content');
+	    			}
+	    		break;
+	    	}
+
+	    }
+	}
+        
+        return array(
+            "titulo" => $titulo,
+            "bajada" => $bajada,
+            "imagen" => $imagen,
+        );
+    }
 }
