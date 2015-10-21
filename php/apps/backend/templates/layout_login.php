@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Login :: Futumaq</title>
+    <title>Login :: Futamaq</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes"> 
@@ -37,7 +37,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="<?php echo url_for("home/index");?>">Futumaq</a>
+    <a class="navbar-brand" href="<?php echo url_for("home/index");?>">Futamaq</a>
   </div>
 
 </div> <!-- /.container -->
