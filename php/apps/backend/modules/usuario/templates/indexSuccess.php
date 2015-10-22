@@ -25,11 +25,15 @@
 						            <td class="col-md-1"><?php echo $count; ?></td>
 						            <td class="col-md-7"><?php echo $p->getUsuNombre()." ".$p->getUsuApellido(); ?></td>
 						            <td class="col-md-4">
+                                                                <?php if($p->getUsuUsuario()=="admin"){ ?>
+                                                                    <a href="<?php echo url_for("usuario/editar/?usu_id=".$p->getUsuId()) ?>"><i class="icon-edit"></i> Editar</a>
+                                                                <?php }else{ ?>
                                                                 <form action="<?php echo url_for("usuario/eliminar");?>" method="post">
                                                                     <input type="hidden" name="usu_id" value="<?php echo $p->getUsuId(); ?>" />
                                                                     <a href="<?php echo url_for("usuario/editar/?usu_id=".$p->getUsuId()) ?>"><i class="icon-edit"></i> Editar</a>
                                                                     <a href="javascript:;" class="msgbox-eliminar" data-msg="¿Está seguro de eliminar el usuario?"><i class="icon-remove"></i> Eliminar</a>
                                                                 </form>
+                                                                <?php } ?>
 						            </td>
 						          </tr>
 						          <?php $count++;                                                           

@@ -41,7 +41,7 @@
 							<div class="form-group">
 								<label class="col-md-4">Usuario</label>
 								<div class="col-md-8">
-                                                                    <input type="text" name="usuario" placeholder="Ingrese usuario" required="required" value="<?php echo $usuario->getUsuUsuario();?>" class="form-control" />
+                                                                    <input type="text" name="usuario" placeholder="Ingrese usuario" required="required" value="<?php echo $usuario->getUsuUsuario();?>" <?php if($usuario->getUsuUsuario()=="admin"){ ?>readonly="readonly"<?php } ?> class="form-control" />
 								</div>
 							</div> <!-- /.form-group -->
 

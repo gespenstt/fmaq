@@ -44,6 +44,9 @@ class usuarioActions extends sfActions
             if(!$usuario){
                 throw new Exception("El usuario que intentas eliminar no existe.");
             }
+            if($usuario->getUsuUsuario()=="admin"){
+                throw new Exception("El administrador principal no se puede eliminar.");
+            }
             $usuario->delete();
 
             $log->debug("Usuario eliminado en sistema | usu_id=$usu_id");
@@ -51,14 +54,15 @@ class usuarioActions extends sfActions
             $this->getUser()->setFlash("flag_msg","Usuario eliminado con éxito.",true);
             $this->getUser()->setFlash("flag_tipo","success",true);
 
-            $this->redirect("usuario/index");
+            
             
         } catch (Exception $ex) {
             $this->getUser()->setFlash("flag_msg",$ex->getMessage(),true);
             $this->getUser()->setFlash("flag_tipo","danger",true);
-            $this->redirect("home/index");
+            $this->redirect("usuario/index");
         }
       }
+      $this->redirect("usuario/index");
       return sfView::NONE;
   }
   public function executeEditar(sfWebRequest $request)
@@ -108,7 +112,7 @@ class usuarioActions extends sfActions
         
             $this->getUser()->setFlash("flag_msg",$ex->getMessage(),true);
             $this->getUser()->setFlash("flag_tipo","danger",true);
-            $this->redirect("home/index");
+            $this->redirect("usuario/index");
 
         }
         
@@ -126,7 +130,7 @@ class usuarioActions extends sfActions
         } catch (Exception $ex) {
             $this->getUser()->setFlash("flag_msg",$ex->getMessage(),true);
             $this->getUser()->setFlash("flag_tipo","danger",true);
-            $this->redirect("home/index");
+            $this->redirect("usuario/index");
         }
     }
     
