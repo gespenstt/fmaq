@@ -31,7 +31,7 @@
                             <td class="col-md-2">                         
                             <form action="<?php echo url_for("cliente/eliminar");?>" method="post">
                                 <input type="hidden" name="cli_id" value="<?php echo $p->getCliId(); ?>" />
-                                <a href="javascript:;"><i class="icon-edit"></i> Editar</a> 
+                                <a href="<?php echo url_for("cliente/editar/?cli_id=".$p->getCliId());?>"><i class="icon-edit"></i> Editar</a> 
                                 <a href="javascript:;" class="msgbox-eliminar" data-msg="¿Está seguro de eliminar el cliente?"><i class="icon-remove"></i> Eliminar</a>
                             </form>
                             </td>

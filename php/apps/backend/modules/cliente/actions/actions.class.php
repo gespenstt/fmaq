@@ -97,7 +97,7 @@ class clienteActions extends sfActions
 
     try{
         
-        $cli_id = $request->getPostParameter("cli_id");
+        $cli_id = $request->getParameter("cli_id");
         $log->debug("Datos de entrada | cli_id=$cli_id");
         
         $cliente = ClientePeer::retrieveByPK($cli_id);
@@ -129,7 +129,10 @@ class clienteActions extends sfActions
             
             $cliente->save();
             
-            $log->debug("Cliente actualizado"); 
+            $log->debug("Cliente actualizado");
+            
+            $this->getUser()->setFlash("flag_msg","Datos actualizados",true);
+            $this->getUser()->setFlash("flag_tipo","success",true);
             
         }
         
@@ -146,6 +149,54 @@ class clienteActions extends sfActions
   }
   public function executeEliminar(sfWebRequest $request)
   {
+    $tra_id = date("U").rand(111,999);
+    $util = new Util();
+    $log = $util->setLog("clienteEditar[$tra_id]"); 
+
+    $log->debug("executeEditar");
+    
+    if($request->isMethod("post")){
+
+        try{
+
+            $cli_id = $request->getParameter("cli_id");
+            $log->debug("Datos de entrada | cli_id=$cli_id");
+
+            $cliente = ClientePeer::retrieveByPK($cli_id);
+
+            if(!$cliente){
+                throw new Exception("El cliente seleccionado no existe.");
+            }
+            
+            //Borrar campos
+            foreach($cliente->getCampos() as $camp){
+                //Borrar potretos
+                foreach($camp->getPotreros() as $pot){
+                    $p_nombre = $pot->getPotNombre();
+                    $pot->delete();
+                    $log->debug("Eliminando potrero=$p_nombre");
+                }
+                $c_nombre = $camp->getCamNombre();
+                $camp->delete();
+                $log->debug("Eliminando campo=$c_nombre");
+            }
+            
+            $cliente->delete();
+            $log->debug("Todos los datos del cliente han sido eliminados.");
+            $this->getUser()->setFlash("flag_msg","Cliente eliminado.",true);
+            $this->getUser()->setFlash("flag_tipo","success",true);
+            
+        }  catch (Exception $ex){
+
+            $log->err($ex->getMessage());
+            $this->getUser()->setFlash("flag_msg",$ex->getMessage(),true);
+            $this->getUser()->setFlash("flag_tipo","danger",true);
+
+
+        }
+        
+    }
+    $this->redirect("cliente/index");
   	
   }
 }
