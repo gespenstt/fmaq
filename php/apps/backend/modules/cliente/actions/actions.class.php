@@ -55,9 +55,12 @@ class clienteActions extends sfActions
             $criterion->addOr($cb->getNewCriterion(ClientePeer::CLI_USUARIO,$usuario));
             $cb->add($criterion);
             $cb->setIgnoreCase(true);
+            $resCb = ClientePeer::doSelectOne($cb);
             if($resCb){
-                throw new Exception("El cliente ya existe.");
+                throw new Exception("El usuario y/o correo de cliente ya existe.");
             }  
+            
+            
             
             $cliente = new Cliente();
             $cliente->setCliNombre($nombre);
@@ -80,7 +83,7 @@ class clienteActions extends sfActions
             $log->err($ex->getMessage());
             $this->getUser()->setFlash("flag_msg",$ex->getMessage(),true);
             $this->getUser()->setFlash("flag_tipo","danger",true);
-            $this->redirect("cliente/index");
+            $this->redirect("cliente/agregar");
 
         }
         
@@ -117,7 +120,20 @@ class clienteActions extends sfActions
 
             $log->debug("Datos de entrada | nombre=$nombre | apellido=$apellido | contacto=$contacto | empresa=$empresa | ".
                     "usuario=$usuario | password(largo)=".strlen($password));
-                        
+            
+            
+            //Buscar cliente
+            $cb = new Criteria();
+            $criterion = $cb->getNewCriterion(ClientePeer::CLI_CORREO,$contacto);
+            $criterion->addOr($cb->getNewCriterion(ClientePeer::CLI_USUARIO,$usuario));
+            $cb->add($criterion);
+            $cb->setIgnoreCase(true);
+            $resCb = ClientePeer::doSelectOne($cb);
+            if($resCb){
+                throw new Exception("El usuario y/o correo de cliente ya existe.");
+            }  
+            
+            
             $cliente->setCliNombre($nombre);
             $cliente->setCliApellido($apellido);
             $cliente->setCliCorreo($contacto);

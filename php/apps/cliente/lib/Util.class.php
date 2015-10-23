@@ -4,7 +4,7 @@ class Util{
     
    
     
-    public function setLog($modulo="",$archivo="frontend"){
+    public function setLog($modulo="",$archivo="backend_cliente"){
         
         //LOG
         $logFechaNombre = $archivo."_".date("Ymd").".log";

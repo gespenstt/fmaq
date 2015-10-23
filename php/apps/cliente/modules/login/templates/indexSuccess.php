@@ -3,6 +3,11 @@
       <h1>Login</h1>    
       
       <div class="login-fields">
+         <?php if($msg){ ?>
+          <div class="alert alert-danger">
+             <?php echo $msg; ?>
+          </div>
+        <?php } ?>
         
         <p>Ingrese con sus credenciales:</p>
         

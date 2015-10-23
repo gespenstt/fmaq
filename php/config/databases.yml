@@ -14,7 +14,7 @@ all:
       classname: PropelPDO
       dsn: 'mysql:host=localhost;dbname=futumaq'
       username: root
-      password: admin
+      password: 
       encoding: utf8
       persistent: true
       pooling: true

@@ -40,3 +40,16 @@ all:
     param:
       cache_key_use_vary_headers: true
       cache_key_use_host_name:    true
+      
+  storage: 
+   class: sfSessionStorage 
+   param: 
+     session_name: futumaq_backendcliente
+     session_cookie_lifetime: 172800
+
+  user:
+   class: myUser
+   param:
+    timeout: 172800
+    use_flash: true
+     

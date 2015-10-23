@@ -6,6 +6,7 @@ default:
     content-type: text/html
 
   metas:
+    title:        Administrador Cliente - Futamaq
     #title:        symfony project
     #description:  symfony project
     #keywords:     symfony, project
