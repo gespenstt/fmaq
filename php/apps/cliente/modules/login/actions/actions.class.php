@@ -46,6 +46,7 @@ class loginActions extends sfActions
                 if(md5($password) == $resCu->getCliPassword()){
                     $log->debug("Contrasena valida | Login cliente OK");
                     $this->getUser()->setAuthenticated(true);
+                    $this->getUser()->setAttribute("cli_id", $resCu->getCliId());
                     $this->redirect("proyecto/index");
                 }else{
                     $this->msg = "La contraseña ingresada es incorrecta.";
