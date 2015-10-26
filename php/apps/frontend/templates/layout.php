@@ -59,6 +59,7 @@
                     ============================================= -->
                     <div class="top-links">
                         <ul>
+                            <li><a href="<?php echo url_for("trabaja/index");?>">Trabaja con nosotros</a></li>
                             <li><a href="<?php echo url_for("contacto/index");?>">Contacto</a></li>
                         </ul>
                     </div><!-- .top-links end -->
