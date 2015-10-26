@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     23-10-2015 12:52:12                          */
+/* Created on:     26/10/2015 17:53:05                          */
 /*==============================================================*/
 
 
@@ -26,7 +26,7 @@ drop table if exists proyecto;
 
 drop table if exists proyecto_archivo;
 
-drop table if exists seccion;
+drop table if exists servicio;
 
 drop table if exists tipo_proyecto;
 
@@ -46,7 +46,7 @@ create table campo
    updated_at           datetime,
    primary key (cam_id)
 )
-type = innodb;
+engine = innodb;
 
 /*==============================================================*/
 /* Table: cliente                                               */
@@ -63,7 +63,7 @@ create table cliente
    created_at           datetime,
    primary key (cli_id)
 )
-type = innodb;
+engine = innodb;
 
 /*==============================================================*/
 /* Table: curriculum                                            */
@@ -80,7 +80,7 @@ create table curriculum
    created_at           datetime,
    primary key (cur_id)
 )
-type = innodb;
+engine = innodb;
 
 /*==============================================================*/
 /* Table: maquinaria                                            */
@@ -101,7 +101,7 @@ create table maquinaria
    updated_at           datetime,
    primary key (maq_id)
 )
-type = innodb;
+engine = innodb;
 
 /*==============================================================*/
 /* Table: maquinaria_foto                                       */
@@ -115,7 +115,7 @@ create table maquinaria_foto
    created_at           datetime,
    primary key (mfo_id)
 )
-type = innodb;
+engine = innodb;
 
 /*==============================================================*/
 /* Table: marca_maquinaria                                      */
@@ -127,7 +127,7 @@ create table marca_maquinaria
    created_at           datetime,
    primary key (mar_id)
 )
-type = innodb;
+engine = innodb;
 
 /*==============================================================*/
 /* Table: noticia                                               */
@@ -143,7 +143,7 @@ create table noticia
    updated_at           datetime,
    primary key (not_id)
 )
-type = innodb;
+engine = innodb;
 
 /*==============================================================*/
 /* Table: potrero                                               */
@@ -159,7 +159,7 @@ create table potrero
    updated_at           datetime,
    primary key (pot_id)
 )
-type = innodb;
+engine = innodb;
 
 /*==============================================================*/
 /* Table: promocion                                             */
@@ -174,7 +174,7 @@ create table promocion
    updated_at           datetime,
    primary key (prom_id)
 )
-type = innodb;
+engine = innodb;
 
 /*==============================================================*/
 /* Table: proyecto                                              */
@@ -190,7 +190,7 @@ create table proyecto
    created_at           datetime,
    primary key (pro_id)
 )
-type = innodb;
+engine = innodb;
 
 /*==============================================================*/
 /* Table: proyecto_archivo                                      */
@@ -205,26 +205,22 @@ create table proyecto_archivo
    created_at           datetime,
    primary key (par_id)
 )
-type = innodb;
+engine = innodb;
 
 /*==============================================================*/
-/* Table: seccion                                               */
+/* Table: servicio                                              */
 /*==============================================================*/
-create table seccion
+create table servicio
 (
-   sec_id               int not null auto_increment,
-   sec_nombre           varchar(20),
+   ser_id               int not null auto_increment,
+   ser_titulo           varchar(255),
+   ser_contenido        text,
+   ser_imagen           varchar(255),
    created_at           datetime,
    updated_at           datetime,
-   primary key (sec_id)
+   primary key (ser_id)
 )
-type = innodb;
-
-alter table seccion comment 'quienes somos
-home
-galeria
-servicios
-                            -&#&';
+engine = innodb;
 
 /*==============================================================*/
 /* Table: tipo_proyecto                                         */
@@ -236,7 +232,7 @@ create table tipo_proyecto
    created_at           datetime,
    primary key (tpr_id)
 )
-type = innodb;
+engine = innodb;
 
 alter table tipo_proyecto comment 'Siembra
 Cosecha
@@ -258,7 +254,7 @@ create table usuario
    created_at           datetime,
    primary key (usu_id)
 )
-type = innodb;
+engine = innodb;
 
 alter table campo add constraint fk_relationship_7 foreign key (cli_id)
       references cliente (cli_id) on delete restrict on update restrict;
@@ -282,5 +278,5 @@ alter table proyecto_archivo add constraint fk_relationship_10 foreign key (pro_
       references proyecto (pro_id) on delete restrict on update restrict;
 	  
 INSERT INTO `usuario` (`usu_id`, `usu_nombre`, `usu_apellido`, `usu_correo`, `usu_usuario`, `usu_password`, `created_at`) VALUES
-(1, 'Admin', 'Futumaq', 'admin@futumaq.cl', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2015-10-17 00:57:23');
+(1, 'Admin', 'Futamaq', 'admin@futamaq.cl', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2015-10-17 00:57:23');
 
