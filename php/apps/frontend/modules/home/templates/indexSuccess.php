@@ -4,7 +4,6 @@
 
 			<div class="swiper-container swiper-parent">
 				<div class="swiper-wrapper">
-                                        <?php for($a=0;$a<=3;$a++){?>
 					<div class="swiper-slide" style="background-image: url('<?php echo public_path("uploads/slide-1.jpg");?>'); background-position: center top;">
 						<div class="container clearfix">
 							<div class="slider-caption">
@@ -13,7 +12,24 @@
 							</div>
 						</div>
 					</div>
-                                        <?php } ?>
+
+					<div class="swiper-slide" style="background-image: url('<?php echo public_path("uploads/slide-2.jpg");?>'); background-position: center top;">
+						<div class="container clearfix">
+							<div  class="slider-caption">
+								<h2>Control Georeferenciado</h2>
+								<p>Voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="swiper-slide" style="background-image: url('<?php echo public_path("uploads/slide-3.jpg");?>'); background-position: center bottom;">
+						<div class="container clearfix">
+							<div  class="slider-caption">
+								<h2>Agricultura de precisión</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
 				<div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
