@@ -59,8 +59,7 @@
                     ============================================= -->
                     <div class="top-links">
                         <ul>
-                            <li><a href="faqs.html">FAQs</a></li>
-                            <li><a href="contact.html">Contacto</a></li>
+                            <li><a href="<?php echo url_for("contacto/index");?>">Contacto</a></li>
                         </ul>
                     </div><!-- .top-links end -->
 
@@ -79,7 +78,7 @@
                 <!-- Logo
                 ============================================= -->
                 <div id="logo">
-                    <a href="index.html" class="standard-logo"><!-- <img src="images/futamaq-logo.svg" alt="Canvas Logo"> --></a>
+                    <a href="<?php echo url_for("home/index");?>" class="standard-logo"><!-- <img src="images/futamaq-logo.svg" alt="Canvas Logo"> --></a>
                 </div><!-- #logo end -->
 
                 <ul class="header-extras">
@@ -112,8 +111,8 @@
                         <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
 
                         <ul>
-                            <li class="current"><a href="#"><div>Inicio</div></a></li>
-                            <li><a href="#"><div>Quienes Somos</div></a></li>
+                            <li class="current"><a href="<?php echo url_for("home/index");?>"><div>Inicio</div></a></li>
+                            <li><a href="<?php echo url_for("quienessomos/index");?>"><div>Quienes Somos</div></a></li>
                             <li><a href="#"><div>Servicios</div></a>
                                 <ul>
                                     <li><a href="#"><div>Tipo de Servicio 1</div></a></li>
@@ -128,8 +127,8 @@
                                     <li><a href="#"><div>Tipo de máquina 3</div></a></li>
                                 </ul>
                             </li>
-                            <li><a href="#"><div>Noticias</div></a></li>
-                            <li><a href="#"><div>Contacto</div></a></li>
+                            <li><a href="<?php echo url_for("noticias/index");?>"><div>Noticias</div></a></li>
+                            <li><a href="<?php echo url_for("contacto/index");?>"><div>Contacto</div></a></li>
                         </ul>
 
                         <!-- Top Search
@@ -272,7 +271,7 @@
                                         <div class="widget quick-contact-widget clearfix">
                                                 <h4>Escríbenos</h4>
                                                 <div id="quick-contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Mensaje enviado!"></div>
-                                                <form id="quick-contact-form" name="quick-contact-form" action="include/quickcontact.php" method="post" class="quick-contact-form nobottommargin">
+                                                <form id="quick-contact-form" name="quick-contact-form" action="<?php echo url_for("contacto/index");?>" method="post" class="quick-contact-form nobottommargin">
                                                         <div class="form-process"></div>
                                                         <input type="text" class="required sm-form-control input-block-level" id="quick-contact-form-name" name="quick-contact-form-name" value="" placeholder="Nombre completo" />
                                                         <input type="text" class="required sm-form-control email input-block-level" id="quick-contact-form-email" name="quick-contact-form-email" value="" placeholder="Email" />
@@ -302,7 +301,7 @@
                                 </div>
 
                                 <div class="col_half col_last tright">
-                                        &copy; 2015 todos los derechos reservados Futamaq.<br>
+                                        &copy; <?php echo date("Y");?> todos los derechos reservados Futamaq.<br>
                                 </div>
 
                         </div>
