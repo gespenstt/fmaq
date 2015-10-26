@@ -7,7 +7,7 @@
 				<h1>Contacto</h1>
 				<span>Escríbenos tu consulta</span>
 				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
+					<li><a href="<?php echo url_for("home/index");?>">Home</a></li>
 					<li class="active">Contacto</li>
 				</ol>
 			</div>
