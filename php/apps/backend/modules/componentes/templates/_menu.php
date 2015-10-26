@@ -80,6 +80,13 @@
                         </ul>     				
                 </li>
 
+                <li class="<?php echo $util->checkMenu($modulo,"servicio");?>">
+                        <a href="<?php echo url_for("servicio/index");?>">
+                                <i class="icon-tasks"></i>
+                                <span>Servicios</span>
+                        </a>	    				
+                </li>
+
                 <li class="<?php echo $util->checkMenu($modulo,"usuario");?>">
                         <a href="<?php echo url_for("usuario/index");?>">
                                 <i class="icon-cog"></i>
