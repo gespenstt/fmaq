@@ -20,7 +20,7 @@
                         </ul> 				
                 </li>
 
-                <li class="<?php echo $util->checkMenu($modulo,"campo");?>">
+                <li class="<?php echo $util->checkMenu($modulo,"campo")." ".$util->checkMenu($modulo,"potrero");?>">
                         <a href="<?php echo url_for("campo/index");?>">
                                 <i class="icon-leaf"></i>
                                 <span>Campos</span>
