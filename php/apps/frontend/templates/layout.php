@@ -164,7 +164,7 @@
 
                                         <div class="widget clearfix">
 
-                                                <img src="images/futamaq-footer-logo-b.svg" alt="" class="footer-logo">
+                                                <img src="<?php echo public_path("images/futamaq-footer-logo-b.svg");?>" alt="" class="footer-logo">
 
                                         </div>
 

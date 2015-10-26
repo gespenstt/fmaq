@@ -19,7 +19,7 @@
 		<section id="google-map" class="gmap slider-parallax"></section>
 
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-		<script type="text/javascript" src="js/jquery.gmap.js"></script>
+		<script type="text/javascript" src="<?php echo public_path("js/jquery.gmap.js");?>"></script>
 
 		<script type="text/javascript">
 
@@ -33,7 +33,7 @@
 						address: "Osorno, Chile",
 						html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Futamaq</h4><p class="nobottommargin">Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p></div>',
 						icon: {
-							image: "images/icons/map-icon-red.png",
+							image: "<?php echo public_path("images/icons/map-icon-red.png");?>",
 							iconsize: [32, 39],
 							iconanchor: [13,39]
 						}
