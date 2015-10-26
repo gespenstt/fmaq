@@ -115,16 +115,16 @@
                             <li><a href="<?php echo url_for("quienessomos/index");?>"><div>Quienes Somos</div></a></li>
                             <li><a href="#"><div>Servicios</div></a>
                                 <ul>
-                                    <li><a href="#"><div>Tipo de Servicio 1</div></a></li>
-                                    <li><a href="#"><div>Tipo de Servicio 2</div></a></li>
-                                    <li><a href="#"><div>Tipo de Servicio 3</div></a></li>
+                                    <?php for($a=1;$a<=3;$a++){ ?>
+                                    <li><a href="<?php echo url_for("servicios/index");?>"><div>Tipo de Servicio 1</div></a></li>
+                                    <?php } ?>
                                 </ul>
                             </li>
                             <li><a href="#"><div>Maquinarias</div></a>
                                 <ul>
-                                    <li><a href="#"><div>Tipo de máquina 1</div></a></li>
-                                    <li><a href="#"><div>Tipo de máquina 2</div></a></li>
-                                    <li><a href="#"><div>Tipo de máquina 3</div></a></li>
+                                    <?php for($a=1;$a<=3;$a++){ ?>
+                                    <li><a href="<?php echo url_for("maquinarias/index");?>"><div>Tipo de máquina 1</div></a></li>
+                                    <?php } ?>
                                 </ul>
                             </li>
                             <li><a href="<?php echo url_for("noticias/index");?>"><div>Noticias</div></a></li>

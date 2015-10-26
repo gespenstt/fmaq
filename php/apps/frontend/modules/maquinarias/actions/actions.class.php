@@ -17,6 +17,10 @@ class maquinariasActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-    $this->forward('default', 'module');
+
+  }
+  public function executeDetalle(sfWebRequest $request)
+  {
+
   }
 }
