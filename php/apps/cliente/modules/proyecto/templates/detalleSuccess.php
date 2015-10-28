@@ -18,42 +18,42 @@
 							<div class="form-group">
 								<label class="col-md-4">Nombre</label>
 								<div class="col-md-8">
-									Proyecto xyz
+									<?php echo $proyecto->getProNombre(); ?>
 								</div>
 							</div> <!-- /.form-group -->
 
 							<div class="form-group">
 								<label class="col-md-4">Tipo proyecto</label>
 								<div class="col-md-8">
-									Tipo xyz
+									<?php echo $proyecto->getTipoProyecto()->getTprNombre(); ?>
 								</div>
 							</div> <!-- /.form-group -->
 
 							<div class="form-group">
 								<label class="col-md-4">Campo</label>
 								<div class="col-md-8">
-									Campo xyz
+									<?php echo $proyecto->getPotrero()->getCampo()->getCamNombre(); ?>
 								</div>
 							</div> <!-- /.form-group -->
 
 							<div class="form-group">
 								<label class="col-md-4">Potrero</label>
 								<div class="col-md-8">
-									Potrero xyz
+									<?php echo $proyecto->getPotrero()->getPotNombre(); ?>
 								</div>
 							</div> <!-- /.form-group -->
 
 							<div class="form-group">
 								<label class="col-md-4">Fecha</label>
 								<div class="col-md-8">
-									01-10-2015
+									<?php echo $proyecto->getProFecha(); ?>
 								</div>
 							</div> <!-- /.form-group -->
 
 							<div class="form-group">
 								<label class="col-md-4">Descripción</label>
 								<div class="col-md-8">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel sapien nec nibh rhoncus efficitur quis ac tortor. Proin iaculis lobortis nunc, non eleifend quam lobortis sed. Nullam placerat mi ex, dapibus gravida dolor venenatis sed. Maecenas tincidunt vehicula condimentum. Maecenas tristique sem erat, ut auctor arcu scelerisque posuere. Suspendisse tincidunt ac ex eu tincidunt.</p>
+                                                                    <p><?php echo $proyecto->getProDescripcion(); ?></p>
 								</div>
 							</div> <!-- /.form-group -->
 
@@ -76,11 +76,11 @@
 						          </tr>
 						        </thead>
 						        <tbody>
-						        <?php for($a=1;$a<=10;$a++){ ?>
+						        <?php foreach($archivos as $archivo){ ?>
 						          <tr>
-						            <td class="col-md-7">Imagen.pdf</td>
+						            <td class="col-md-7"><?php echo $archivo->getParNombre(); ?></td>
 						            <td class="col-md-4">
-						            	<a href="#"><i class="icon-download-alt"></i> Descargar</a> 
+						            	<a href="<?php echo $archivo->getParRuta(); ?>"><i class="icon-download-alt"></i> Descargar</a> 
 						            </td>
 						          </tr>
 						          <?php } ?>

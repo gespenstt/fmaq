@@ -30,10 +30,12 @@
                                                             <td ><?php echo $p->getPotrero()->getCampo()->getCamNombre(); ?></td>
                                                             <td ><?php echo $p->getPotrero()->getPotNombre(); ?></td>
 						            <td ><?php echo $p->getTipoProyecto()->getTprNombre(); ?></td>
-						            <td ><?php echo date_format($p->getProFecha(), 'd-m-Y'); ?></td>
+						            <td ><?php echo $p->getProFecha(); ?></td>
 						            <td >
-						            	<a href="<?php echo url_for("proyecto/detalle");?>"><i class="icon-eye-open"></i> Detalle</a> 
-						            </td>
+						            	<a href="<?php echo url_for("proyecto/detalle/?pro_id=".$p->getProId());?>"><i class="icon-eye-open"></i> Detalle</a> 
+						            
+                                                            
+                                                            </td>
 						          </tr>
 						             <?php $count++;    } ?>
 						        </tbody>

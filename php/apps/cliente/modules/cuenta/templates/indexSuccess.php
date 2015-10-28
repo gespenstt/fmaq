@@ -10,26 +10,26 @@
 					
 						<h4>Mis datos</h4>
 						<br>
-						<form action="/" role="form" class="form-horizontal col-md-7">
+						<form method="post" action="<?php echo url_for("cuenta/index");?>" role="form" class="form-horizontal col-md-12">
 
 							<div class="form-group">
 								<label class="col-md-4">Nombre</label>
 								<div class="col-md-8">
-									Julio Francisco Gutierrez Soto
+									<?php echo $cliente->getCliNombre()." ".$cliente->getCliApellido(); ?>
 								</div>
 							</div> <!-- /.form-group -->
 
 							<div class="form-group">
-								<label class="col-md-4">Dirección</label>
+								<label class="col-md-4">Empresa</label>
 								<div class="col-md-8">
-									Federico Froebel 1667, Providencia
+									<?php echo $cliente->getCliEmpresa()?>
 								</div>
 							</div> <!-- /.form-group -->
 
 							<div class="form-group">
 								<label class="col-md-4">Contacto</label>
 								<div class="col-md-8">
-									julio@dominio.tld
+									<?php echo $cliente->getCliCorreo(); ?>
 								</div>
 							</div> <!-- /.form-group -->
 
@@ -40,14 +40,14 @@
 							<div class="form-group">
 								<label class="col-md-4">Actual clave</label>
 								<div class="col-md-8">
-									<input type="password" name="input1" placeholder="Ingrese clave" required="required" value="" class="form-control" />
+									<input type="password" name="pass1" placeholder="Ingrese clave actual" required="required" value="" class="form-control" />
 								</div>
 							</div> <!-- /.form-group -->
 
 							<div class="form-group">
 								<label class="col-md-4">Nueva clave</label>
 								<div class="col-md-8">
-									<input type="password" name="input1" placeholder="Ingrese clave" required="required" value="" class="form-control" />
+									<input type="password" name="pass2" placeholder="Ingrese clave nueva" required="required" value="" class="form-control" />
 								</div>
 							</div> <!-- /.form-group -->
 

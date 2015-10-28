@@ -40,6 +40,27 @@ class proyectoActions extends sfActions
   }
   public function executeDetalle(sfWebRequest $request)
   {
-  	
+  	 try{
+            //$clid = $this->getUser()->getAttribute("cli_id");
+            $proid = $request->getParameter("pro_id");
+            
+            $c = new Criteria();
+            $c->addJoin(TipoProyectoPeer::TPR_ID, ProyectoPeer::TPR_ID);
+            $c->addJoin(PotreroPeer::POT_ID, ProyectoPeer::POT_ID);
+            $c->addJoin(CampoPeer::CAM_ID, PotreroPeer::CAM_ID);
+            $c->add(ProyectoPeer::PRO_ID, $proid);
+            $resCb = ProyectoPeer::doSelectOne($c);
+            $this->proyecto = $resCb;
+            
+            $c1 = new Criteria();
+            $c1->add(ProyectoArchivoPeer::PRO_ID, $proid);
+            $archivos = ProyectoArchivoPeer::doSelect($c1);
+            $this->archivos = $archivos;
+            //print_r($archivos);
+           
+        }catch(Exception $e){
+            $this->msg = "Ha ocurrido un error inesperado al obtener los proyectos";
+            $log->err($e->getMessage());
+        }
   }
 }
