@@ -17,18 +17,52 @@ class servicioActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
+      if($request->isMethod("post")){   
+        
+        try{
+            $tra_id = date("U").rand(111,999);
+            $util = new Util();
+            $log = $util->setLog("servicioIndex[$tra_id]");
 
-    $c = new Criteria();
-    $c->addDescendingOrderByColumn(ServicioPeer::SER_TITULO);
-    $pager = new sfPropelPager('servicio', 10);
-    $pager->setCriteria($c);
-    $pager->setPage($request->getParameter('p', 1));
-    $pager->init();
+            $log->debug("executeIndex");
+            
+            $titulo = $request->getPostParameter("titulo");
+            $link = $request->getPostParameter("link");
+            $descripcion = $request->getPostParameter("descripcion");
 
-    $this->pagina = $request->getParameter('p', 1);
+            $log->debug("Datos de entrada | titulo=$titulo | link=$link | descripcion=$descripcion");
+            
+            $promocion = new Promocion();
+            $promocion->setPromTitulo($titulo);
+            $promocion->setPromUrlvideo($link);
+            $promocion->setPromDescripcion($descripcion);
+            $promocion->save();
+            
+            $log->debug("Promocion creada actualizado");
+            
+            $this->getUser()->setFlash("flag_msg","Promoción creada.",true);
+            $this->getUser()->setFlash("flag_tipo","success",true);
+            
+        } catch (Exception $ex) {
+        
+            $this->getUser()->setFlash("flag_msg",$ex->getMessage(),true);
+            $this->getUser()->setFlash("flag_tipo","danger",true);
+            $this->redirect("home/index");
 
-    $this->pager = $pager;
+        }
+          
+      }
       
+      $c = new Criteria();
+      $c->addAscendingOrderByColumn(ServicioPeer::SER_TITULO);
+      $pager = new sfPropelPager('servicio', 10);
+      $pager->setCriteria($c);
+      $pager->setPage($request->getParameter('p', 1));
+      $pager->init();
+      
+      $this->pagina = $request->getParameter('p', 1);
+      
+      $this->pager = $pager;
   }
   public function executeEditar(sfWebRequest $request)
   {

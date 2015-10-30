@@ -35,30 +35,38 @@ class Util{
         
         $log->debug("setImagenes");
         
-        for($idx=0;$idx<count($files_tmp);$idx++){
-            $f_tmp = $files_tmp[$idx];
-            $f_name = $files_name[$idx];
-            $log->debug("Procesando $idx | tmp=$f_tmp | name=$f_name");
-            //UPLOAD DIR FRONTEND(WEB)/UPLOADS
+        for($idx=0;$idx<count($files_tmp);$idx++){ 
+            if(empty($files_tmp[$idx]) || empty($files_name[$idx])){
+                continue;
+            }
+            //Get ID
+            $maquinaria_foto = new MaquinariaFoto();
+            $maquinaria_foto->save();
+            $maquinaria_foto_id = $maquinaria_foto->getMfoId();
             
+            $f_tmp = $files_tmp[$idx];
+            $f_name = $maquinaria_foto_id."_".$files_name[$idx];
+            $log->debug("Procesando $idx | tmp=$f_tmp | name=$f_name");
+            
+            //UPLOAD DIR FRONTEND(WEB)/UPLOADS            
             $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."maquinaria".DIRECTORY_SEPARATOR.$mqid.DIRECTORY_SEPARATOR;
             $path_db = "uploads/maquinaria/$mqid/$f_name";
             $path_file = $path.$f_name;            
             
-            $log->debug("path=$path | path_db=$path_db | path_file=$path_file");
+            $log->debug("id=$maquinaria_foto_id | path=$path | path_db=$path_db | path_file=$path_file");
             
             //Creacion carpeta
             mkdir($path, 0755);
             
             move_uploaded_file($f_tmp, $path_file);
             
-            $maquinaria_foto = new MaquinariaFoto();
+            
             $maquinaria_foto->setMfoNombre($f_name);
             $maquinaria_foto->setMfoRuta($path_db);
             $maquinaria_foto->setMaqId($mqid);
             $maquinaria_foto->save();
             
-            $log->debug("Registro MaquinariaFoto creado | mfo_id=".$maquinaria_foto->getMfoId());
+            $log->debug("Registro MaquinariaFoto creado | mfo_id=$maquinaria_foto_id ");
         }        
         
     }
