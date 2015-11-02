@@ -12,7 +12,7 @@
                     <h5><b>Campo:</b> <a href="<?php echo url_for("campo/editar/?cam_id=$cam_id");?>"><?php echo $campo->getCamNombre();?></a></h5>
                     <hr />
                         <div class="padding-bt clearfix">
-                            <form action="<?php echo url_for("campo/index");?>" method="get">
+                            <form action="<?php echo url_for("potrero/index");?>" method="get">
                                 <input type="hidden" name="cam_id" value="<?php echo $cam_id; ?>" />
                                 <div align="left" class="float-left">
                                         <input class="form-control input-sm" name="buscar" value="<?php echo $buscar;?>" type="text" placeholder="Buscar">
