@@ -84,7 +84,14 @@
                         <a href="<?php echo url_for("servicio/index");?>">
                                 <i class="icon-tasks"></i>
                                 <span>Servicios</span>
-                        </a>	    				
+                        </a>                                    
+                </li>
+
+                <li class="<?php echo $util->checkMenu($modulo,"galeria");?>">
+                        <a href="<?php echo url_for("galeria/index");?>">
+                                <i class="icon-picture"></i>
+                                <span>Galeria</span>
+                        </a>                                    
                 </li>
 
                 <li class="<?php echo $util->checkMenu($modulo,"usuario");?>">
