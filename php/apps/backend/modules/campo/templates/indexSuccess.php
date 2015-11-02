@@ -7,6 +7,7 @@
                 <div class="col-md-8 border-right">
                             
                         <h3>Listado</h3>
+                        
                         <div class="padding-bt clearfix">
                             <form action="<?php echo url_for("campo/index");?>" method="get">
                                 <div align="left" class="float-left">
@@ -36,7 +37,7 @@
                                             <td class="col-md-4">
                                             <form action="<?php echo url_for("campo/eliminar");?>" method="post">
                                                 <input type="hidden" name="cam_id" value="<?php echo $p->getCamId(); ?>" />
-                                                <a href="<?php echo url_for("campo/potrero/?cam_id=".$p->getCamId()) ?>"><i class="icon-list"></i> Potretos</a>
+                                                <a href="<?php echo url_for("potrero/index/?cam_id=".$p->getCamId()) ?>"><i class="icon-list"></i> Potretos</a>
                                                 <a href="<?php echo url_for("campo/editar/?cam_id=".$p->getCamId()) ?>"><i class="icon-edit"></i> Editar</a>
                                                 <a href="javascript:;" class="msgbox-eliminar" data-msg="¿Está seguro de eliminar el campo?"><i class="icon-remove"></i> Eliminar</a>
                                             </form>
