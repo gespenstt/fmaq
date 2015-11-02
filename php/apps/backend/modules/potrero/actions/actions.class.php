@@ -178,6 +178,10 @@ class potreroActions extends sfActions
             throw new Exception("El campo seleccionado no existe.");
         }
         
+        if($potrero->getProyectos()){
+            throw new Exception("El potrero no puede ser eliminado, porque tiene proyectos asignados.");
+        }
+        
         $potrero->delete();
         $log->debug("potrero eliminada");
             
