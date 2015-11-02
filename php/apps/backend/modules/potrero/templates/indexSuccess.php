@@ -1,14 +1,19 @@
         <div class="widget-header">
                 <i class="icon-leaf"></i>
-                <h3>Campos</h3>
+                <h3>Potreros</h3>
         </div> <!-- /widget-header -->
 
         <div class="widget-content">
                 <div class="col-md-8 border-right">
-                            
-                        <h3>Listado</h3>
+                     
+                    <h3>Listado</h3>
+                    <hr />
+                    <h5><b>Cliente:</b> <a href="<?php echo url_for("cliente/editar/?cli_id=".$campo->getCliId());?>"><?php echo $campo->getCliente()->getCliNombre()." ".$campo->getCliente()->getCliApellido();?></a></h5>
+                    <h5><b>Campo:</b> <a href="<?php echo url_for("campo/editar/?cam_id=$cam_id");?>"><?php echo $campo->getCamNombre();?></a></h5>
+                    <hr />
                         <div class="padding-bt clearfix">
                             <form action="<?php echo url_for("campo/index");?>" method="get">
+                                <input type="hidden" name="cam_id" value="<?php echo $cam_id; ?>" />
                                 <div align="left" class="float-left">
                                         <input class="form-control input-sm" name="buscar" value="<?php echo $buscar;?>" type="text" placeholder="Buscar">
                                 </div>
@@ -22,6 +27,7 @@
                                           <tr>
                                             <th>#</th>
                                             <th>Nombre</th>
+                                            <th>Campo</th>
                                             <th>Cliente</th>
                                             <th>Acciones</th>
                                           </tr>
@@ -31,14 +37,15 @@
                                         foreach ($pager->getResults() as $p){ ?>
                                           <tr>
                                             <td class="col-md-1"><?php echo $count; ?></td>
-                                            <td class="col-md-3"><?php echo $p->getCamNombre(); ?></td>
-                                            <td class="col-md-4"><?php echo $p->getCliente()->getCliNombre()." ".$p->getCliente()->getCliApellido();?></td>
+                                            <td class="col-md-2"><?php echo $p->getPotNombre(); ?></td>
+                                            <td class="col-md-2"><?php echo $p->getCampo()->getCamNombre(); ?></td>
+                                            <td class="col-md-3"><?php echo $p->getCampo()->getCliente()->getCliNombre()." ".$p->getCampo()->getCliente()->getCliApellido();?></td>
                                             <td class="col-md-4">
-                                            <form action="<?php echo url_for("campo/eliminar");?>" method="post">
-                                                <input type="hidden" name="cam_id" value="<?php echo $p->getCamId(); ?>" />
-                                                <a href="<?php echo url_for("campo/potrero/?cam_id=".$p->getCamId()) ?>"><i class="icon-list"></i> Potretos</a>
-                                                <a href="<?php echo url_for("campo/editar/?cam_id=".$p->getCamId()) ?>"><i class="icon-edit"></i> Editar</a>
-                                                <a href="javascript:;" class="msgbox-eliminar" data-msg="¿Está seguro de eliminar el campo?"><i class="icon-remove"></i> Eliminar</a>
+                                            <form action="<?php echo url_for("potrero/eliminar");?>" method="post">
+                                                <input type="hidden" name="cam_id" value="<?php echo $p->getCamId();?>" />
+                                                <input type="hidden" name="pot_id" value="<?php echo $p->getPotId(); ?>" />
+                                                <a href="<?php echo url_for("potrero/editar/?pot_id=".$p->getPotId()) ?>"><i class="icon-edit"></i> Editar</a>
+                                                <a href="javascript:;" class="msgbox-eliminar" data-msg="¿Está seguro de eliminar el potrero?"><i class="icon-remove"></i> Eliminar</a>
                                             </form>
                                             </td>
                                           </tr>
@@ -66,7 +73,7 @@
                                 $links = $pager->getLinks();
 
                                 if($linkSaltoPrimero >= 1):
-                                    echo '<li><a href="'.url_for("campo/index/?p=1&buscar=$buscar").'">«</a></li>';
+                                    echo '<li><a href="'.url_for("potrero/index/?p=1&buscar=$buscar").'">«</a></li>';
                                 endif;
 
                                 foreach ($links as $e): 
@@ -75,12 +82,12 @@
                                         $current = ' active';
                                     endif;
                                     if(($e < $minimo && $minimo > 1) || ($e <= $maximo)):
-                                    echo '<li class="'.$current.'"><a href="'.url_for("campo/index/?p=$e&buscar=$buscar").'">'.$e.'</a></li>';
+                                    echo '<li class="'.$current.'"><a href="'.url_for("potrero/index/?p=$e&buscar=$buscar").'">'.$e.'</a></li>';
                                     endif;
                                 endforeach; 
 
                                 if($linkSaltoUltimo <= $ultimaPagina):                                            
-                                    echo '<li><a href="'.url_for("campo/index/?p=$ultimaPagina&buscar=$buscar").'">»</a></li>';
+                                    echo '<li><a href="'.url_for("potrero/index/?p=$ultimaPagina&buscar=$buscar").'">»</a></li>';
                                 endif;
 
                                 ?>                                         
@@ -93,24 +100,10 @@
 
                 <div class="col-md-4">
 
-                        <h4>Agregar</h4>
+                        <h4>Agregar potrero</h4>
                         <br>
-                        <form method="post" action="<?php echo url_for("campo/index");?>" role="form" class="form-horizontal col-md-11">
-                            
-                            <div class="form-group">
-                                    <label class="col-md-4">Cliente</label>
-                                    <div class="col-md-8">
-                                        <select class="form-control" name="cliente" required="required">
-                                            <option value="">Seleccione...</option>
-                                            <?php foreach($clientes as $cli){ ?>
-                                            <option value="<?php echo $cli->getCliId();?>">
-                                            <?php echo $cli->getCliNombre()." ".$cli->getCliApellido();?>
-                                            </option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                            </div> <!-- /.form-group -->
-
+                        <form method="post" action="<?php echo url_for("potrero/index");?>" role="form" class="form-horizontal col-md-11">
+                            <input type="hidden" name="cam_id" value="<?php echo $cam_id;?>" />
                             <div class="form-group">
                                     <label class="col-md-4">Nombre</label>
                                     <div class="col-md-8">
@@ -119,16 +112,16 @@
                             </div> <!-- /.form-group -->
 
                             <div class="form-group">
-                                    <label class="col-md-4">Dirección</label>
+                                    <label class="col-md-4">Ubicación</label>
                                     <div class="col-md-8">
-                                            <input type="text" name="direccion" placeholder="Dirección" required="required" value="" class="form-control" />
+                                            <input type="text" name="ubicacion" placeholder="Ubicación" required="required" value="" class="form-control" />
                                     </div>
                             </div> <!-- /.form-group -->
 
                             <div class="form-group">
-                                    <label class="col-md-4">Contacto</label>
+                                    <label class="col-md-4">Cantidad hectáreas</label>
                                     <div class="col-md-8">
-                                            <input type="email" name="contacto" placeholder="contacto@dominio.tld" required="required" value="" class="form-control" />
+                                            <input type="text" name="hectareas" placeholder="Hectáreas" required="required" value="" class="form-control" />
                                     </div>
                             </div> <!-- /.form-group -->
 
