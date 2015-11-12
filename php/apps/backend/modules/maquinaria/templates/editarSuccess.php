@@ -119,8 +119,8 @@
 						<ul class="gallery-container">
                                                     <?php foreach($maquinaria->getMaquinariaFotos() as $foto){ ?>
  							<li>
-								<a href="javascript:;" class="modal-imagen" data-img="http://localhost/git/fmaq/php/web/<?php echo $foto->getMfoRuta();?>" data-id="<?php echo $foto->getMfoId();?>">
-								<img src="http://localhost/git/fmaq/php/web/<?php echo $foto->getMfoRuta();?>" />
+								<a href="javascript:;" class="modal-imagen" data-img="http://localhost/futamaq/web/<?php echo $foto->getMfoRuta();?>" data-id="<?php echo $foto->getMfoId();?>">
+								<img src="http://localhost/futamaq/web/<?php echo $foto->getMfoRuta();?>" />
 								</a>
 							</li>	
                                                     <?php } ?>

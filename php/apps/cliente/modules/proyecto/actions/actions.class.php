@@ -17,6 +17,9 @@ class proyectoActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
+        $tra_id = date("U").rand(111,999);
+        $util = new Util();
+        $log = $util->setLog("IndexClienteProyecto[$tra_id]"); 
         try{
             $clid = $this->getUser()->getAttribute("cli_id");
             
@@ -40,6 +43,9 @@ class proyectoActions extends sfActions
   }
   public function executeDetalle(sfWebRequest $request)
   {
+        $tra_id = date("U").rand(111,999);
+        $util = new Util();
+        $log = $util->setLog("DetalleClienteProyecto[$tra_id]"); 
   	 try{
             //$clid = $this->getUser()->getAttribute("cli_id");
             $proid = $request->getParameter("pro_id");

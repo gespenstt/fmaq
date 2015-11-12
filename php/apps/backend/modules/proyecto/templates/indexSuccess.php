@@ -9,13 +9,15 @@
 						<br>
 						<div class="col-md-12">
 
-							<form action="" method="post">
+							<form action="<?php echo url_for("proyecto/index");?>" method="post">
 							
 								<div class="form-group col-md-5">
 									<label class="col-md-2">Cliente:</label>
 									<div class="col-md-10">
-										<select class="form-control">
-											<option>Seleccione...</option>
+                                                                            <select name="combocliente" class="form-control">
+											<?php foreach($clientes as $m){ ?>
+                                                                                        <option value="<?php echo $m->getCliId();?>"><?php echo $m->getCliNombre();?></option>
+                                                                                        <?php } ?>
 										</select>
 									</div>
 								</div> <!-- /.form-group -->
@@ -23,12 +25,12 @@
 								<div class="form-group  col-md-5">
 									<label class="col-md-2">Buscar:</label>
 									<div class="col-md-10">
-										<input type="text" name="input1" placeholder="Ingrese texto a buscar" value="" class="form-control" />
+										<input type="text" name="textoBusqueda" placeholder="Ingrese texto a buscar" value="" class="form-control" />
 									</div>
 								</div> <!-- /.form-group -->
 
 								<div class="form-group col-md-2">
-									<input type="submit" name="input1" value="Buscar" class="btn btn-success" />
+									<input type="submit" name="submit" value="Buscar" class="btn btn-success" />
 								</div>
 
 							</form>
@@ -37,6 +39,7 @@
 						<br>
 						<br>
 						<div class="table-responsive">
+                                                    <?php if($pager->count()>0){ ?>
 							<table class="table table-bordered table-hover table-striped">
 						        <thead>
 						          <tr>
@@ -49,34 +52,65 @@
 						          </tr>
 						        </thead>
 						        <tbody>
-						        <?php for($a=1;$a<=4;$a++){ ?>
+						        <?php $count = 1; 
+                                                            foreach ($pager->getResults() as $p){  ?>
 						          <tr>
-						            <td class="col-md-1"><?php echo $a; ?></td>
-						            <td class="col-md-3">Proyecto yxz</td>
-						            <td class="col-md-2">Cliente yxz</td>
-						            <td class="col-md-2">Campo yxz</td>
-						            <td class="col-md-2">Potrero yxz</td>
+                                                              
+                                                            <td ><?php echo $count; ?></td>
+						            <td class="col-md-3"><?php echo $p->getProNombre(); ?></td>
+                                                            <td ><?php echo $p->getPotrero()->getCampo()->getCliente()->getCliNombre()." ".$p->getPotrero()->getCampo()->getCliente()->getCliApellido(); ?></td>
+                                                            <td ><?php echo $p->getPotrero()->getCampo()->getCamNombre(); ?></td>
+                                                            <td ><?php echo $p->getPotrero()->getPotNombre(); ?></td>
+						            
 						            <td class="col-md-3">
-						            	<a tabindex="-1" href="javascript:;"><i class="icon-edit"></i> Editar</a> 
+						            	<a tabindex="-1" href="<?php echo url_for("proyecto/editar/?pro_id=".$p->getProId());?>"><i class="icon-edit"></i> Editar</a> 
 						            	<a tabindex="-1" href="javascript:;"><i class="icon-remove"></i> Eliminar</a>
 						            </td>
+                                                              
+						          
 						          </tr>
-						          <?php } ?>
+						            <?php $count++;    } ?>
 						        </tbody>
 					      	</table>
+                                                     <?php }else{ ?>
+                    <p>No hay proyectos creados</p>
+                    <?php } ?>
 					  	</div>
 
 					  	<div align="right">
           
-				          <ul class="pagination">
-				            <li><a href="javascript:;">&laquo;</a></li>
-				            <li class="active"><a href="#">1</a></li>
-				            <li><a href="javascript:;">2</a></li>
-				            <li><a href="javascript:;">3</a></li>
-				            <li><a href="javascript:;">4</a></li>
-				            <li><a href="javascript:;">5</a></li>
-				            <li><a href="javascript:;">&raquo;</a></li>
-				          </ul>	
+				         <?php if ($pager->haveToPaginate()){ ?>
+                    <ul class="pagination">
+                        <?php                                         
+                        $actualPagina = $pager->getPage();
+                        $ultimaPagina = $pager->getLastPage();
+                        $minimo = $actualPagina - 1;
+                        $maximo = $actualPagina + 2;
+                        $linkSaltoPrimero = $actualPagina - 3;
+                        $linkSaltoUltimo = $actualPagina + 3;
+                        $links = $pager->getLinks();
+
+                        if($linkSaltoPrimero >= 1):
+                            echo '<li><a href="'.url_for("cliente/index/?p=1").'">«</a></li>';
+                        endif;
+
+                        foreach ($links as $e): 
+                            $current = '';
+                            if($actualPagina == $e):
+                                $current = ' active';
+                            endif;
+                            if(($e < $minimo && $minimo > 1) || ($e <= $maximo)):
+                            echo '<li class="'.$current.'"><a href="'.url_for("cliente/index/?p=$e").'">'.$e.'</a></li>';
+                            endif;
+                        endforeach; 
+
+                        if($linkSaltoUltimo <= $ultimaPagina):                                            
+                            echo '<li><a href="'.url_for("cliente/index/?p=$ultimaPagina").'">»</a></li>';
+                        endif;
+
+                        ?>                                         
+                    </ul>
+                    <?php } ?> 
 
 						</div> 
 
