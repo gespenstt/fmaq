@@ -15,8 +15,9 @@
 									<label class="col-md-2">Cliente:</label>
 									<div class="col-md-10">
                                                                             <select name="combocliente" class="form-control">
+                                                                                <option value="">Seleccione cliente</option>
 											<?php foreach($clientes as $m){ ?>
-                                                                                        <option value="<?php echo $m->getCliId();?>"><?php echo $m->getCliNombre();?></option>
+                                                                                        <option value="<?php echo $m->getCliId();?>" <?php if($m->getCliId()==$combocliente){ echo "selected"; }?>><?php echo $m->getCliNombre();?></option>
                                                                                         <?php } ?>
 										</select>
 									</div>
@@ -25,7 +26,7 @@
 								<div class="form-group  col-md-5">
 									<label class="col-md-2">Buscar:</label>
 									<div class="col-md-10">
-										<input type="text" name="textoBusqueda" placeholder="Ingrese texto a buscar" value="" class="form-control" />
+										<input type="text" name="textoBusqueda" placeholder="Ingrese texto a buscar" value="<?php echo $texto;?>" class="form-control" />
 									</div>
 								</div> <!-- /.form-group -->
 
@@ -63,8 +64,11 @@
                                                             <td ><?php echo $p->getPotrero()->getPotNombre(); ?></td>
 						            
 						            <td class="col-md-3">
+                                                            <form action="<?php echo url_for("proyecto/eliminar");?>" method="post">
+                                                                <input type="hidden" name="pro_id" value="<?php echo $p->getProId(); ?>" />
 						            	<a tabindex="-1" href="<?php echo url_for("proyecto/editar/?pro_id=".$p->getProId());?>"><i class="icon-edit"></i> Editar</a> 
-						            	<a tabindex="-1" href="javascript:;"><i class="icon-remove"></i> Eliminar</a>
+                                                                <a href="javascript:;" class="msgbox-eliminar" data-msg="¿Está seguro de eliminar el proyecto?"><i class="icon-remove"></i> Eliminar</a>
+                                                            </form>
 						            </td>
                                                               
 						          

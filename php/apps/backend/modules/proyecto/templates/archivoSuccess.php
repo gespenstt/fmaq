@@ -1,87 +1,122 @@
-				<div class="widget-header">
-					<i class="icon-folder-open"></i>
-					<h3>Proyectos</h3>
-				</div> <!-- /widget-header -->
-				
-				<div class="widget-content">	
+    <div class="widget-header">
+            <i class="icon-folder-open"></i>
+            <h3>Proyectos</h3>
+    </div> <!-- /widget-header -->
 
-					<div class="col-md-8 border-right">
-						<h3>Archivos</h3>
-						<h4><a href="<?php echo url_for("proyecto/agregar");?>">Proyecto XYZ</a></h4>
-						<br>
-						<div class="table-responsive">
-							<table class="table table-bordered table-hover table-striped">
-						        <thead>
-						          <tr>
-						            <th>#</th>
-						            <th>Nombre</th>
-						            <th>Acciones</th>
-						          </tr>
-						        </thead>
-						        <tbody>
-						        <?php for($a=1;$a<=4;$a++){ ?>
-						          <tr>
-						            <td class="col-md-1"><?php echo $a; ?></td>
-						            <td class="col-md-7">Imagen.pdf</td>
-						            <td class="col-md-4">
-						            	<a tabindex="-1" href="javascript:;"><i class="icon-edit"></i> Editar</a> 
-						            	<a tabindex="-1" href="javascript:;"><i class="icon-remove"></i> Eliminar</a>
-						            </td>
-						          </tr>
-						          <?php } ?>
-						        </tbody>
-					      	</table>
-					  	</div>
+    <div class="widget-content">	
 
-					  	<div align="right">
-          
-				          <ul class="pagination">
-				            <li><a href="javascript:;">&laquo;</a></li>
-				            <li class="active"><a href="#">1</a></li>
-				            <li><a href="javascript:;">2</a></li>
-				            <li><a href="javascript:;">3</a></li>
-				            <li><a href="javascript:;">4</a></li>
-				            <li><a href="javascript:;">5</a></li>
-				            <li><a href="javascript:;">&raquo;</a></li>
-				          </ul>	
+            <div class="col-md-8 border-right">
+                    <h3>Archivos</h3>
+                    <h4><a href="<?php echo url_for("proyecto/editar/?pro_id=".$proyecto->getProId());?>"><?php echo $proyecto->getProNombre();?></a></h4>
+                    <br>
+                    <div class="table-responsive">
+                        <?php if($pager->count()>0){ ?>
+                            <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Acciones</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            <?php $count = 1; 
+                            foreach ($pager->getResults() as $p){ ?>
+                              <tr>
+                                <td class="col-md-1"><?php echo $count; ?></td>
+                                <td class="col-md-7"><?php echo $p->getParNombre();?></td>
+                                <td class="col-md-4">
+                                <form action="<?php echo url_for("proyecto/archivoeliminar");?>" method="post">
+                                    <input type="hidden" name="par_id" value="<?php echo $p->getParId(); ?>" />
+                                    <input type="hidden" name="pro_id" value="<?php echo $proyecto->getProId(); ?>" />
+                                    <a href="http://localhost/git/fmaq/php/web/<?php echo $p->getParRuta();?>" target="_blank"><i class="icon-download"></i> Descargar</a>
+                                    <a href="javascript:;" class="msgbox-eliminar" data-msg="¿Está seguro de eliminar el archivo?"><i class="icon-remove"></i> Eliminar</a>
+                                </form>
+                                </td>
+                              </tr>
+                                <?php $count++;                                                           
+                              } ?>
+                            </tbody>
+                    </table>
+                    <?php }else{ ?>
+                    <p>No hay archivos.</p>
+                    <?php } ?>
+                    </div>
 
-						</div> 
+                    <div align="right">
 
-					</div>
-					<div class="col-md-4">
-					
-						<h4>Agregar</h4>
-						<br>
-						<form action="/" role="form" class="form-horizontal col-md-12">
 
-							<div class="form-group">
-								<label class="col-md-4">Nombre</label>
-								<div class="col-md-8">
-									<input type="text" name="input1" placeholder="Nombre" required="required" value="" class="form-control" />
-								</div>
-							</div> <!-- /.form-group -->
+                            <?php if ($pager->haveToPaginate()){ ?>
+                            <ul class="pagination">
+                                <?php                                         
+                                $actualPagina = $pager->getPage();
+                                $ultimaPagina = $pager->getLastPage();
+                                $minimo = $actualPagina - 1;
+                                $maximo = $actualPagina + 2;
+                                $linkSaltoPrimero = $actualPagina - 3;
+                                $linkSaltoUltimo = $actualPagina + 3;
+                                $links = $pager->getLinks();
+                                $pro_id = $proyecto->getProId();
 
-							<div class="form-group">
-								<label class="col-md-4">Archivo</label>
-								<div class="col-md-8">
-									<input type="file" name="input1" placeholder="Archivo" required="required" value="" class="form-control" />
-								</div>
-							</div> <!-- /.form-group -->
+                                if($linkSaltoPrimero >= 1):
+                                    echo '<li><a href="'.url_for("proyecto/archivo/?p=1&pro_id=$pro_id").'">«</a></li>';
+                                endif;
 
-							
-							<div class="form-group">
+                                foreach ($links as $e): 
+                                    $current = '';
+                                    if($actualPagina == $e):
+                                        $current = ' active';
+                                    endif;
+                                    if(($e < $minimo && $minimo > 1) || ($e <= $maximo)):
+                                    echo '<li class="'.$current.'"><a href="'.url_for("proyecto/archivo/?p=$e&pro_id=$pro_id").'">'.$e.'</a></li>';
+                                    endif;
+                                endforeach; 
 
-								<div class="col-md-offset-4 col-md-8">
+                                if($linkSaltoUltimo <= $ultimaPagina):                                            
+                                    echo '<li><a href="'.url_for("proyecto/archivo/?p=$ultimaPagina&pro_id=$pro_id").'">»</a></li>';
+                                endif;
 
-									<button type="submit" class="btn btn-success">Subir</button>
-								</div>
+                                ?>                                         
+                            </ul>
+                            <?php } ?> 	
 
-							</div> <!-- /.form-group -->
+                    </div> 
 
-						</form>
+            </div>
+            <div class="col-md-4">
 
-					</div>
+                    <h4>Agregar</h4>
+                    <br>
+                    <form action="<?php echo url_for("proyecto/archivo");?>" method="post" role="form" class="form-horizontal col-md-12" enctype="multipart/form-data" >
+                        <input type="hidden" name="pro_id" value="<?php echo $proyecto->getProId();?>" />
+                            <div class="form-group">
+                                    <label class="col-md-4">Nombre</label>
+                                    <div class="col-md-8">
+                                            <input type="text" name="nombre" placeholder="Nombre" required="required" value="" class="form-control" />
+                                    </div>
+                            </div> <!-- /.form-group -->
 
-					
-					
-				</div> <!-- /widget-content -->
+                            <div class="form-group">
+                                    <label class="col-md-4">Archivo</label>
+                                    <div class="col-md-8">
+                                            <input type="file" name="archivo" placeholder="Archivo" required="required" value="" class="form-control" />
+                                    </div>
+                            </div> <!-- /.form-group -->
+
+
+                            <div class="form-group">
+
+                                    <div class="col-md-offset-4 col-md-8">
+
+                                            <button type="submit" class="btn btn-success">Subir</button>
+                                    </div>
+
+                            </div> <!-- /.form-group -->
+
+                    </form>
+
+            </div>
+
+
+
+    </div> <!-- /widget-content -->

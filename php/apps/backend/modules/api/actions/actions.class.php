@@ -44,6 +44,44 @@ class apiActions extends sfActions
                         "telefono" => $curriculum->getCurTelefono(),
                     );
                 break;
+                
+                case "getCamposCliente":
+                    $cli_id = $request->getPostParameter("cli_id");
+                    $c = new Criteria();
+                    $c->add(CampoPeer::CLI_ID,$cli_id);
+                    $c->addAscendingOrderByColumn(CampoPeer::CAM_NOMBRE);
+                    $campos = CampoPeer::doSelect($c);
+                    if(!$campos){
+                        throw new Exception("No hay campos para el cliente seleccionado.");
+                    }
+                    foreach($campos as $cam){
+                        $array_out["contenido"][] = array(
+                            "id" => $cam->getCamId(),
+                            "nombre" => $cam->getCamNombre(),
+                        );
+                    }
+                    $array_out["estado"] = "ok";
+                    
+                    break;
+                    
+                case "getPotrerosCampo":
+                    $cam_id = $request->getPostParameter("cam_id");
+                    $c = new Criteria();
+                    $c->add(PotreroPeer::CAM_ID,$cam_id);
+                    $c->addAscendingOrderByColumn(PotreroPeer::POT_NOMBRE);
+                    $potreros = PotreroPeer::doSelect($c);
+                    if(!$potreros){
+                        throw new Exception("No hay potreros para el cliente seleccionado.");
+                    }
+                    foreach($potreros as $pot){
+                        $array_out["contenido"][] = array(
+                            "id" => $pot->getPotId(),
+                            "nombre" => $pot->getPotNombre(),
+                        );
+                    }
+                    $array_out["estado"] = "ok";
+                    
+                    break;
 
                 default:
                     $array_out["estado"] = "ok";

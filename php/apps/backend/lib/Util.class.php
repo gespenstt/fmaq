@@ -71,6 +71,24 @@ class Util{
         
     }
     
+    public function setArchivoProyecto($nombre,$archivo,$pro_id,$par_id){
+        
+        //UPLOAD DIR FRONTEND(WEB)/UPLOADS       
+        $f_name = $par_id."_".$archivo["name"];
+        $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."proyecto".DIRECTORY_SEPARATOR.$pro_id.DIRECTORY_SEPARATOR;
+        $path_db = "uploads/proyecto/$pro_id/$f_name";    
+        $path_file = $path.$f_name;       
+            
+        //Creacion carpeta
+        mkdir($path, 0755);
+        move_uploaded_file($archivo["tmp_name"], $path_file);
+        
+        $proyecto_archivo = ProyectoArchivoPeer::retrieveByPK($par_id);
+        $proyecto_archivo->setParRuta($path_db);
+        $proyecto_archivo->setParDescripcion($f_name);
+        $proyecto_archivo->save();
+    }
+    
     public function getMetas($url){
         $html = file_get_contents($url);
 
