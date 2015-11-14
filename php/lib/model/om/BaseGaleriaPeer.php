@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Base static class for performing query and update operations on the 'cliente' table.
+ * Base static class for performing query and update operations on the 'galeria' table.
  *
  * 
  *
@@ -11,58 +11,49 @@
  *
  * @package    lib.model.om
  */
-abstract class BaseClientePeer {
+abstract class BaseGaleriaPeer {
 
 	/** the default database name for this class */
 	const DATABASE_NAME = 'propel';
 
 	/** the table name for this class */
-	const TABLE_NAME = 'cliente';
+	const TABLE_NAME = 'galeria';
 
 	/** the related Propel class for this table */
-	const OM_CLASS = 'Cliente';
+	const OM_CLASS = 'Galeria';
 
 	/** A class that can be returned by this peer. */
-	const CLASS_DEFAULT = 'lib.model.Cliente';
+	const CLASS_DEFAULT = 'lib.model.Galeria';
 
 	/** the related TableMap class for this table */
-	const TM_CLASS = 'ClienteTableMap';
+	const TM_CLASS = 'GaleriaTableMap';
 	
 	/** The total number of columns. */
-	const NUM_COLUMNS = 8;
+	const NUM_COLUMNS = 5;
 
 	/** The number of lazy-loaded columns. */
 	const NUM_LAZY_LOAD_COLUMNS = 0;
 
-	/** the column name for the CLI_ID field */
-	const CLI_ID = 'cliente.CLI_ID';
+	/** the column name for the GAL_ID field */
+	const GAL_ID = 'galeria.GAL_ID';
 
-	/** the column name for the CLI_NOMBRE field */
-	const CLI_NOMBRE = 'cliente.CLI_NOMBRE';
+	/** the column name for the GAL_NOMBRE field */
+	const GAL_NOMBRE = 'galeria.GAL_NOMBRE';
 
-	/** the column name for the CLI_APELLIDO field */
-	const CLI_APELLIDO = 'cliente.CLI_APELLIDO';
-
-	/** the column name for the CLI_USUARIO field */
-	const CLI_USUARIO = 'cliente.CLI_USUARIO';
-
-	/** the column name for the CLI_PASSWORD field */
-	const CLI_PASSWORD = 'cliente.CLI_PASSWORD';
-
-	/** the column name for the CLI_EMPRESA field */
-	const CLI_EMPRESA = 'cliente.CLI_EMPRESA';
-
-	/** the column name for the CLI_CORREO field */
-	const CLI_CORREO = 'cliente.CLI_CORREO';
+	/** the column name for the GAL_DESCRIPCION field */
+	const GAL_DESCRIPCION = 'galeria.GAL_DESCRIPCION';
 
 	/** the column name for the CREATED_AT field */
-	const CREATED_AT = 'cliente.CREATED_AT';
+	const CREATED_AT = 'galeria.CREATED_AT';
+
+	/** the column name for the UPDATED_AT field */
+	const UPDATED_AT = 'galeria.UPDATED_AT';
 
 	/**
-	 * An identiy map to hold any loaded instances of Cliente objects.
+	 * An identiy map to hold any loaded instances of Galeria objects.
 	 * This must be public so that other peer classes can access this when hydrating from JOIN
 	 * queries.
-	 * @var        array Cliente[]
+	 * @var        array Galeria[]
 	 */
 	public static $instances = array();
 
@@ -81,11 +72,11 @@ abstract class BaseClientePeer {
 	 * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
 	 */
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('CliId', 'CliNombre', 'CliApellido', 'CliUsuario', 'CliPassword', 'CliEmpresa', 'CliCorreo', 'CreatedAt', ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('cliId', 'cliNombre', 'cliApellido', 'cliUsuario', 'cliPassword', 'cliEmpresa', 'cliCorreo', 'createdAt', ),
-		BasePeer::TYPE_COLNAME => array (self::CLI_ID, self::CLI_NOMBRE, self::CLI_APELLIDO, self::CLI_USUARIO, self::CLI_PASSWORD, self::CLI_EMPRESA, self::CLI_CORREO, self::CREATED_AT, ),
-		BasePeer::TYPE_FIELDNAME => array ('cli_id', 'cli_nombre', 'cli_apellido', 'cli_usuario', 'cli_password', 'cli_empresa', 'cli_correo', 'created_at', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
+		BasePeer::TYPE_PHPNAME => array ('GalId', 'GalNombre', 'GalDescripcion', 'CreatedAt', 'UpdatedAt', ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('galId', 'galNombre', 'galDescripcion', 'createdAt', 'updatedAt', ),
+		BasePeer::TYPE_COLNAME => array (self::GAL_ID, self::GAL_NOMBRE, self::GAL_DESCRIPCION, self::CREATED_AT, self::UPDATED_AT, ),
+		BasePeer::TYPE_FIELDNAME => array ('gal_id', 'gal_nombre', 'gal_descripcion', 'created_at', 'updated_at', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, )
 	);
 
 	/**
@@ -95,11 +86,11 @@ abstract class BaseClientePeer {
 	 * e.g. self::$fieldNames[BasePeer::TYPE_PHPNAME]['Id'] = 0
 	 */
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('CliId' => 0, 'CliNombre' => 1, 'CliApellido' => 2, 'CliUsuario' => 3, 'CliPassword' => 4, 'CliEmpresa' => 5, 'CliCorreo' => 6, 'CreatedAt' => 7, ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('cliId' => 0, 'cliNombre' => 1, 'cliApellido' => 2, 'cliUsuario' => 3, 'cliPassword' => 4, 'cliEmpresa' => 5, 'cliCorreo' => 6, 'createdAt' => 7, ),
-		BasePeer::TYPE_COLNAME => array (self::CLI_ID => 0, self::CLI_NOMBRE => 1, self::CLI_APELLIDO => 2, self::CLI_USUARIO => 3, self::CLI_PASSWORD => 4, self::CLI_EMPRESA => 5, self::CLI_CORREO => 6, self::CREATED_AT => 7, ),
-		BasePeer::TYPE_FIELDNAME => array ('cli_id' => 0, 'cli_nombre' => 1, 'cli_apellido' => 2, 'cli_usuario' => 3, 'cli_password' => 4, 'cli_empresa' => 5, 'cli_correo' => 6, 'created_at' => 7, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
+		BasePeer::TYPE_PHPNAME => array ('GalId' => 0, 'GalNombre' => 1, 'GalDescripcion' => 2, 'CreatedAt' => 3, 'UpdatedAt' => 4, ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('galId' => 0, 'galNombre' => 1, 'galDescripcion' => 2, 'createdAt' => 3, 'updatedAt' => 4, ),
+		BasePeer::TYPE_COLNAME => array (self::GAL_ID => 0, self::GAL_NOMBRE => 1, self::GAL_DESCRIPCION => 2, self::CREATED_AT => 3, self::UPDATED_AT => 4, ),
+		BasePeer::TYPE_FIELDNAME => array ('gal_id' => 0, 'gal_nombre' => 1, 'gal_descripcion' => 2, 'created_at' => 3, 'updated_at' => 4, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, )
 	);
 
 	/**
@@ -148,12 +139,12 @@ abstract class BaseClientePeer {
 	 *		$c->addJoin(TablePeer::alias("alias1", TablePeer::PRIMARY_KEY_COLUMN), TablePeer::PRIMARY_KEY_COLUMN);
 	 * </code>
 	 * @param      string $alias The alias for the current table.
-	 * @param      string $column The column name for current table. (i.e. ClientePeer::COLUMN_NAME).
+	 * @param      string $column The column name for current table. (i.e. GaleriaPeer::COLUMN_NAME).
 	 * @return     string
 	 */
 	public static function alias($alias, $column)
 	{
-		return str_replace(ClientePeer::TABLE_NAME.'.', $alias.'.', $column);
+		return str_replace(GaleriaPeer::TABLE_NAME.'.', $alias.'.', $column);
 	}
 
 	/**
@@ -169,14 +160,11 @@ abstract class BaseClientePeer {
 	 */
 	public static function addSelectColumns(Criteria $criteria)
 	{
-		$criteria->addSelectColumn(ClientePeer::CLI_ID);
-		$criteria->addSelectColumn(ClientePeer::CLI_NOMBRE);
-		$criteria->addSelectColumn(ClientePeer::CLI_APELLIDO);
-		$criteria->addSelectColumn(ClientePeer::CLI_USUARIO);
-		$criteria->addSelectColumn(ClientePeer::CLI_PASSWORD);
-		$criteria->addSelectColumn(ClientePeer::CLI_EMPRESA);
-		$criteria->addSelectColumn(ClientePeer::CLI_CORREO);
-		$criteria->addSelectColumn(ClientePeer::CREATED_AT);
+		$criteria->addSelectColumn(GaleriaPeer::GAL_ID);
+		$criteria->addSelectColumn(GaleriaPeer::GAL_NOMBRE);
+		$criteria->addSelectColumn(GaleriaPeer::GAL_DESCRIPCION);
+		$criteria->addSelectColumn(GaleriaPeer::CREATED_AT);
+		$criteria->addSelectColumn(GaleriaPeer::UPDATED_AT);
 	}
 
 	/**
@@ -195,26 +183,26 @@ abstract class BaseClientePeer {
 		// We need to set the primary table name, since in the case that there are no WHERE columns
 		// it will be impossible for the BasePeer::createSelectSql() method to determine which
 		// tables go into the FROM clause.
-		$criteria->setPrimaryTableName(ClientePeer::TABLE_NAME);
+		$criteria->setPrimaryTableName(GaleriaPeer::TABLE_NAME);
 
 		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->setDistinct();
 		}
 
 		if (!$criteria->hasSelectClause()) {
-			ClientePeer::addSelectColumns($criteria);
+			GaleriaPeer::addSelectColumns($criteria);
 		}
 
 		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
 		$criteria->setDbName(self::DATABASE_NAME); // Set the correct dbName
 
 		if ($con === null) {
-			$con = Propel::getConnection(ClientePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(GaleriaPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 		// symfony_behaviors behavior
 		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
 		{
-		  call_user_func($sf_hook, 'BaseClientePeer', $criteria, $con);
+		  call_user_func($sf_hook, 'BaseGaleriaPeer', $criteria, $con);
 		}
 
 		// BasePeer returns a PDOStatement
@@ -233,7 +221,7 @@ abstract class BaseClientePeer {
 	 *
 	 * @param      Criteria $criteria object used to create the SELECT statement.
 	 * @param      PropelPDO $con
-	 * @return     Cliente
+	 * @return     Galeria
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
@@ -241,7 +229,7 @@ abstract class BaseClientePeer {
 	{
 		$critcopy = clone $criteria;
 		$critcopy->setLimit(1);
-		$objects = ClientePeer::doSelect($critcopy, $con);
+		$objects = GaleriaPeer::doSelect($critcopy, $con);
 		if ($objects) {
 			return $objects[0];
 		}
@@ -258,7 +246,7 @@ abstract class BaseClientePeer {
 	 */
 	public static function doSelect(Criteria $criteria, PropelPDO $con = null)
 	{
-		return ClientePeer::populateObjects(ClientePeer::doSelectStmt($criteria, $con));
+		return GaleriaPeer::populateObjects(GaleriaPeer::doSelectStmt($criteria, $con));
 	}
 	/**
 	 * Prepares the Criteria object and uses the parent doSelect() method to execute a PDOStatement.
@@ -276,12 +264,12 @@ abstract class BaseClientePeer {
 	public static function doSelectStmt(Criteria $criteria, PropelPDO $con = null)
 	{
 		if ($con === null) {
-			$con = Propel::getConnection(ClientePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(GaleriaPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 		if (!$criteria->hasSelectClause()) {
 			$criteria = clone $criteria;
-			ClientePeer::addSelectColumns($criteria);
+			GaleriaPeer::addSelectColumns($criteria);
 		}
 
 		// Set the correct dbName
@@ -289,7 +277,7 @@ abstract class BaseClientePeer {
 		// symfony_behaviors behavior
 		foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook)
 		{
-		  call_user_func($sf_hook, 'BaseClientePeer', $criteria, $con);
+		  call_user_func($sf_hook, 'BaseGaleriaPeer', $criteria, $con);
 		}
 
 
@@ -305,14 +293,14 @@ abstract class BaseClientePeer {
 	 * to the cache in order to ensure that the same objects are always returned by doSelect*()
 	 * and retrieveByPK*() calls.
 	 *
-	 * @param      Cliente $value A Cliente object.
+	 * @param      Galeria $value A Galeria object.
 	 * @param      string $key (optional) key to use for instance map (for performance boost if key was already calculated externally).
 	 */
-	public static function addInstanceToPool(Cliente $obj, $key = null)
+	public static function addInstanceToPool(Galeria $obj, $key = null)
 	{
 		if (Propel::isInstancePoolingEnabled()) {
 			if ($key === null) {
-				$key = (string) $obj->getCliId();
+				$key = (string) $obj->getGalId();
 			} // if key === null
 			self::$instances[$key] = $obj;
 		}
@@ -326,18 +314,18 @@ abstract class BaseClientePeer {
 	 * methods in your stub classes -- you may need to explicitly remove objects
 	 * from the cache in order to prevent returning objects that no longer exist.
 	 *
-	 * @param      mixed $value A Cliente object or a primary key value.
+	 * @param      mixed $value A Galeria object or a primary key value.
 	 */
 	public static function removeInstanceFromPool($value)
 	{
 		if (Propel::isInstancePoolingEnabled() && $value !== null) {
-			if (is_object($value) && $value instanceof Cliente) {
-				$key = (string) $value->getCliId();
+			if (is_object($value) && $value instanceof Galeria) {
+				$key = (string) $value->getGalId();
 			} elseif (is_scalar($value)) {
 				// assume we've been passed a primary key
 				$key = (string) $value;
 			} else {
-				$e = new PropelException("Invalid value passed to removeInstanceFromPool().  Expected primary key or Cliente object; got " . (is_object($value) ? get_class($value) . ' object.' : var_export($value,true)));
+				$e = new PropelException("Invalid value passed to removeInstanceFromPool().  Expected primary key or Galeria object; got " . (is_object($value) ? get_class($value) . ' object.' : var_export($value,true)));
 				throw $e;
 			}
 
@@ -352,7 +340,7 @@ abstract class BaseClientePeer {
 	 * a multi-column primary key, a serialize()d version of the primary key will be returned.
 	 *
 	 * @param      string $key The key (@see getPrimaryKeyHash()) for this instance.
-	 * @return     Cliente Found object or NULL if 1) no instance exists for specified key or 2) instance pooling has been disabled.
+	 * @return     Galeria Found object or NULL if 1) no instance exists for specified key or 2) instance pooling has been disabled.
 	 * @see        getPrimaryKeyHash()
 	 */
 	public static function getInstanceFromPool($key)
@@ -376,7 +364,7 @@ abstract class BaseClientePeer {
 	}
 	
 	/**
-	 * Method to invalidate the instance pool of all tables related to cliente
+	 * Method to invalidate the instance pool of all tables related to galeria
 	 * by a foreign key with ON DELETE CASCADE
 	 */
 	public static function clearRelatedInstancePool()
@@ -414,11 +402,11 @@ abstract class BaseClientePeer {
 		$results = array();
 	
 		// set the class once to avoid overhead in the loop
-		$cls = ClientePeer::getOMClass(false);
+		$cls = GaleriaPeer::getOMClass(false);
 		// populate the object(s)
 		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key = ClientePeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj = ClientePeer::getInstanceFromPool($key))) {
+			$key = GaleriaPeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj = GaleriaPeer::getInstanceFromPool($key))) {
 				// We no longer rehydrate the object, since this can cause data loss.
 				// See http://propel.phpdb.org/trac/ticket/509
 				// $obj->hydrate($row, 0, true); // rehydrate
@@ -427,7 +415,7 @@ abstract class BaseClientePeer {
 				$obj = new $cls();
 				$obj->hydrate($row);
 				$results[] = $obj;
-				ClientePeer::addInstanceToPool($obj, $key);
+				GaleriaPeer::addInstanceToPool($obj, $key);
 			} // if key exists
 		}
 		$stmt->closeCursor();
@@ -450,10 +438,10 @@ abstract class BaseClientePeer {
 	 */
 	public static function buildTableMap()
 	{
-	  $dbMap = Propel::getDatabaseMap(BaseClientePeer::DATABASE_NAME);
-	  if (!$dbMap->hasTable(BaseClientePeer::TABLE_NAME))
+	  $dbMap = Propel::getDatabaseMap(BaseGaleriaPeer::DATABASE_NAME);
+	  if (!$dbMap->hasTable(BaseGaleriaPeer::TABLE_NAME))
 	  {
-	    $dbMap->addTableObject(new ClienteTableMap());
+	    $dbMap->addTableObject(new GaleriaTableMap());
 	  }
 	}
 
@@ -470,13 +458,13 @@ abstract class BaseClientePeer {
 	 */
 	public static function getOMClass($withPrefix = true)
 	{
-		return $withPrefix ? ClientePeer::CLASS_DEFAULT : ClientePeer::OM_CLASS;
+		return $withPrefix ? GaleriaPeer::CLASS_DEFAULT : GaleriaPeer::OM_CLASS;
 	}
 
 	/**
-	 * Method perform an INSERT on the database, given a Cliente or Criteria object.
+	 * Method perform an INSERT on the database, given a Galeria or Criteria object.
 	 *
-	 * @param      mixed $values Criteria or Cliente object containing data that is used to create the INSERT statement.
+	 * @param      mixed $values Criteria or Galeria object containing data that is used to create the INSERT statement.
 	 * @param      PropelPDO $con the PropelPDO connection to use
 	 * @return     mixed The new primary key.
 	 * @throws     PropelException Any exceptions caught during processing will be
@@ -485,26 +473,26 @@ abstract class BaseClientePeer {
 	public static function doInsert($values, PropelPDO $con = null)
 	{
     // symfony_behaviors behavior
-    foreach (sfMixer::getCallables('BaseClientePeer:doInsert:pre') as $sf_hook)
+    foreach (sfMixer::getCallables('BaseGaleriaPeer:doInsert:pre') as $sf_hook)
     {
-      if (false !== $sf_hook_retval = call_user_func($sf_hook, 'BaseClientePeer', $values, $con))
+      if (false !== $sf_hook_retval = call_user_func($sf_hook, 'BaseGaleriaPeer', $values, $con))
       {
         return $sf_hook_retval;
       }
     }
 
 		if ($con === null) {
-			$con = Propel::getConnection(ClientePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(GaleriaPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 
 		if ($values instanceof Criteria) {
 			$criteria = clone $values; // rename for clarity
 		} else {
-			$criteria = $values->buildCriteria(); // build Criteria from Cliente object
+			$criteria = $values->buildCriteria(); // build Criteria from Galeria object
 		}
 
-		if ($criteria->containsKey(ClientePeer::CLI_ID) && $criteria->keyContainsValue(ClientePeer::CLI_ID) ) {
-			throw new PropelException('Cannot insert a value for auto-increment primary key ('.ClientePeer::CLI_ID.')');
+		if ($criteria->containsKey(GaleriaPeer::GAL_ID) && $criteria->keyContainsValue(GaleriaPeer::GAL_ID) ) {
+			throw new PropelException('Cannot insert a value for auto-increment primary key ('.GaleriaPeer::GAL_ID.')');
 		}
 
 
@@ -523,18 +511,18 @@ abstract class BaseClientePeer {
 		}
 
     // symfony_behaviors behavior
-    foreach (sfMixer::getCallables('BaseClientePeer:doInsert:post') as $sf_hook)
+    foreach (sfMixer::getCallables('BaseGaleriaPeer:doInsert:post') as $sf_hook)
     {
-      call_user_func($sf_hook, 'BaseClientePeer', $values, $con, $pk);
+      call_user_func($sf_hook, 'BaseGaleriaPeer', $values, $con, $pk);
     }
 
 		return $pk;
 	}
 
 	/**
-	 * Method perform an UPDATE on the database, given a Cliente or Criteria object.
+	 * Method perform an UPDATE on the database, given a Galeria or Criteria object.
 	 *
-	 * @param      mixed $values Criteria or Cliente object containing data that is used to create the UPDATE statement.
+	 * @param      mixed $values Criteria or Galeria object containing data that is used to create the UPDATE statement.
 	 * @param      PropelPDO $con The connection to use (specify PropelPDO connection object to exert more control over transactions).
 	 * @return     int The number of affected rows (if supported by underlying database driver).
 	 * @throws     PropelException Any exceptions caught during processing will be
@@ -543,16 +531,16 @@ abstract class BaseClientePeer {
 	public static function doUpdate($values, PropelPDO $con = null)
 	{
     // symfony_behaviors behavior
-    foreach (sfMixer::getCallables('BaseClientePeer:doUpdate:pre') as $sf_hook)
+    foreach (sfMixer::getCallables('BaseGaleriaPeer:doUpdate:pre') as $sf_hook)
     {
-      if (false !== $sf_hook_retval = call_user_func($sf_hook, 'BaseClientePeer', $values, $con))
+      if (false !== $sf_hook_retval = call_user_func($sf_hook, 'BaseGaleriaPeer', $values, $con))
       {
         return $sf_hook_retval;
       }
     }
 
 		if ($con === null) {
-			$con = Propel::getConnection(ClientePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(GaleriaPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 
 		$selectCriteria = new Criteria(self::DATABASE_NAME);
@@ -560,10 +548,10 @@ abstract class BaseClientePeer {
 		if ($values instanceof Criteria) {
 			$criteria = clone $values; // rename for clarity
 
-			$comparison = $criteria->getComparison(ClientePeer::CLI_ID);
-			$selectCriteria->add(ClientePeer::CLI_ID, $criteria->remove(ClientePeer::CLI_ID), $comparison);
+			$comparison = $criteria->getComparison(GaleriaPeer::GAL_ID);
+			$selectCriteria->add(GaleriaPeer::GAL_ID, $criteria->remove(GaleriaPeer::GAL_ID), $comparison);
 
-		} else { // $values is Cliente object
+		} else { // $values is Galeria object
 			$criteria = $values->buildCriteria(); // gets full criteria
 			$selectCriteria = $values->buildPkeyCriteria(); // gets criteria w/ primary key(s)
 		}
@@ -574,35 +562,35 @@ abstract class BaseClientePeer {
 		$ret = BasePeer::doUpdate($selectCriteria, $criteria, $con);
 
     // symfony_behaviors behavior
-    foreach (sfMixer::getCallables('BaseClientePeer:doUpdate:post') as $sf_hook)
+    foreach (sfMixer::getCallables('BaseGaleriaPeer:doUpdate:post') as $sf_hook)
     {
-      call_user_func($sf_hook, 'BaseClientePeer', $values, $con, $ret);
+      call_user_func($sf_hook, 'BaseGaleriaPeer', $values, $con, $ret);
     }
 
     return $ret;
 	}
 
 	/**
-	 * Method to DELETE all rows from the cliente table.
+	 * Method to DELETE all rows from the galeria table.
 	 *
 	 * @return     int The number of affected rows (if supported by underlying database driver).
 	 */
 	public static function doDeleteAll($con = null)
 	{
 		if ($con === null) {
-			$con = Propel::getConnection(ClientePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(GaleriaPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 		$affectedRows = 0; // initialize var to track total num of affected rows
 		try {
 			// use transaction because $criteria could contain info
 			// for more than one table or we could emulating ON DELETE CASCADE, etc.
 			$con->beginTransaction();
-			$affectedRows += BasePeer::doDeleteAll(ClientePeer::TABLE_NAME, $con);
+			$affectedRows += BasePeer::doDeleteAll(GaleriaPeer::TABLE_NAME, $con);
 			// Because this db requires some delete cascade/set null emulation, we have to
 			// clear the cached instance *after* the emulation has happened (since
 			// instances get re-added by the select statement contained therein).
-			ClientePeer::clearInstancePool();
-			ClientePeer::clearRelatedInstancePool();
+			GaleriaPeer::clearInstancePool();
+			GaleriaPeer::clearRelatedInstancePool();
 			$con->commit();
 			return $affectedRows;
 		} catch (PropelException $e) {
@@ -612,9 +600,9 @@ abstract class BaseClientePeer {
 	}
 
 	/**
-	 * Method perform a DELETE on the database, given a Cliente or Criteria object OR a primary key value.
+	 * Method perform a DELETE on the database, given a Galeria or Criteria object OR a primary key value.
 	 *
-	 * @param      mixed $values Criteria or Cliente object or primary key or array of primary keys
+	 * @param      mixed $values Criteria or Galeria object or primary key or array of primary keys
 	 *              which is used to create the DELETE statement
 	 * @param      PropelPDO $con the connection to use
 	 * @return     int 	The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -625,27 +613,27 @@ abstract class BaseClientePeer {
 	 public static function doDelete($values, PropelPDO $con = null)
 	 {
 		if ($con === null) {
-			$con = Propel::getConnection(ClientePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(GaleriaPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 
 		if ($values instanceof Criteria) {
 			// invalidate the cache for all objects of this type, since we have no
 			// way of knowing (without running a query) what objects should be invalidated
 			// from the cache based on this Criteria.
-			ClientePeer::clearInstancePool();
+			GaleriaPeer::clearInstancePool();
 			// rename for clarity
 			$criteria = clone $values;
-		} elseif ($values instanceof Cliente) { // it's a model object
+		} elseif ($values instanceof Galeria) { // it's a model object
 			// invalidate the cache for this single object
-			ClientePeer::removeInstanceFromPool($values);
+			GaleriaPeer::removeInstanceFromPool($values);
 			// create criteria based on pk values
 			$criteria = $values->buildPkeyCriteria();
 		} else { // it's a primary key, or an array of pks
 			$criteria = new Criteria(self::DATABASE_NAME);
-			$criteria->add(ClientePeer::CLI_ID, (array) $values, Criteria::IN);
+			$criteria->add(GaleriaPeer::GAL_ID, (array) $values, Criteria::IN);
 			// invalidate the cache for this object(s)
 			foreach ((array) $values as $singleval) {
-				ClientePeer::removeInstanceFromPool($singleval);
+				GaleriaPeer::removeInstanceFromPool($singleval);
 			}
 		}
 
@@ -660,7 +648,7 @@ abstract class BaseClientePeer {
 			$con->beginTransaction();
 			
 			$affectedRows += BasePeer::doDelete($criteria, $con);
-			ClientePeer::clearRelatedInstancePool();
+			GaleriaPeer::clearRelatedInstancePool();
 			$con->commit();
 			return $affectedRows;
 		} catch (PropelException $e) {
@@ -670,24 +658,24 @@ abstract class BaseClientePeer {
 	}
 
 	/**
-	 * Validates all modified columns of given Cliente object.
+	 * Validates all modified columns of given Galeria object.
 	 * If parameter $columns is either a single column name or an array of column names
 	 * than only those columns are validated.
 	 *
 	 * NOTICE: This does not apply to primary or foreign keys for now.
 	 *
-	 * @param      Cliente $obj The object to validate.
+	 * @param      Galeria $obj The object to validate.
 	 * @param      mixed $cols Column name or array of column names.
 	 *
 	 * @return     mixed TRUE if all columns are valid or the error message of the first invalid column.
 	 */
-	public static function doValidate(Cliente $obj, $cols = null)
+	public static function doValidate(Galeria $obj, $cols = null)
 	{
 		$columns = array();
 
 		if ($cols) {
-			$dbMap = Propel::getDatabaseMap(ClientePeer::DATABASE_NAME);
-			$tableMap = $dbMap->getTable(ClientePeer::TABLE_NAME);
+			$dbMap = Propel::getDatabaseMap(GaleriaPeer::DATABASE_NAME);
+			$tableMap = $dbMap->getTable(GaleriaPeer::TABLE_NAME);
 
 			if (! is_array($cols)) {
 				$cols = array($cols);
@@ -703,7 +691,7 @@ abstract class BaseClientePeer {
 
 		}
 
-		return BasePeer::doValidate(ClientePeer::DATABASE_NAME, ClientePeer::TABLE_NAME, $columns);
+		return BasePeer::doValidate(GaleriaPeer::DATABASE_NAME, GaleriaPeer::TABLE_NAME, $columns);
 	}
 
 	/**
@@ -711,23 +699,23 @@ abstract class BaseClientePeer {
 	 *
 	 * @param      int $pk the primary key.
 	 * @param      PropelPDO $con the connection to use
-	 * @return     Cliente
+	 * @return     Galeria
 	 */
 	public static function retrieveByPK($pk, PropelPDO $con = null)
 	{
 
-		if (null !== ($obj = ClientePeer::getInstanceFromPool((string) $pk))) {
+		if (null !== ($obj = GaleriaPeer::getInstanceFromPool((string) $pk))) {
 			return $obj;
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(ClientePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(GaleriaPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
-		$criteria = new Criteria(ClientePeer::DATABASE_NAME);
-		$criteria->add(ClientePeer::CLI_ID, $pk);
+		$criteria = new Criteria(GaleriaPeer::DATABASE_NAME);
+		$criteria->add(GaleriaPeer::GAL_ID, $pk);
 
-		$v = ClientePeer::doSelect($criteria, $con);
+		$v = GaleriaPeer::doSelect($criteria, $con);
 
 		return !empty($v) > 0 ? $v[0] : null;
 	}
@@ -743,16 +731,16 @@ abstract class BaseClientePeer {
 	public static function retrieveByPKs($pks, PropelPDO $con = null)
 	{
 		if ($con === null) {
-			$con = Propel::getConnection(ClientePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(GaleriaPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 		$objs = null;
 		if (empty($pks)) {
 			$objs = array();
 		} else {
-			$criteria = new Criteria(ClientePeer::DATABASE_NAME);
-			$criteria->add(ClientePeer::CLI_ID, $pks, Criteria::IN);
-			$objs = ClientePeer::doSelect($criteria, $con);
+			$criteria = new Criteria(GaleriaPeer::DATABASE_NAME);
+			$criteria->add(GaleriaPeer::GAL_ID, $pks, Criteria::IN);
+			$objs = GaleriaPeer::doSelect($criteria, $con);
 		}
 		return $objs;
 	}
@@ -784,15 +772,15 @@ abstract class BaseClientePeer {
 	{
 	  if (preg_match('/^do(Select|Count)(Join(All(Except)?)?|Stmt)?/', $method, $match))
 	  {
-	    return sprintf('BaseClientePeer:%s:%1$s', 'Count' == $match[1] ? 'doCount' : $match[0]);
+	    return sprintf('BaseGaleriaPeer:%s:%1$s', 'Count' == $match[1] ? 'doCount' : $match[0]);
 	  }
 	
 	  throw new LogicException(sprintf('Unrecognized function "%s"', $method));
 	}
 
-} // BaseClientePeer
+} // BaseGaleriaPeer
 
 // This is the static code needed to register the TableMap for this table with the main Propel class.
 //
-BaseClientePeer::buildTableMap();
+BaseGaleriaPeer::buildTableMap();
 

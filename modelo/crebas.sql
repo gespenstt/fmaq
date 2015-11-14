@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     26/10/2015 17:53:05                          */
+/* Created on:     13/11/2015 23:54:29                          */
 /*==============================================================*/
 
 
@@ -9,6 +9,10 @@ drop table if exists campo;
 drop table if exists cliente;
 
 drop table if exists curriculum;
+
+drop table if exists galeria;
+
+drop table if exists galeria_archivo;
 
 drop table if exists maquinaria;
 
@@ -83,6 +87,34 @@ create table curriculum
 engine = innodb;
 
 /*==============================================================*/
+/* Table: galeria                                               */
+/*==============================================================*/
+create table galeria
+(
+   gal_id               int not null auto_increment,
+   gal_nombre           text,
+   gal_descripcion      text,
+   created_at           datetime,
+   updated_at           datetime,
+   primary key (gal_id)
+)
+engine = innodb;
+
+/*==============================================================*/
+/* Table: galeria_archivo                                       */
+/*==============================================================*/
+create table galeria_archivo
+(
+   gar_id               int not null auto_increment,
+   gal_id               int not null,
+   gar_nombre           text,
+   gar_ruta             text,
+   created_at           datetime,
+   primary key (gar_id)
+)
+engine = innodb;
+
+/*==============================================================*/
 /* Table: maquinaria                                            */
 /*==============================================================*/
 create table maquinaria
@@ -97,6 +129,7 @@ create table maquinaria
    maq_correo           varchar(100),
    maq_ano              varchar(10),
    maq_horas            varchar(15),
+   maq_venta            bool default false,
    created_at           datetime,
    updated_at           datetime,
    primary key (maq_id)
@@ -213,6 +246,7 @@ engine = innodb;
 create table servicio
 (
    ser_id               int not null auto_increment,
+   ser_ser_id           int,
    ser_titulo           varchar(255),
    ser_contenido        text,
    ser_imagen           varchar(255),
@@ -259,6 +293,9 @@ engine = innodb;
 alter table campo add constraint fk_relationship_7 foreign key (cli_id)
       references cliente (cli_id) on delete restrict on update restrict;
 
+alter table galeria_archivo add constraint fk_galeria_galeriaarchivo foreign key (gal_id)
+      references galeria (gal_id) on delete restrict on update restrict;
+
 alter table maquinaria add constraint fk_relationship_6 foreign key (mar_id)
       references marca_maquinaria (mar_id) on delete restrict on update restrict;
 
@@ -276,7 +313,11 @@ alter table proyecto add constraint fk_relationship_9 foreign key (pot_id)
 
 alter table proyecto_archivo add constraint fk_relationship_10 foreign key (pro_id)
       references proyecto (pro_id) on delete restrict on update restrict;
-	  
+
+alter table servicio add constraint fk_servicio_subservicio foreign key (ser_ser_id)
+      references servicio (ser_id) on delete restrict on update restrict;
+
+
 INSERT INTO `usuario` (`usu_id`, `usu_nombre`, `usu_apellido`, `usu_correo`, `usu_usuario`, `usu_password`, `created_at`) VALUES
 (1, 'Admin', 'Futamaq', 'admin@futamaq.cl', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2015-10-17 00:57:23');
 
