@@ -211,10 +211,15 @@ class proyectoActions extends sfActions
 
     public function executeEliminar(sfWebRequest $request)
     {
+    $tra_id = date("U").rand(111,999);
+    $util = new Util();
+    $log = $util->setLog("proyectoEliminar[$tra_id]");
         $pro_id = $request->getParameter("pro_id");
         if($request->isMethod("post")){
             try{
 
+                $log->debug("Datos de entrada | pro_id=$pro_id");
+                
                 $proyecto = ProyectoPeer::retrieveByPK($pro_id);
 
                 if(!$proyecto){
@@ -438,6 +443,10 @@ class proyectoActions extends sfActions
         if(!$tipo_proyecto){
           throw new Exception("El tipo seleccionado no existe.");
 
+        }
+        
+        if($tipo_proyecto->getProyectos()){
+            throw new Exception("El tipo no puede ser eliminado, porque hay proyectos configurados con el tipo.");
         }
         
         $tipo_proyecto->delete();
