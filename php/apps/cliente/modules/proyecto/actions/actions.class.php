@@ -63,6 +63,7 @@ class proyectoActions extends sfActions
             $archivos = ProyectoArchivoPeer::doSelect($c1);
             $this->archivos = $archivos;
             //print_r($archivos);
+            $this->url_frontend = sfConfig::get("app_frontend_url");
            
         }catch(Exception $e){
             $this->msg = "Ha ocurrido un error inesperado al obtener los proyectos";
