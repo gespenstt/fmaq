@@ -111,6 +111,7 @@ class nuestramaquinariaActions extends sfActions
     $cm->addAscendingOrderByColumn(MarcaMaquinariaPeer::MAR_NOMBRE);
     $marcas = MarcaMaquinariaPeer::doSelect($cm);
     $this->marcas = $marcas;
+    $this->url_frontend = sfConfig::get("app_frontend_url");
   
     try{
         

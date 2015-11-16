@@ -260,6 +260,8 @@ class proyectoActions extends sfActions
         $util = new Util();
         $log = $util->setLog("proyectoArchivo[$tra_id]");
         
+        $this->url_frontend = sfConfig::get("app_frontend_url");
+        
         try{
             
             $pro_id = $request->getParameter("pro_id");

@@ -8,7 +8,7 @@
                 <div class="col-md-8 border-right">
                         <h3>Editar</h3>
                         <br>
-                        <form method="post" action="<?php echo url_for("servicio/editar");?>" role="form" class="form-horizontal col-md-12">
+                        <form method="post"  enctype="multipart/form-data" action="<?php echo url_for("servicio/editar");?>" role="form" class="form-horizontal col-md-12">
                             <input type="hidden" name="ser_id" value="<?php echo $servicio->getSerId();?>" />
                                 <div class="form-group">
                                         <label class="col-md-4">Titulo</label>
@@ -27,7 +27,7 @@
                                 <div class="form-group">
                                         <label class="col-md-4">Descripción</label>
                                         <div class="col-md-8">
-                                            <textarea name="descripcion" required="required" class="form-control"><?php echo $servicio->getSerContenido();?></textarea>
+                                            <textarea name="contenido" required="required" class="form-control"><?php echo $servicio->getSerContenido();?></textarea>
                                         </div>
                                 </div> <!-- /.form-group -->
 
@@ -52,7 +52,7 @@
                         <br>
                         <ul class="gallery-container">
                             <li style="width: 200px;">
-                                <img style="cursor: default;" src="<?php echo $servicio->getSerImagen(); ?>" />
+                                <img style="cursor: default;" src="<?php echo $url_frontend.$servicio->getSerImagen(); ?>" />
                             </li>
                         </ul>
 

@@ -29,7 +29,7 @@
                                 <form action="<?php echo url_for("proyecto/archivoeliminar");?>" method="post">
                                     <input type="hidden" name="par_id" value="<?php echo $p->getParId(); ?>" />
                                     <input type="hidden" name="pro_id" value="<?php echo $proyecto->getProId(); ?>" />
-                                    <a href="http://localhost/git/fmaq/php/web/<?php echo $p->getParRuta();?>" target="_blank"><i class="icon-download"></i> Descargar</a>
+                                    <a href="<?php echo $url_frontend.$p->getParRuta();?>" target="_blank"><i class="icon-download"></i> Descargar</a>
                                     <a href="javascript:;" class="msgbox-eliminar" data-msg="¿Está seguro de eliminar el archivo?"><i class="icon-remove"></i> Eliminar</a>
                                 </form>
                                 </td>

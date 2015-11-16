@@ -24,7 +24,7 @@
                                 <?php foreach($galeria->getGaleriaArchivos() as $foto){ ?>
                                     <li>
                                             <a href="javascript:;" class="eliminar-imagen" data-id="<?php echo $foto->getGarId();?>" >
-                                            <img src="http://localhost/git/fmaq/php/web/<?php echo $foto->getGarRuta();?>" />
+                                            <img src="<?php echo $url_frontend.$foto->getGarRuta();?>" />
                                             
                                             <input type="checkbox" name="eliminar[]" id="imagen<?php echo $foto->getGarId();?>" value="<?php echo $foto->getGarId();?>" /> Eliminar
                                             </a>

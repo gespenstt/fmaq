@@ -91,6 +91,7 @@ class galeriaActions extends sfActions
           
           
           $this->galeria = $galeria;
+          $this->url_frontend = sfConfig::get("app_frontend_url");
           
           
       } catch (Exception $ex) {

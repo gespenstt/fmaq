@@ -30,6 +30,7 @@ class apiActions extends sfActions
                 case "getCv":
                     $cur_id = $request->getPostParameter("cur_id");
                     $curriculum = CurriculumPeer::retrieveByPK($cur_id);
+                    $url_front = sfConfig::get("app_frontend_url");
                     if(!$curriculum){
                         throw new Exception("No se ha encontrado el CV solicitado.");
                     }
@@ -38,7 +39,7 @@ class apiActions extends sfActions
                         "id" => $curriculum->getCurId(),
                         "carta_presentacion" => $curriculum->getCurCartaPresentacion(),
                         "nombre_archivo" => $curriculum->getCurNombreArchivo(),
-                        "ruta" => $curriculum->getCurRuta(),
+                        "ruta" => $url_front.$curriculum->getCurRuta(),
                         "nombre" => $curriculum->getCurNombre(),
                         "rut" => $curriculum->getCurRut(),
                         "telefono" => $curriculum->getCurTelefono(),

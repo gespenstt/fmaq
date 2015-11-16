@@ -114,7 +114,7 @@
 
                                         <div class="col-md-offset-4 col-md-8">
 
-                                                <button type="submit" class="btn btn-success">Agregar</button>
+                                                <button type="submit" class="btn btn-success">Crear</button>
                                         </div>
 
                                 </div> <!-- /.form-group -->

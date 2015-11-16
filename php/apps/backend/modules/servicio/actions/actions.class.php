@@ -122,6 +122,8 @@ class servicioActions extends sfActions
         }
         
         $this->servicio = $servicio;
+        
+        $this->url_frontend = sfConfig::get("app_frontend_url");
           
       } catch (Exception $ex) {
           
