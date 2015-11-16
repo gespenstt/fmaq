@@ -57,8 +57,6 @@
 			</a>
 			
 			<ul class="dropdown-menu">
-				<li><a href="<?php echo url_for("cuenta/index");?>">Mi cuenta</a></li>
-				<li class="divider"></li>
 				<li><a href="<?php echo url_for("login/salir");?>">Salir</a></li>
 			</ul>
 			
