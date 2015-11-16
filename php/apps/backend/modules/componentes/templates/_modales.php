@@ -197,7 +197,7 @@
 
                             <hr />
 
-                            <form action="<?php echo url_for("maquinaria/eliminarimagen"); ?>" method="post">
+                            <form id="modal-form-url" action="" method="post">
                                 <input type="hidden" id="modal-imagen-id" name="mfo_id" value="" />
                             <input type="submit" value="Eliminar imagen" class="btn btn-danger" />
                             </form>
