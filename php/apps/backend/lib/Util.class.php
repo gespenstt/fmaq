@@ -104,6 +104,71 @@ class Util{
         return $path_db;
     }
     
+    public function setImagenesGaleria($files,$galid,$log){
+        /*$files = $_FILES["imagenes"];
+  	$files_tmp = $files["tmp_name"];
+  	$files_name = $files["name"];
+  	print_r($files_tmp);*/
+  	$files_tmp = $files["tmp_name"];
+  	$files_name = $files["name"]; 
+        
+        $log->debug("setImagenesGaleria");
+        
+        for($idx=0;$idx<count($files_tmp);$idx++){ 
+            if(empty($files_tmp[$idx]) || empty($files_name[$idx])){
+                continue;
+            }
+            //Get ID
+            $galeria_archivo = new GaleriaArchivo();
+            $galeria_archivo->setGalId($galid);
+            $galeria_archivo->save();
+            $galeria_archivo_id = $galeria_archivo->getGarId();
+            
+            $f_tmp = $files_tmp[$idx];
+            $f_name = $galeria_archivo_id."_".$files_name[$idx];
+            $log->debug("Procesando $idx | tmp=$f_tmp | name=$f_name");
+            
+            //UPLOAD DIR FRONTEND(WEB)/UPLOADS            
+            $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."galeria".DIRECTORY_SEPARATOR.$galid.DIRECTORY_SEPARATOR;
+            $path_db = "uploads/galeria/$galid/$f_name";
+            $path_file = $path.$f_name;            
+            
+            $log->debug("id=$galeria_archivo_id | path=$path | path_db=$path_db | path_file=$path_file");
+            
+            //Creacion carpeta
+            mkdir($path, 0755);
+            
+            move_uploaded_file($f_tmp, $path_file);
+            
+            
+            $galeria_archivo->setGarNombre($f_name);
+            $galeria_archivo->setGarRuta($path_db);
+            $galeria_archivo->save();
+            
+            $log->debug("Registro GaleriaArchivo creado | gar_id=$galeria_archivo_id ");
+        }        
+        
+    }
+    
+    public function eliminarImagenesGaleria($files,$galid,$log){
+        $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."galeria".DIRECTORY_SEPARATOR.$galid.DIRECTORY_SEPARATOR;
+        $log->debug("Path=$path | gal_id=$galid");
+        foreach($files as $fi){
+            $galeria_archivo = GaleriaArchivoPeer::retrieveByPK($fi);
+            if(!$galeria_archivo){
+                $log->debug("La imagen de la galería no existe. id=$fi");
+                continue;
+            }
+            $f_name = $galeria_archivo->getGarNombre();
+            if(file_exists($path.$f_name)){
+                unlink($path.$f_name);
+            }
+            $galeria_archivo->delete();
+            $log->debug("Archivo eliminado");
+        }
+
+    }
+    
     public function getMetas($url){
         $html = file_get_contents($url);
 
