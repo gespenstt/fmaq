@@ -80,6 +80,21 @@
                         </ul>     				
                 </li>
 
+                <li class="dropdown <?php echo $util->checkMenu($modulo,"nuestramaquinaria");?>">					
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-wrench"></i>
+                                <span>Nuestra maq.</span>
+                                <b class="caret"></b>
+                        </a>	    
+
+                        <ul class="dropdown-menu">
+                                <li><a href="<?php echo url_for("nuestramaquinaria/index");?>">Todos</a></li>
+                                <li><a href="<?php echo url_for("nuestramaquinaria/agregar");?>">Agregar</a></li>
+                                <li class="divider"></li>
+                                <li><a href="<?php echo url_for("nuestramaquinaria/marcas");?>">Marcas</a></li>
+                        </ul>     				
+                </li>
+
                 <li class="<?php echo $util->checkMenu($modulo,"servicio");?>">
                         <a href="<?php echo url_for("servicio/index");?>">
                                 <i class="icon-tasks"></i>
@@ -97,7 +112,7 @@
                 <li class="<?php echo $util->checkMenu($modulo,"usuario");?>">
                         <a href="<?php echo url_for("usuario/index");?>">
                                 <i class="icon-cog"></i>
-                                <span>Administradores</span>
+                                <span>Admin</span>
                         </a>	    				
                 </li>
 

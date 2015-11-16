@@ -1,14 +1,14 @@
 <?php
 
 /**
- * maquinaria actions.
+ * nuestramaquinaria actions.
  *
  * @package    Futumaq
- * @subpackage maquinaria
+ * @subpackage nuestramaquinaria
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class maquinariaActions extends sfActions
+class nuestramaquinariaActions extends sfActions
 {
  /**
   * Executes index action
@@ -19,7 +19,7 @@ class maquinariaActions extends sfActions
   {
     //GET | listar
     $c = new Criteria();
-    $c->add(MaquinariaPeer::MAQ_VENTA,true);
+    $c->add(MaquinariaPeer::MAQ_VENTA,false);
     $c->addAscendingOrderByColumn(MaquinariaPeer::MAQ_MODELO);
     $pager = new sfPropelPager('maquinaria', 10);
     $pager->setCriteria($c);
@@ -54,17 +54,9 @@ class maquinariaActions extends sfActions
             $maquinaria_modelo = $request->getPostParameter("modelo");
             $maquinaria_marca = $request->getPostParameter("marca");
             $maquinaria_descripcion = $request->getPostParameter("descripcion");
-            $maquinaria_precio = $request->getPostParameter("precio");
-            $maquinaria_fono = $request->getPostParameter("fono");
-            $maquinaria_contacto = $request->getPostParameter("contacto");
-            $maquinaria_email = $request->getPostParameter("email");
-            $maquinaria_ano = $request->getPostParameter("ano");        
-            $maquinaria_hora = $request->getPostParameter("hora");
             
             $log->debug("Datos de entrada | modelo=$maquinaria_modelo | marca=$maquinaria_marca | ".
-                    "descripcion=[$maquinaria_descripcion] | precio=$maquinaria_precio | fono=$maquinaria_fono | ".
-                    "contacto=$maquinaria_contacto | email=$maquinaria_email | ano=$maquinaria_ano | ".
-                    "hora=$maquinaria_hora");
+                    "descripcion=[$maquinaria_descripcion]");
             
             $cm = new Criteria();
             $cm->add(MaquinariaPeer::MAQ_MODELO,$maquinaria_modelo);
@@ -76,16 +68,10 @@ class maquinariaActions extends sfActions
             }
             
             $maquinaria = new Maquinaria();
-            $maquinaria->setMaqVenta(true);
+            $maquinaria->setMaqVenta(false);
             $maquinaria->setMaqModelo($maquinaria_modelo);
             $maquinaria->setMarId($maquinaria_marca);
             $maquinaria->setMaqDescripcion($maquinaria_descripcion);
-            $maquinaria->setMaqPrecio($maquinaria_precio);
-            $maquinaria->setMaqFono($maquinaria_fono);
-            $maquinaria->setMaqContacto($maquinaria_contacto);
-            $maquinaria->setMaqCorreo($maquinaria_email);
-            $maquinaria->setMaqAno($maquinaria_ano);
-            $maquinaria->setMaqHoras($maquinaria_hora);
             $maquinaria->save();
             $maquinaria_id = $maquinaria->getMaqId();
             
@@ -104,10 +90,10 @@ class maquinariaActions extends sfActions
             $log->err($ex->getMessage());
             $this->getUser()->setFlash("flag_msg",$ex->getMessage(),true);
             $this->getUser()->setFlash("flag_tipo","danger",true);
-            $this->redirect("maquinaria/index");       
+            $this->redirect("nuestramaquinaria/index");       
 
         }
-        $this->redirect("maquinaria/editar/?maq_id=$maquinaria_id");
+        $this->redirect("nuestramaquinaria/editar/?maq_id=$maquinaria_id");
         
     }  	
 
@@ -137,7 +123,7 @@ class maquinariaActions extends sfActions
             throw new Exception("La maquinaria seleccionada no existe.");
         }
         
-        if($maquinaria->getMaqVenta()==false){
+        if($maquinaria->getMaqVenta()==true){
             throw new Exception("La maquinaria seleccionada no existe.");                        
         }
         
@@ -146,28 +132,14 @@ class maquinariaActions extends sfActions
             $maquinaria_modelo = $request->getPostParameter("modelo");
             $maquinaria_marca = $request->getPostParameter("marca");
             $maquinaria_descripcion = $request->getPostParameter("descripcion");
-            $maquinaria_precio = $request->getPostParameter("precio");
-            $maquinaria_fono = $request->getPostParameter("fono");
-            $maquinaria_contacto = $request->getPostParameter("contacto");
-            $maquinaria_email = $request->getPostParameter("email");
-            $maquinaria_ano = $request->getPostParameter("ano");        
-            $maquinaria_hora = $request->getPostParameter("hora");
             
             $log->debug("Datos de entrada | modelo=$maquinaria_modelo | marca=$maquinaria_marca | ".
-                    "descripcion=[$maquinaria_descripcion] | precio=$maquinaria_precio | fono=$maquinaria_fono | ".
-                    "contacto=$maquinaria_contacto | email=$maquinaria_email | ano=$maquinaria_ano | ".
-                    "hora=$maquinaria_hora");
+                    "descripcion=[$maquinaria_descripcion]");
             
             $maquinaria->setMaqModelo($maquinaria_modelo);
             $maquinaria->setMarId($maquinaria_marca);
             $maquinaria->setMaqDescripcion($maquinaria_descripcion);
-            $maquinaria->setMaqPrecio($maquinaria_precio);
-            $maquinaria->setMaqFono($maquinaria_fono);
-            $maquinaria->setMaqContacto($maquinaria_contacto);
-            $maquinaria->setMaqCorreo($maquinaria_email);
-            $maquinaria->setMaqAno($maquinaria_ano);
-            $maquinaria->setMaqHoras($maquinaria_hora);
-            $maquinaria->setMaqVenta(true);
+            $maquinaria->setMaqVenta(false);
             $maquinaria->save();
             
             $log->debug("Maquinaria actualizada");
@@ -187,7 +159,7 @@ class maquinariaActions extends sfActions
         $log->err($ex->getMessage());
         $this->getUser()->setFlash("flag_msg",$ex->getMessage(),true);
         $this->getUser()->setFlash("flag_tipo","danger",true);
-        $this->redirect("maquinaria/index");        
+        $this->redirect("nuestramaquinaria/index");        
     }
   	
   }
@@ -217,7 +189,7 @@ class maquinariaActions extends sfActions
                 throw new Exception("La maquinaria seleccionada no existe.");
             }
         
-            if($maquinaria->getMaqVenta()==false){
+            if($maquinaria->getMaqVenta()==true){
                 throw new Exception("La maquinaria seleccionada no existe.");                        
             }
             
@@ -249,7 +221,7 @@ class maquinariaActions extends sfActions
         }
         
     }
-    $this->redirect("maquinaria/index");
+    $this->redirect("nuestramaquinaria/index");
     
   }
   
@@ -278,7 +250,7 @@ class maquinariaActions extends sfActions
         $this->getUser()->setFlash("flag_msg","Imagen eliminada.",true);
         $this->getUser()->setFlash("flag_tipo","success",true);
         
-        $this->redirect("maquinaria/editar/?maq_id=$maquinaria_id");
+        $this->redirect("nuestramaquinaria/editar/?maq_id=$maquinaria_id");
     }
     
   }
@@ -325,7 +297,7 @@ class maquinariaActions extends sfActions
         $log->err($ex->getMessage());
         $this->getUser()->setFlash("flag_msg",$ex->getMessage(),true);
         $this->getUser()->setFlash("flag_tipo","danger",true);
-        $this->redirect("maquinaria/marcas");
+        $this->redirect("nuestramaquinaria/marcas");
     }   
     
   }
@@ -418,10 +390,10 @@ class maquinariaActions extends sfActions
         $log->err($ex->getMessage());
         $this->getUser()->setFlash("flag_msg",$ex->getMessage(),true);
         $this->getUser()->setFlash("flag_tipo","danger",true);
-        $this->redirect("maquinaria/marcas");
+        $this->redirect("nuestramaquinaria/marcas");
     }   
     
-    $this->redirect("maquinaria/marcas"); 
+    $this->redirect("nuestramaquinaria/marcas"); 
     
   }
 }
