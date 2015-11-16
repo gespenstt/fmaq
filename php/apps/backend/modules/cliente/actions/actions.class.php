@@ -121,18 +121,7 @@ class clienteActions extends sfActions
             $log->debug("Datos de entrada | nombre=$nombre | apellido=$apellido | contacto=$contacto | empresa=$empresa | ".
                     "usuario=$usuario | password(largo)=".strlen($password));
             
-            
-            //Buscar cliente
-            $cb = new Criteria();
-            $criterion = $cb->getNewCriterion(ClientePeer::CLI_CORREO,$contacto);
-            $criterion->addOr($cb->getNewCriterion(ClientePeer::CLI_USUARIO,$usuario));
-            $cb->add($criterion);
-            $cb->setIgnoreCase(true);
-            $resCb = ClientePeer::doSelectOne($cb);
-            if($resCb){
-                throw new Exception("El usuario y/o correo de cliente ya existe.");
-            }  
-            
+                       
             
             $cliente->setCliNombre($nombre);
             $cliente->setCliApellido($apellido);
