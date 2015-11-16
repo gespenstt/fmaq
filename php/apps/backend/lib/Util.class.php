@@ -169,6 +169,14 @@ class Util{
 
     }
     
+    public function getServicio($serid){
+        $servicio = ServicioPeer::retrieveByPK($serid);
+        if(!$servicio){
+            return "";
+        }
+        return $servicio->getSerTitulo();
+    }
+    
     public function getMetas($url){
         $html = file_get_contents($url);
 

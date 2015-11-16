@@ -15,6 +15,7 @@
                                   <tr>
                                     <th>#</th>
                                     <th>Titulo</th>
+                                    <th>Servicio padre</th>
                                     <th>Acciones</th>
                                   </tr>
                                 </thead>
@@ -23,7 +24,8 @@
                                 foreach ($pager->getResults() as $p){ ?>
                                   <tr>
                                     <td class="col-md-1"><?php echo $count; ?></td>
-                                    <td class="col-md-7"><?php echo $p->getSerTitulo();?></td>
+                                    <td class="col-md-4"><?php echo $p->getSerTitulo();?></td>
+                                    <td class="col-md-3"><?php echo $util->getServicio($p->getSerSerId());?></td>
                                     <td class="col-md-4">                            
                                     <form action="<?php echo url_for("servicio/eliminar");?>" method="post">
                                         <input type="hidden" name="ser_id" value="<?php echo $p->getSerId(); ?>" />

@@ -46,6 +46,7 @@ class servicioActions extends sfActions
             $path_imagen = $util->setArchivoServicio($imagen,$servicio->getSerId());
             $servicio->setSerImagen($path_imagen);
             $servicio->save();
+                      
             
             $log->debug("Servicio creado");            
                         
@@ -70,8 +71,12 @@ class servicioActions extends sfActions
       $pager->init();
       
       $this->pagina = $request->getParameter('p', 1);
+      $this->util = new Util();
       
-      $this->servicios = ServicioPeer::doSelect($c);
+      $cs = new Criteria();
+      $cs->addAscendingOrderByColumn(ServicioPeer::SER_TITULO);
+      $cs->add(ServicioPeer::SER_SER_ID,null);
+      $this->servicios = ServicioPeer::doSelect($cs);
       
       $this->pager = $pager;
   }
@@ -122,6 +127,12 @@ class servicioActions extends sfActions
         }
         
         $this->servicio = $servicio;
+        $this->util = new Util();
+      
+        $cs = new Criteria();
+        $cs->addAscendingOrderByColumn(ServicioPeer::SER_TITULO);
+        $cs->add(ServicioPeer::SER_SER_ID,null);
+        $this->servicios = ServicioPeer::doSelect($cs);
         
         $this->url_frontend = sfConfig::get("app_frontend_url");
           
