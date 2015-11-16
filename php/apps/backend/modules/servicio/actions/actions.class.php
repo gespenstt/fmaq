@@ -27,27 +27,36 @@ class servicioActions extends sfActions
             $log->debug("executeIndex");
             
             $titulo = $request->getPostParameter("titulo");
-            $link = $request->getPostParameter("link");
-            $descripcion = $request->getPostParameter("descripcion");
+            $contenido = $request->getPostParameter("contenido");
+            $servicio_padre = $request->getPostParameter("servicio");
+            $imagen = $_FILES["imagen"]; 
 
-            $log->debug("Datos de entrada | titulo=$titulo | link=$link | descripcion=$descripcion");
+            $log->debug("Datos de entrada | titulo=$titulo | contenido=$contenido");
             
-            $promocion = new Promocion();
-            $promocion->setPromTitulo($titulo);
-            $promocion->setPromUrlvideo($link);
-            $promocion->setPromDescripcion($descripcion);
-            $promocion->save();
+            $servicio = new Servicio();
+            if($servicio_padre!=""){
+                $servicio->setSerSerId($servicio_padre);                
+            }else{                
+                $servicio->setSerSerId(null); 
+            }
+            $servicio->setSerTitulo($titulo);
+            $servicio->setSerContenido($contenido);
+            $servicio->save();
             
-            $log->debug("Promocion creada actualizado");
+            $path_imagen = $util->setArchivoServicio($imagen,$servicio->getSerId());
+            $servicio->setSerImagen($path_imagen);
+            $servicio->save();
             
-            $this->getUser()->setFlash("flag_msg","Promoción creada.",true);
+            $log->debug("Servicio creado");            
+                        
+            $this->getUser()->setFlash("flag_msg","Servicio creado.",true);
             $this->getUser()->setFlash("flag_tipo","success",true);
             
         } catch (Exception $ex) {
         
             $this->getUser()->setFlash("flag_msg",$ex->getMessage(),true);
             $this->getUser()->setFlash("flag_tipo","danger",true);
-            $this->redirect("home/index");
+            $this->redirect("servicio/index");
 
         }
           
@@ -62,10 +71,89 @@ class servicioActions extends sfActions
       
       $this->pagina = $request->getParameter('p', 1);
       
+      $this->servicios = ServicioPeer::doSelect($c);
+      
       $this->pager = $pager;
   }
   public function executeEditar(sfWebRequest $request)
   {
-      $this->servicio = new Servicio();
+      
+      try{
+          
+        $tra_id = date("U").rand(111,999);
+        $util = new Util();
+        $log = $util->setLog("servicioEditar[$tra_id]");
+
+        $log->debug("executeEditar");
+          
+        $ser_id = $request->getParameter("ser_id");
+        
+        $servicio = ServicioPeer::retrieveByPK($ser_id);
+        
+        if(!$servicio){
+            throw new Exception("El servicio seleccionado no existe.");
+        }
+        
+        if($request->isMethod("post")){
+            
+            $titulo = $request->getPostParameter("titulo");
+            $contenido = $request->getPostParameter("contenido");
+            $servicio_padre = $request->getPostParameter("servicio");
+            $imagen = $_FILES["imagen"];             
+            
+            if($servicio_padre!=""){
+                $servicio->setSerSerId($servicio_padre);                
+            }else{                
+                $servicio->setSerSerId(null); 
+            }
+            $servicio->setSerTitulo($titulo);
+            $servicio->setSerContenido($contenido);
+            $servicio->save();
+            
+            $path_imagen = $util->setArchivoServicio($imagen,$servicio->getSerId());
+            $servicio->setSerImagen($path_imagen);
+            $servicio->save();
+            
+            $log->debug("Servicio actualizado");            
+                        
+            $this->getUser()->setFlash("flag_msg","Servicio actualizado.",true);
+            $this->getUser()->setFlash("flag_tipo","success",true);
+            
+        }
+        
+        $this->servicio = $servicio;
+          
+      } catch (Exception $ex) {
+          
+        $this->getUser()->setFlash("flag_msg",$ex->getMessage(),true);
+        $this->getUser()->setFlash("flag_tipo","danger",true);
+        $this->redirect("servicio/index");
+      }
+  }
+  public function executeEliminar(sfWebRequest $request)
+  {
+      try{
+          
+        $ser_id = $request->getParameter("ser_id");
+        
+        $servicio = ServicioPeer::retrieveByPK($ser_id);
+        
+        if(!$servicio){
+            throw new Exception("El servicio seleccionado no existe.");
+        }
+        
+        $servicio->delete();
+                        
+        $this->getUser()->setFlash("flag_msg","Servicio eliminado.",true);
+        $this->getUser()->setFlash("flag_tipo","success",true);
+          
+      } catch (Exception $ex) {
+          
+        $this->getUser()->setFlash("flag_msg",$ex->getMessage(),true);
+        $this->getUser()->setFlash("flag_tipo","danger",true);
+        $this->redirect("servicio/index");
+
+      }
+        $this->redirect("servicio/index");
   }
 }

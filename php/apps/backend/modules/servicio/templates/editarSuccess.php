@@ -9,7 +9,7 @@
                         <h3>Editar</h3>
                         <br>
                         <form method="post" action="<?php echo url_for("servicio/editar");?>" role="form" class="form-horizontal col-md-12">
-                            <input type="hidden" name="not_id" value="<?php echo $servicio->getSerId();?>" />
+                            <input type="hidden" name="ser_id" value="<?php echo $servicio->getSerId();?>" />
                                 <div class="form-group">
                                         <label class="col-md-4">Titulo</label>
                                         <div class="col-md-8">
@@ -36,7 +36,8 @@
 
                                         <div class="col-md-offset-4 col-md-8">
 
-                                                <button type="submit" class="btn btn-success">Actualizar</button>
+                                                <button type="submit" class="btn btn-success">Actualizar</button> 
+                                                <a href="<?php echo url_for("servicio/index");?>" class="btn btn-default">Volver</a>
                                         </div>
 
                                 </div> <!-- /.form-group -->

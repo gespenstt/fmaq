@@ -23,12 +23,12 @@
                                 foreach ($pager->getResults() as $p){ ?>
                                   <tr>
                                     <td class="col-md-1"><?php echo $count; ?></td>
-                                    <td class="col-md-7"><?php echo $p->getNotTitulo();?></td>
+                                    <td class="col-md-7"><?php echo $p->getSerTitulo();?></td>
                                     <td class="col-md-4">                            
-                                    <form action="<?php echo url_for("noticia/eliminar");?>" method="post">
-                                        <input type="hidden" name="not_id" value="<?php echo $p->getNotId(); ?>" />
-                                        <a href="<?php echo url_for("noticia/editar/?not_id=".$p->getNotId());?>" ><i class="icon-edit"></i> Editar</a> 
-                                        <a href="javascript:;" class="msgbox-eliminar" data-msg="¿Está seguro de eliminar el curriculum?"><i class="icon-remove"></i> Eliminar</a>
+                                    <form action="<?php echo url_for("servicio/eliminar");?>" method="post">
+                                        <input type="hidden" name="ser_id" value="<?php echo $p->getSerId(); ?>" />
+                                        <a href="<?php echo url_for("servicio/editar/?ser_id=".$p->getSerId());?>" ><i class="icon-edit"></i> Editar</a> 
+                                        <a href="javascript:;" class="msgbox-eliminar" data-msg="¿Está seguro de eliminar el servicio?"><i class="icon-remove"></i> Eliminar</a>
                                     </form>
                                     </td>
                                   </tr>
@@ -54,7 +54,7 @@
                                 $links = $pager->getLinks();
 
                                 if($linkSaltoPrimero >= 1):
-                                    echo '<li><a href="'.url_for("noticia/index/?p=1").'">«</a></li>';
+                                    echo '<li><a href="'.url_for("servicio/index/?p=1").'">«</a></li>';
                                 endif;
 
                                 foreach ($links as $e): 
@@ -63,12 +63,12 @@
                                         $current = ' active';
                                     endif;
                                     if(($e < $minimo && $minimo > 1) || ($e <= $maximo)):
-                                    echo '<li class="'.$current.'"><a href="'.url_for("noticia/index/?p=$e").'">'.$e.'</a></li>';
+                                    echo '<li class="'.$current.'"><a href="'.url_for("servicio/index/?p=$e").'">'.$e.'</a></li>';
                                     endif;
                                 endforeach; 
 
                                 if($linkSaltoUltimo <= $ultimaPagina):                                            
-                                    echo '<li><a href="'.url_for("noticia/index/?p=$ultimaPagina").'">»</a></li>';
+                                    echo '<li><a href="'.url_for("servicio/index/?p=$ultimaPagina").'">»</a></li>';
                                 endif;
 
                                 ?>                                         
@@ -82,7 +82,7 @@
 
                         <h4>Agregar</h4>
                         <br>
-                        <form method="post" action="<?php echo url_for("servicio/index");?>" role="form" class="form-horizontal col-md-12">
+                        <form method="post" action="<?php echo url_for("servicio/index");?>" role="form" class="form-horizontal col-md-12" enctype="multipart/form-data" >
 
                                 <div class="form-group">
                                         <label class="col-md-3">Titulo</label>
@@ -91,10 +91,26 @@
                                         </div>
                                 </div> <!-- /.form-group -->
                                 
+                                <?php if($servicios->count()>0){ ?>
+                                <div class="form-group">
+                                        <label class="col-md-3">Servicio padre</label>
+                                        <div class="col-md-9">
+                                            <select name="servicio" class="form-control">
+                                                <option value="">Seleccione</option>
+                                                <?php foreach($servicios as $ser){ ?>
+                                                <option value="<?php echo $ser->getSerId();?>">
+                                                    <?php echo $ser->getSerTitulo();?>
+                                                </option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                </div> <!-- /.form-group -->
+                                <?php } ?>
+                                
                                 <div class="form-group">
                                         <label class="col-md-3">Contenido</label>
                                         <div class="col-md-9">
-                                            <textarea name="titulo" required="required" class="form-control" rows="7"></textarea>
+                                            <textarea name="contenido" required="required" class="form-control" rows="7"></textarea>
                                         </div>
                                 </div> <!-- /.form-group -->
                                 

@@ -89,6 +89,21 @@ class Util{
         $proyecto_archivo->save();
     }
     
+    public function setArchivoServicio($archivo,$ser_id){
+        
+        //UPLOAD DIR FRONTEND(WEB)/UPLOADS       
+        $f_name = $ser_id."_".$archivo["name"];
+        $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."servicio".DIRECTORY_SEPARATOR.$ser_id.DIRECTORY_SEPARATOR;
+        $path_db = "uploads/servicio/$ser_id/$f_name";    
+        $path_file = $path.$f_name;       
+            
+        //Creacion carpeta
+        mkdir($path, 0755);
+        move_uploaded_file($archivo["tmp_name"], $path_file);
+        
+        return $path_db;
+    }
+    
     public function getMetas($url){
         $html = file_get_contents($url);
 
