@@ -29,10 +29,12 @@ $(document).ready(function(){
     $(".modal-imagen").on('click',function(){
         var _this = $(this),
             _img = _this.data("img"),
-            _id = _this.data("id");
-        
+            _id = _this.data("id"),
+            _formurl = _this.data("urlform");
+        console.log(_formurl);
         $("#modal-imagen-img-src").attr("src",_img);
         $("#modal-imagen-id").val(_id);
+        $("#modal-form-url").attr("action",_formurl);
         
         $("#modal-imagen").modal();
     });

@@ -41,6 +41,7 @@ class loginActions extends sfActions
             if(md5($password) == $resCu->getUsuPassword()){
                 $log->debug("Contrasena valida | Login OK");
                 $this->getUser()->setAuthenticated(true);
+                $this->getUser()->setAttribute("usu_id", $resCu->getUsuId());
                 $this->redirect("home/index");
             }else{
                 $this->msg = "La contraseña ingresada es incorrecta.";
@@ -54,6 +55,7 @@ class loginActions extends sfActions
   }
   public function executeSalir(sfWebRequest $request)
   {
+    $this->getUser()->setAttribute("usu_id", null);
     $this->getUser()->setAuthenticated(false);
     $this->redirect("login/index");
   }
