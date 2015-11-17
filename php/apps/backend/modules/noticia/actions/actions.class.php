@@ -42,7 +42,8 @@ class noticiaActions extends sfActions
             $noticia = new Noticia();
             $noticia->setNotTitulo($metas["titulo"]);
             $noticia->setNotImagen($metas["imagen"]);
-            $noticia->setNotDescripcion($metas["bajada"]);
+            $bajada = preg_replace("/&#?[a-z0-9]{2,8};/i","",$metas["bajada"]);
+            $noticia->setNotDescripcion($bajada);
             $noticia->setNotUrl($noticia_url);
             $noticia->save();
             
