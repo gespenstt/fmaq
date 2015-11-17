@@ -43,33 +43,34 @@
 
 			<div class="content-wrap">
 
-				<div class="promo promo-light promo-full uppercase bottommargin-lg header-stick">
-					<div class="container clearfix">
-						<h3 style="letter-spacing: 2px;">¿Estás interesado en trabajar con nosotros?</h3>
-						<span>Contáctanos completando el siguiente formulario y se parte de nuestro equipo</span>
-						<a href="<?php echo url_for("contacto/index");?>" class="button button-large button-border button-rounded">Contactar aquí</a>
-					</div>
-				</div>
+				
+                         
+                            
 
 				<div class="container bottommargin-lg clearfix">
                                     
-                                    <?php for($a=1;$a<=3;$a++){?>
+                                    <?php
+                                    $count = 1; 
+                                     
+                                    foreach($promos as $promo){ 
+                                       
+                                        ?>
 
-                                        <div class="col_one_third nobottommargin <?php if($a==3){ echo "col_last"; }?>">
+                                        <div class="col_one_third nobottommargin <?php if($count==3){ echo "col_last"; }?>">
 						<div class="feature-box media-box">
 							<div class="fbox-media">
-								<img style="border-radius: 2px;" src="<?php echo public_path("uploads/400x250-servicios-home-1.jpg");?>" alt="">
+                                                            <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo substr($promo->getPromUrlvideo(),strpos($promo->getPromUrlvideo(), 'v=')+2,15);   ?>" frameborder="0" allowfullscreen></iframe>
 							</div>
 							<div class="fbox-desc">
-								<h3>Profesionales expertos.<span class="subtitle">Contamos con personal especializado.</span></h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi rem, facilis nobis voluptatum est voluptatem accusamus molestiae eaque perspiciatis mollitia.</p>
+								<h3><?php echo $promo->getPromTitulo(); ?><span class="subtitle"><?php echo $promo->getPromDescripcion(); ?></span></h3>
+								
 							</div>
 						</div>
 					</div>
-                                    <?php } ?>
+                                    <?php $count++; } ?>
 
 				</div>
-
+ 
 				<div class="container bottommargin-lg clearfix">
 
 					<div class="heading-block center">
@@ -92,7 +93,11 @@
 					</div>
 
 				</div>
-
+                                <a href="<?php echo url_for("contacto/index");?>" class="button button-3d nobottomborder button-full center tright bottommargin-lg t300 font-primary" style="font-size: 26px;">
+					<div class="container clearfix">
+						¿Estás interesado en alguno de nuestros servicios? <strong>Consulta aquí</strong> <i class="icon-angle-right" style="top:3px;"></i>
+					</div>
+				</a>
 				<div class="heading-block center">
 					<h2 class="">Nuestras máquinas:</h2>
 				</div>
@@ -117,12 +122,14 @@
                                     <?php } ?>
 
 				</div>
-
-				<a href="<?php echo url_for("contacto/index");?>" class="button button-3d nobottomborder button-full center tright bottommargin-lg t300 font-primary" style="font-size: 26px;">
+                                <div class="promo promo-light promo-full uppercase bottommargin-lg header-stick">
 					<div class="container clearfix">
-						¿Estás interesado en alguno de nuestros servicios? <strong>Consulta aquí</strong> <i class="icon-angle-right" style="top:3px;"></i>
+						<h3 style="letter-spacing: 2px;">¿Estás interesado en trabajar con nosotros?</h3>
+						<span>Contáctanos completando el siguiente formulario y se parte de nuestro equipo</span>
+						<a href="<?php echo url_for("contacto/index");?>" class="button button-large button-border button-rounded">Contactar aquí</a>
 					</div>
-				</a>
+				</div>
+				
 
 				<div class="container topmargin-lg cleafix">
 
@@ -143,21 +150,25 @@
 
 						<div id="oc-posts" class="owl-carousel posts-carousel">
                                                     
-                                                    <?php for($a=1;$a<=6;$a++){?>
+                                                    <?php foreach($notis as $noti){ ?>
 
 							<div class="oc-item">
 								<div class="ipost clearfix">
 									<div class="entry-image">
-										<a href="#" data-lightbox="image"><img class="image_fade" src="<?php echo public_path("uploads/500x280-noticias-home-1.jpg");?>" alt=""></a>
+										<a href="<?php echo $noti->getNotUrl(); ?>" data-lightbox="image"><img class="image_fade" src="<?php echo $noti->getNotImagen(); ?>" alt=""></a>
 									</div>
 									<div class="entry-title">
-										<h3><a href="#">Este es el título de la noticia <?php echo $a;?></a></h3>
+										<h3><a href="<?php echo $noti->getNotUrl(); ?>"><?php echo $noti->getNotTitulo(); ?></a></h3>
 									</div>
-									<ul class="entry-meta clearfix">
-										<li>10 julio 2015</li>
-									</ul>
+									
 									<div class="entry-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in.</p>
+                                                                            <p><?php
+                                                                            $string = htmlentities($noti->getNotDescripcion(), null, 'utf-8');
+                                                                            $content = str_replace("&nbsp;", "", $string);
+                                                                            $content = html_entity_decode($content);
+                                                                            
+                                                                            
+                                                                            echo substr(  preg_replace("/&#?[a-z0-9]+;/i","", $content)  ,0,100); ?></p>
 									</div>
 								</div>
 							</div>
@@ -210,7 +221,7 @@
 								</div>
 
 								<ul class="iconlist iconlist-large iconlist-color">
-									<li><i class="icon-ok"></i> Al servicio dela gricultor desde 2005</li>
+									<li><i class="icon-ok"></i> Al servicio del agricultor desde 2005</li>
 									<li><i class="icon-ok"></i> Servicio georeferenciado de control</li>
 									<li><i class="icon-ok"></i> Última tecnología en maquinaria</li>
 								</ul>

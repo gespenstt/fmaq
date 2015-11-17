@@ -5,4 +5,4 @@
 all:
     frontend:
         #URL CON / AL FINAL
-        url: http://localhost/git/fmaq/php/web/
+        url: http://localhost/futamaq/web/

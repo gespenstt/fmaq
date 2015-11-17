@@ -17,6 +17,10 @@ class noticiasActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-      
+            $d = new Criteria();
+            $d->addDescendingOrderByColumn(NoticiaPeer::NOT_ID);
+            $d->setLimit(10);
+            $noticias = NoticiaPeer::doSelect($d);
+            $this->notis = $noticias;
   }
 }

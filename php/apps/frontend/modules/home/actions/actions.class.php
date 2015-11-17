@@ -17,6 +17,19 @@ class homeActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-      
+        
+            $c = new Criteria();
+            $c->addDescendingOrderByColumn(PromocionPeer::PROM_ID);
+            $c->setLimit(3);
+            $promociones = PromocionPeer::doSelect($c);
+            $this->promos = $promociones;
+            //print_r($promociones);
+            
+            $d = new Criteria();
+            $d->addDescendingOrderByColumn(NoticiaPeer::NOT_ID);
+            $d->setLimit(5);
+            $noticias = NoticiaPeer::doSelect($d);
+            $this->notis = $noticias;
+        
   }
 }

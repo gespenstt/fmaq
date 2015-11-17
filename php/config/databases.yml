@@ -12,9 +12,9 @@ all:
     class: sfPropelDatabase
     param:
       classname: PropelPDO
-      dsn: 'mysql:host=localhost;dbname=futumaq'
+      dsn: 'mysql:host=localhost;dbname=futamaq'
       username: root
-      password: admin
+      password: 
       encoding: utf8
       persistent: true
       pooling: true

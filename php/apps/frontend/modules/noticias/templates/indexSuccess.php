@@ -31,22 +31,22 @@
                         ============================================= -->
                         <div id="posts" class="small-thumbs">
                             
-                            <?php for($a=1;$a<=10;$a++){ ?>
+                            <?php foreach($notis as $noti){ ?>
 
                             <div class="entry clearfix">
                                 <div class="entry-image">
-                                    <a href="#" data-lightbox="image"><img class="image_fade" src="<?php echo public_path("uploads/400x300-2.jpg");?>" alt=""></a>
+                                    <a href="<?php echo $noti->getNotImagen(); ?>" data-lightbox="image"><img class="image_fade" src="<?php echo $noti->getNotImagen(); ?>" alt=""></a>
                                 </div>
                                 <div class="entry-c">
                                     <div class="entry-title">
-                                        <h2><a href="#" target="_blank">Este es el título de la noticia <?php echo $a; ?></a></h2>
+                                        <h2><a href="<?php echo $noti->getNotUrl(); ?>" target="_blank"><?php echo $noti->getNotTitulo(); ?></a></h2>
                                     </div>
                                     <ul class="entry-meta clearfix">
-                                        <li><i class="icon-calendar3"></i> 10 julio 2015</li>
+                                        <li><i class="icon-calendar3"></i> <?php echo $noti->getCreatedAt(); ?></li>
                                     </ul>
                                     <div class="entry-content">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in. Eligendi, deserunt, blanditiis est quisquam doloribus voluptate id aperiam ea ipsum magni aut perspiciatis rem voluptatibus officia eos rerum deleniti quae nihil facilis repellat atque vitae voluptatem libero at eveniet veritatis ab facere.</p>
-                                        <a href="#" target="_blank" class="more-link">leer más</a>
+                                        <p><?php echo $noti->getNotDescripcion(); ?></p>
+                                        <a href="<?php echo $noti->getNotUrl(); ?>" target="_blank" class="more-link">leer más</a>
                                     </div>
                                 </div>
                             </div>
@@ -57,10 +57,10 @@
 
                         <!-- Pagination
                         ============================================= -->
-                        <ul class="pager nomargin">
+                       <!-- <ul class="pager nomargin">
                             <li class="previous"><a href="#">&larr; Anteriores</a></li>
                             <li class="next"><a href="#">Siguientes &rarr;</a></li>
-                        </ul><!-- .pager end -->
+                        </ul> .pager end -->
 
                     </div><!-- .postcontent end -->
 
