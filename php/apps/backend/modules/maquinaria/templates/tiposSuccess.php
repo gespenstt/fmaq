@@ -1,12 +1,12 @@
 				<div class="widget-header">
 					<i class="icon-wrench"></i>
-					<h3>Nuestra Maquinaria</h3>
+					<h3>Maquinaria</h3>
 				</div> <!-- /widget-header -->
 				
 				<div class="widget-content">	
 
 					<div class="col-md-8 border-right">
-						<h3>Marcas</h3>
+						<h3>Tipos de maquinaria</h3>
 						<br>
 						<div class="table-responsive">
                                                     <?php if($pager->count()>0){ ?>
@@ -23,13 +23,13 @@
                                                         foreach ($pager->getResults() as $p){ ?>
 						          <tr>
 						            <td class="col-md-1"><?php echo $count; ?></td>
-						            <td class="col-md-7"><?php echo $p->getMarNombre(); ?></td>
+						            <td class="col-md-7"><?php echo $p->getTmaNombre(); ?></td>
 						            <td class="col-md-4">
-                                                                <form action="<?php echo url_for("nuestramaquinaria/marcasAcciones");?>" method="post">
+                                                                <form action="<?php echo url_for("maquinaria/tiposAcciones");?>" method="post">
                                                                     <input type="hidden" name="accion" value="eliminar" />
-                                                                    <input type="hidden" name="mar_id" value="<?php echo $p->getMarId(); ?>" />
-                                                                    <a href="<?php echo url_for("nuestramaquinaria/marcasEditar/?mar_id=".$p->getMarId()); ?>"><i class="icon-edit"></i> Editar</a>
-                                                                    <a href="javascript:;" class="msgbox-eliminar" data-msg="¿Está seguro de eliminar la marca?"><i class="icon-remove"></i> Eliminar</a>
+                                                                    <input type="hidden" name="tma_id" value="<?php echo $p->getTmaId(); ?>" />
+                                                                    <a href="<?php echo url_for("maquinaria/tiposEditar/?tma_id=".$p->getTmaId()); ?>"><i class="icon-edit"></i> Editar</a>
+                                                                    <a href="javascript:;" class="msgbox-eliminar" data-msg="¿Está seguro de eliminar el tipo?"><i class="icon-remove"></i> Eliminar</a>
                                                                 </form>
 						            </td>
 						          </tr>
@@ -38,7 +38,7 @@
 						        </tbody>
 					      	</table>
                                                     <?php }else{ ?>
-                                                    <p>No existen registros de marcas.</p>
+                                                    <p>No existen registros de tipos.</p>
                                                     <?php } ?>
 					  	</div>
 
@@ -56,7 +56,7 @@
                                         $links = $pager->getLinks();
                                         
                                         if($linkSaltoPrimero >= 1):
-                                            echo '<li><a href="'.url_for("nuestramaquinaria/marcas/?p=1").'">«</a></li>';
+                                            echo '<li><a href="'.url_for("maquinaria/tipos/?p=1").'">«</a></li>';
                                         endif;
                                         
                                         foreach ($links as $e): 
@@ -65,12 +65,12 @@
                                                 $current = ' active';
                                             endif;
                                             if(($e < $minimo && $minimo > 1) || ($e <= $maximo)):
-                                            echo '<li class="'.$current.'"><a href="'.url_for("nuestramaquinaria/marcas/?p=$e").'">'.$e.'</a></li>';
+                                            echo '<li class="'.$current.'"><a href="'.url_for("maquinaria/tipos/?p=$e").'">'.$e.'</a></li>';
                                             endif;
                                         endforeach; 
                                         
                                         if($linkSaltoUltimo <= $ultimaPagina):                                            
-                                            echo '<li><a href="'.url_for("nuestramaquinaria/marcas/?p=$ultimaPagina").'">»</a></li>';
+                                            echo '<li><a href="'.url_for("maquinaria/tipos/?p=$ultimaPagina").'">»</a></li>';
                                         endif;
                                         
                                         ?>                                         
@@ -84,12 +84,12 @@
 					
 						<h4>Agregar</h4>
 						<br>
-                                                <form method="post" action="<?php echo url_for("nuestramaquinaria/marcasAcciones"); ?>" role="form" class="form-horizontal col-md-12">
+                                                <form method="post" action="<?php echo url_for("maquinaria/tiposAcciones"); ?>" role="form" class="form-horizontal col-md-12">
                                                     <input type="hidden" name="accion" value="agregar" />
 							<div class="form-group">
-								<label class="col-md-4">Marca</label>
+								<label class="col-md-4">Tipo</label>
 								<div class="col-md-8">
-									<input type="text" name="marca" placeholder="Ingrese marca" required="required" value="" class="form-control" />
+									<input type="text" name="nombre" placeholder="Ingrese tipo" required="required" value="" class="form-control" />
 								</div>
 							</div> <!-- /.form-group -->
 

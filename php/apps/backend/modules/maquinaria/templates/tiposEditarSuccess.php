@@ -1,21 +1,21 @@
 				<div class="widget-header">
 					<i class="icon-wrench"></i>
-					<h3>Nuestra Maquinaria</h3>
+					<h3>Maquinaria</h3>
 				</div> <!-- /widget-header -->
 				
 				<div class="widget-content">	
 
 					<div class="col-md-4">
 					
-						<h4>Editar</h4>
+						<h4>Editar tipo</h4>
 						<br>
-                                                <form method="post" action="<?php echo url_for("nuestramaquinaria/marcasAcciones"); ?>" role="form" class="form-horizontal col-md-12">
+                                                <form method="post" action="<?php echo url_for("maquinaria/tiposAcciones"); ?>" role="form" class="form-horizontal col-md-12">
                                                     <input type="hidden" name="accion" value="modificar" />
-                                                    <input type="hidden" name="mar_id" value="<?php echo $marca->getMarId();?>" />
+                                                    <input type="hidden" name="tma_id" value="<?php echo $tipo->getTmaId();?>" />
  							<div class="form-group">
-								<label class="col-md-4">Marca</label>
+								<label class="col-md-4">Tipo</label>
 								<div class="col-md-8">
-                                                                    <input type="text" name="marca" placeholder="Ingrese marca" required="required" value="<?php echo $marca->getMarNombre();?>" class="form-control" />
+                                                                    <input type="text" name="nombre" placeholder="Ingrese tipo" required="required" value="<?php echo $tipo->getTmaNombre();?>" class="form-control" />
 								</div>
 							</div> <!-- /.form-group -->
 

@@ -43,6 +43,11 @@ class maquinariaActions extends sfActions
     $cm->addAscendingOrderByColumn(MarcaMaquinariaPeer::MAR_NOMBRE);
     $marcas = MarcaMaquinariaPeer::doSelect($cm);
     $this->marcas = $marcas;
+    
+    $ct = new Criteria();
+    $ct->addAscendingOrderByColumn(TipoMaquinariaPeer::TMA_NOMBRE);
+    $tipos = TipoMaquinariaPeer::doSelect($ct);
+    $this->tipos = $tipos;
   	/*$files = $_FILES["imagenes"];
   	$files_tmp = $files["tmp_name"];
   	$files_name = $files["name"];
@@ -60,11 +65,12 @@ class maquinariaActions extends sfActions
             $maquinaria_email = $request->getPostParameter("email");
             $maquinaria_ano = $request->getPostParameter("ano");        
             $maquinaria_hora = $request->getPostParameter("hora");
+            $maquinaria_tipo = $request->getPostParameter("tipo");
             
             $log->debug("Datos de entrada | modelo=$maquinaria_modelo | marca=$maquinaria_marca | ".
                     "descripcion=[$maquinaria_descripcion] | precio=$maquinaria_precio | fono=$maquinaria_fono | ".
                     "contacto=$maquinaria_contacto | email=$maquinaria_email | ano=$maquinaria_ano | ".
-                    "hora=$maquinaria_hora");
+                    "hora=$maquinaria_hora | tipo=$maquinaria_tipo");
             
             $cm = new Criteria();
             $cm->add(MaquinariaPeer::MAQ_MODELO,$maquinaria_modelo);
@@ -86,6 +92,7 @@ class maquinariaActions extends sfActions
             $maquinaria->setMaqCorreo($maquinaria_email);
             $maquinaria->setMaqAno($maquinaria_ano);
             $maquinaria->setMaqHoras($maquinaria_hora);
+            $maquinaria->setTmaId($maquinaria_tipo);
             $maquinaria->save();
             $maquinaria_id = $maquinaria->getMaqId();
             
@@ -126,6 +133,11 @@ class maquinariaActions extends sfActions
     $marcas = MarcaMaquinariaPeer::doSelect($cm);
     $this->marcas = $marcas;
     
+    $ct = new Criteria();
+    $ct->addAscendingOrderByColumn(TipoMaquinariaPeer::TMA_NOMBRE);
+    $tipos = TipoMaquinariaPeer::doSelect($ct);
+    $this->tipos = $tipos;
+    
     $this->url_frontend = sfConfig::get("app_frontend_url");
   
     try{
@@ -154,11 +166,12 @@ class maquinariaActions extends sfActions
             $maquinaria_email = $request->getPostParameter("email");
             $maquinaria_ano = $request->getPostParameter("ano");        
             $maquinaria_hora = $request->getPostParameter("hora");
+            $maquinaria_tipo = $request->getPostParameter("tipo");
             
             $log->debug("Datos de entrada | modelo=$maquinaria_modelo | marca=$maquinaria_marca | ".
                     "descripcion=[$maquinaria_descripcion] | precio=$maquinaria_precio | fono=$maquinaria_fono | ".
                     "contacto=$maquinaria_contacto | email=$maquinaria_email | ano=$maquinaria_ano | ".
-                    "hora=$maquinaria_hora");
+                    "hora=$maquinaria_hora | tipo=$maquinaria_tipo");
             
             $maquinaria->setMaqModelo($maquinaria_modelo);
             $maquinaria->setMarId($maquinaria_marca);
@@ -170,6 +183,7 @@ class maquinariaActions extends sfActions
             $maquinaria->setMaqAno($maquinaria_ano);
             $maquinaria->setMaqHoras($maquinaria_hora);
             $maquinaria->setMaqVenta(true);
+            $maquinaria->setTmaId($maquinaria_tipo);
             $maquinaria->save();
             
             $log->debug("Maquinaria actualizada");
@@ -424,6 +438,148 @@ class maquinariaActions extends sfActions
     }   
     
     $this->redirect("maquinaria/marcas"); 
+    
+  }
+  
+  public function executeTipos(sfWebRequest $request)
+  {
+    //GET | listar
+    $c = new Criteria();
+    $c->addDescendingOrderByColumn(TipoMaquinariaPeer::CREATED_AT);
+    $pager = new sfPropelPager('tipomaquinaria', 10);
+    $pager->setCriteria($c);
+    $pager->setPage($request->getParameter('p', 1));
+    $pager->init();
+
+    $this->pagina = $request->getParameter('p', 1);
+
+    $this->pager = $pager;     
+    
+    
+  }
+  
+  public function executeTiposEditar(sfWebRequest $request)
+  {
+    $tra_id = date("U").rand(111,999);
+    $util = new Util();
+    $log = $util->setLog("maquinariaMarcasEditar[$tra_id]"); 
+
+    $log->debug("executeMarcasEditar");
+  
+    try{
+        
+        $tma_id = $request->getParameter("tma_id");
+        $log->debug("Datos de entrada | tma_id=$tma_id");
+        
+        $tipo = TipoMaquinariaPeer::retrieveByPK($tma_id);
+        
+        if(!$tipo){
+            throw new Exception("El tipo que quiere editar, no existe.");
+        }
+        
+        $this->tipo = $tipo;
+        
+    } catch (Exception $ex) {
+        $log->err($ex->getMessage());
+        $this->getUser()->setFlash("flag_msg",$ex->getMessage(),true);
+        $this->getUser()->setFlash("flag_tipo","danger",true);
+        $this->redirect("maquinaria/tipos");
+    }   
+    
+  }
+  public function executeTiposAcciones(sfWebRequest $request)
+  {
+    $tra_id = date("U").rand(111,999);
+    $util = new Util();
+    $log = $util->setLog("maquinariaMarcasAcciones[$tra_id]"); 
+
+    $log->debug("executeMarcasAcciones");
+    
+    try{
+
+        if($request->isMethod("post")){
+            //POST | agregar - modificar - eliminar     
+            $accion = $request->getPostParameter("accion");
+            $log->debug("POST | accion=$accion");
+
+            switch($accion){
+                case "agregar":
+                    
+                        $nombre = $request->getPostParameter("nombre");
+                        $log->debug("Datos de entrada | tipo=$nombre");
+                        
+                        $cm = new Criteria();
+                        $cm->add(TipoMaquinariaPeer::TMA_NOMBRE,$nombre);
+                        $cm->setIgnoreCase(true);
+                        $resCm = TipoMaquinariaPeer::doSelectOne($cm);
+                        
+                        if($resCm){
+                            throw new Exception("El tipo ingresado ya existe");
+                        }
+                        
+                        $tipo = new TipoMaquinaria();
+                        $tipo->setTmaNombre($nombre);
+                        $tipo->save();
+                        
+                        $log->debug("Tipo creado");
+                        
+                        $this->getUser()->setFlash("flag_msg","El tipo ha sido creado.",true);
+                        $this->getUser()->setFlash("flag_tipo","success",true);
+                        
+                    break;
+                case "modificar":
+                    
+                        $tma_id = $request->getPostParameter("tma_id");
+                        $nombre = $request->getPostParameter("nombre");
+                        $log->debug("Datos de entrada | tma_id=$tma_id | tipo=$nombre");
+                        
+                        $tipo = TipoMaquinariaPeer::retrieveByPK($tma_id);
+                        
+                        if(!$tipo){
+                            throw new Exception("El tipo que quiere modificar no existe.");
+                        }
+                        $tipo->setTmaNombre($nombre);
+                        $tipo->save();
+                        
+                        $log->debug("Tipo creada");
+                        
+                        $this->getUser()->setFlash("flag_msg","El tipo ha sido actualizado.",true);
+                        $this->getUser()->setFlash("flag_tipo","success",true);
+                        
+                    break;
+                case "eliminar":
+                    
+                        $tma_id = $request->getPostParameter("tma_id");
+                        $log->debug("Datos de entrada | tma_id=$tma_id");
+                        
+                        $tipo = TipoMaquinariaPeer::retrieveByPK($tma_id);
+                        
+                        if(!$tipo){
+                            throw new Exception("El tipo que quiere eliminar no existe.");
+                        }
+                        
+                        $tipo->delete();
+                        
+                        $log->debug("Tipo eliminada");
+                        
+                        $this->getUser()->setFlash("flag_msg","El tipo ha sido eliminado.",true);
+                        $this->getUser()->setFlash("flag_tipo","success",true);
+                        
+                        
+                    break;
+            }
+            
+                          
+        }
+        
+    } catch (Exception $ex) {
+        $log->err($ex->getMessage());
+        $this->getUser()->setFlash("flag_msg",$ex->getMessage(),true);
+        $this->getUser()->setFlash("flag_tipo","danger",true);
+        $this->redirect("maquinaria/tipos");
+    }   
+    
+    $this->redirect("maquinaria/tipos"); 
     
   }
 }

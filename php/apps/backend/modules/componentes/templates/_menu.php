@@ -77,12 +77,13 @@
                                 <li><a href="<?php echo url_for("maquinaria/agregar");?>">Agregar</a></li>
                                 <li class="divider"></li>
                                 <li><a href="<?php echo url_for("maquinaria/marcas");?>">Marcas</a></li>
+                                <li><a href="<?php echo url_for("maquinaria/tipos");?>">Tipos</a></li>
                         </ul>     				
                 </li>
 
                 <li class="dropdown <?php echo $util->checkMenu($modulo,"nuestramaquinaria");?>">					
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="icon-wrench"></i>
+                                <i class="icon-magnet"></i>
                                 <span>Nuestra maq.</span>
                                 <b class="caret"></b>
                         </a>	    
@@ -90,8 +91,6 @@
                         <ul class="dropdown-menu">
                                 <li><a href="<?php echo url_for("nuestramaquinaria/index");?>">Todos</a></li>
                                 <li><a href="<?php echo url_for("nuestramaquinaria/agregar");?>">Agregar</a></li>
-                                <li class="divider"></li>
-                                <li><a href="<?php echo url_for("nuestramaquinaria/marcas");?>">Marcas</a></li>
                         </ul>     				
                 </li>
 

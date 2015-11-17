@@ -6,7 +6,7 @@
     use_javascript("maquinaria.js");
 ?>
 				<div class="widget-header">
-					<i class="icon-wrench"></i>
+					<i class="icon-magnet"></i>
 					<h3>Nuestra Maquinaria</h3>
 				</div> <!-- /widget-header -->
 				
@@ -22,13 +22,13 @@
 						<br>
 
 							<div class="form-group">
-								<label class="col-md-4">Modelo</label>
+								<label class="col-md-4">Título</label>
 								<div class="col-md-8">
-									<input type="text" name="modelo" placeholder="Modelo" required="required" value="" class="form-control" />
+									<input type="text" name="modelo" placeholder="Título" required="required" value="" class="form-control" />
 								</div>
 							</div> <!-- /.form-group -->
 
-							<div class="form-group">
+							<?php /*<div class="form-group">
 								<label class="col-md-4">Marca</label>
 								<div class="col-md-8">
 									<select name="marca" class="form-control" required="required">
@@ -38,7 +38,7 @@
                                                                             <?php } ?>
 									</select>
 								</div>
-							</div> <!-- /.form-group -->
+							</div> <!-- /.form-group -->*/?>
 
 							<div class="form-group">
 								<label class="col-md-4">Descripción</label>

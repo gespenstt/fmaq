@@ -43,6 +43,18 @@
 							</div> <!-- /.form-group -->
 
 							<div class="form-group">
+								<label class="col-md-4">Tipo</label>
+								<div class="col-md-8">
+									<select name="tipo" class="form-control" required="required">
+                                                                            <option>Seleccione...</option>
+                                                                            <?php foreach($tipos as $m){ ?>
+                                                                            <option value="<?php echo $m->getTmaId();?>" <?php if($m->getTmaId() == $maquinaria->getTmaId()){ echo "selected"; } ?>><?php echo $m->getTmaNombre();?></option>
+                                                                            <?php } ?>
+									</select>
+								</div>
+							</div> <!-- /.form-group -->
+
+							<div class="form-group">
 								<label class="col-md-4">Descripción</label>
 								<div class="col-md-8">
                                                                     <textarea name="descripcion" required="required" class="form-control"><?php echo $maquinaria->getMaqDescripcion(); ?></textarea>

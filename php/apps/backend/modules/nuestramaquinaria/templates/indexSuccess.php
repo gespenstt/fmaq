@@ -1,5 +1,5 @@
 				<div class="widget-header">
-					<i class="icon-wrench"></i>
+					<i class="icon-magnet"></i>
 					<h3>Nuestra Maquinaria</h3>
 				</div> <!-- /widget-header -->
 				
@@ -14,7 +14,7 @@
 					        <thead>
 					          <tr>
 					            <th>#</th>
-					            <th>Modelo</th>
+					            <th>Título</th>
 					            <th>Descripción</th>
 					            <th>Acciones</th>
 					          </tr>
