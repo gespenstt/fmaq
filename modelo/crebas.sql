@@ -1,12 +1,14 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     13/11/2015 23:54:29                          */
+/* Created on:     17/11/2015 18:58:03                          */
 /*==============================================================*/
 
 
 drop table if exists campo;
 
 drop table if exists cliente;
+
+drop table if exists cotizacion;
 
 drop table if exists curriculum;
 
@@ -31,6 +33,12 @@ drop table if exists proyecto;
 drop table if exists proyecto_archivo;
 
 drop table if exists servicio;
+
+drop table if exists subservicio;
+
+drop table if exists subservicio_archivo;
+
+drop table if exists tipo_maquinaria;
 
 drop table if exists tipo_proyecto;
 
@@ -70,6 +78,24 @@ create table cliente
 engine = innodb;
 
 /*==============================================================*/
+/* Table: cotizacion                                            */
+/*==============================================================*/
+create table cotizacion
+(
+   cot_id               int not null auto_increment,
+   cot_nombre           text,
+   cot_email            text,
+   cot_fono             varchar(50),
+   cot_asunto           text,
+   cot_direccion        text,
+   cot_hectareas        int,
+   cot_mensaje          text,
+   created_at           datetime,
+   primary key (cot_id)
+)
+engine = innodb;
+
+/*==============================================================*/
 /* Table: curriculum                                            */
 /*==============================================================*/
 create table curriculum
@@ -81,6 +107,7 @@ create table curriculum
    cur_nombre           varchar(100),
    cur_rut              varchar(15),
    cur_telefono         varchar(15),
+   cur_destacado        bool default false,
    created_at           datetime,
    primary key (cur_id)
 )
@@ -121,6 +148,7 @@ create table maquinaria
 (
    maq_id               int not null auto_increment,
    mar_id               int,
+   tma_id               int,
    maq_modelo           varchar(50),
    maq_descripcion      text,
    maq_precio           int,
@@ -246,13 +274,53 @@ engine = innodb;
 create table servicio
 (
    ser_id               int not null auto_increment,
-   ser_ser_id           int,
    ser_titulo           varchar(255),
    ser_contenido        text,
    ser_imagen           varchar(255),
    created_at           datetime,
    updated_at           datetime,
    primary key (ser_id)
+)
+engine = innodb;
+
+/*==============================================================*/
+/* Table: subservicio                                           */
+/*==============================================================*/
+create table subservicio
+(
+   sub_id               int not null auto_increment,
+   ser_id               int not null,
+   sub_titulo           varchar(300),
+   sub_contenido        text,
+   created_at           datetime,
+   updated_at           datetime,
+   primary key (sub_id)
+)
+engine = innodb;
+
+/*==============================================================*/
+/* Table: subservicio_archivo                                   */
+/*==============================================================*/
+create table subservicio_archivo
+(
+   sar_id               int not null auto_increment,
+   sub_id               int not null,
+   sar_nombre           varchar(300),
+   sar_ruta             varchar(300),
+   created_at           datetime,
+   primary key (sar_id)
+)
+engine = innodb;
+
+/*==============================================================*/
+/* Table: tipo_maquinaria                                       */
+/*==============================================================*/
+create table tipo_maquinaria
+(
+   tma_id               int not null auto_increment,
+   tma_nombre           varchar(300),
+   created_at           datetime,
+   primary key (tma_id)
 )
 engine = innodb;
 
@@ -296,6 +364,9 @@ alter table campo add constraint fk_relationship_7 foreign key (cli_id)
 alter table galeria_archivo add constraint fk_galeria_galeriaarchivo foreign key (gal_id)
       references galeria (gal_id) on delete restrict on update restrict;
 
+alter table maquinaria add constraint fk_relationship_12 foreign key (tma_id)
+      references tipo_maquinaria (tma_id) on delete restrict on update restrict;
+
 alter table maquinaria add constraint fk_relationship_6 foreign key (mar_id)
       references marca_maquinaria (mar_id) on delete restrict on update restrict;
 
@@ -314,10 +385,13 @@ alter table proyecto add constraint fk_relationship_9 foreign key (pot_id)
 alter table proyecto_archivo add constraint fk_relationship_10 foreign key (pro_id)
       references proyecto (pro_id) on delete restrict on update restrict;
 
-alter table servicio add constraint fk_servicio_subservicio foreign key (ser_ser_id)
+alter table subservicio add constraint fk_servicio_subservicio foreign key (ser_id)
       references servicio (ser_id) on delete restrict on update restrict;
+
+alter table subservicio_archivo add constraint fk_subservicio_subservicioarchivo foreign key (sub_id)
+      references subservicio (sub_id) on delete restrict on update restrict;
+
 
 
 INSERT INTO `usuario` (`usu_id`, `usu_nombre`, `usu_apellido`, `usu_correo`, `usu_usuario`, `usu_password`, `created_at`) VALUES
 (1, 'Admin', 'Futamaq', 'admin@futamaq.cl', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2015-10-17 00:57:23');
-
