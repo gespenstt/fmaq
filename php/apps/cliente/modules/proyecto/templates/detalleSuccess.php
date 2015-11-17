@@ -6,7 +6,7 @@
 				<div class="widget-content">
 
 
-					<form action="/" role="form" class="form-horizontal col-md-12">
+					<form role="form" class="form-horizontal col-md-12">
 
 					<div class="col-md-8">
 

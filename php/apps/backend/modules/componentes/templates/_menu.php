@@ -58,6 +58,13 @@
                         </a>	    				
                 </li>
 
+                <li class="<?php echo $util->checkMenu($modulo,"cotizacion");?>">
+                        <a href="<?php echo url_for("cotizacion/index");?>">
+                                <i class="icon-star"></i>
+                                <span>Cotización</span>
+                        </a>	    				
+                </li>
+
                 <li class="<?php echo $util->checkMenu($modulo,"promocion");?>">
                         <a href="<?php echo url_for("promocion/index");?>">
                                 <i class="icon-shopping-cart"></i>
