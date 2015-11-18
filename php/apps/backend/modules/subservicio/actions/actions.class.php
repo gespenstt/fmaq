@@ -30,11 +30,7 @@ class subservicioActions extends sfActions
         
         $log->debug("Datos de entrada | nombre=$nombre | servicio=$servicio | imagenes(count)=".count($imagenes));
         
-        $galeria = new Galeria();
-        $galeria->setGalNombre($nombre);
-        $galeria->save();
-        $galeria_id = $galeria->getGalId();
-        
+       
         $subservicio = new Subservicio();
         $subservicio->setSubTitulo($nombre);
         $subservicio->setSubContenido($descripcion);

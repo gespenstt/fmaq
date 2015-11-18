@@ -101,55 +101,7 @@
 
             </div>
 
-            <div id="header-wrap">
-
-                <!-- Primary Navigation
-                ============================================= -->
-                <nav id="primary-menu" class="style-2 center">
-
-                    <div class="container clearfix">
-
-                        <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
-
-                        <ul>
-                            <li class="current"><a href="<?php echo url_for("home/index");?>"><div>Inicio</div></a></li>
-                            <li><a href="<?php echo url_for("quienessomos/index");?>"><div>Cómo trabajamos</div></a></li>
-                            <li><a href="#"><div>Servicios</div></a>
-                                <ul>
-                                    <?php for($a=1;$a<=3;$a++){ ?>
-                                    <li><a href="<?php echo url_for("servicios/index");?>"><div>Tipo de Servicio 1</div></a></li>
-                                    <?php } ?>
-                                </ul>
-                            </li>
-                            <li><a href="#"><div>Nuestra Maquinaria</div></a>
-                                <ul>
-                                    <?php for($a=1;$a<=3;$a++){ ?>
-                                    <li><a href="<?php echo url_for("maquinarias/index");?>"><div>Tipo de máquina 1</div></a></li>
-                                    <?php } ?>
-                                </ul>
-                            </li>
-                             <li><a href="<?php echo url_for("maquinarias/index");?>"><div>Maquinaria usada</div></a>
-                             
-                            </li>
-                            <li><a href="<?php echo url_for("galeria/index");?>"><div>Galería</div></a></li>
-                            <li><a href="<?php echo url_for("noticias/index");?>"><div>Noticias</div></a></li>
-                            <li><a href="<?php echo url_for("contacto/index");?>"><div>Contacto</div></a></li>
-                        </ul>
-
-                        <!-- Top Search
-                        ============================================= -->
-                        <div id="top-search">
-                            <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
-                            <form action="<?php echo url_for("buscar/index");?>" method="get">
-                                <input type="text" name="q" class="form-control" value="" placeholder="Buscar...">
-                            </form>
-                        </div><!-- #top-search end -->
-
-                    </div>
-
-                </nav><!-- #primary-menu end -->
-
-            </div>
+            <?php include_component("componentes", "menu"); ?>
 
         </header><!-- #header end -->
         
