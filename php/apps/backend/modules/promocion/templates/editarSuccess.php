@@ -1,3 +1,7 @@
+<?php
+    use_stylesheet("redactor.css");
+    use_javascript("redactor.min.js");
+?>
         <div class="widget-header">
                 <i class="icon-shopping-cart"></i>
                 <h3>Promoción</h3>
@@ -48,7 +52,7 @@
                                 <div class="form-group">
                                         <label class="col-md-4">Descripción</label>
                                         <div class="col-md-8">
-                                            <textarea name="descripcion" required="required" class="form-control" ><?php echo $promocion->getPromDescripcion();?></textarea>
+                                            <textarea name="descripcion" required="required" class="form-control editor-redactor" ><?php echo $promocion->getPromDescripcion();?></textarea>
                                         </div>
                                 </div> <!-- /.form-group -->
 

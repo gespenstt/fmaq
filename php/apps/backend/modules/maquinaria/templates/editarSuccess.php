@@ -4,6 +4,9 @@
     use_javascript("fileinput_locale_es.js");
     use_javascript("plugins/canvas-to-blob.min.js");
     use_javascript("maquinaria.js");
+?><?php
+    use_stylesheet("redactor.css");
+    use_javascript("redactor.min.js");
 ?>
 				<div class="widget-header">
 					<i class="icon-wrench"></i>
@@ -16,7 +19,7 @@
 
                                         <input type="hidden" name="maq_id" value="<?php echo $maquinaria->getMaqId();?>" />
                                             
-					<div class="col-md-6">
+					<div class="col-md-7">
 
 						<div class="col-md-12">
 
@@ -57,7 +60,7 @@
 							<div class="form-group">
 								<label class="col-md-4">Descripción</label>
 								<div class="col-md-8">
-                                                                    <textarea name="descripcion" required="required" class="form-control"><?php echo $maquinaria->getMaqDescripcion(); ?></textarea>
+                                                                    <textarea name="descripcion" required="required" class="form-control editor-redactor"><?php echo $maquinaria->getMaqDescripcion(); ?></textarea>
 								</div>
 							</div> <!-- /.form-group -->
 
@@ -123,7 +126,7 @@
 
 					</div>	
 
-					<div class="col-md-6 border-left">
+					<div class="col-md-5 border-left">
 
 						<h4>Imágenes</h4>
 						<br>

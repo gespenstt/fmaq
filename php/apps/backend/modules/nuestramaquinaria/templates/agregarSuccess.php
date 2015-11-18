@@ -4,6 +4,9 @@
     use_javascript("fileinput_locale_es.js");
     use_javascript("plugins/canvas-to-blob.min.js");
     use_javascript("maquinaria.js");
+?><?php
+    use_stylesheet("redactor.css");
+    use_javascript("redactor.min.js");
 ?>
 				<div class="widget-header">
 					<i class="icon-magnet"></i>
@@ -14,7 +17,7 @@
 
 					<form method="post" enctype="multipart/form-data" action="<?php echo url_for("nuestramaquinaria/agregar");?>" role="form" class="form-horizontal col-md-12">
 
-					<div class="col-md-6">
+					<div class="col-md-7">
 
 						<div class="col-md-12">
 
@@ -43,7 +46,7 @@
 							<div class="form-group">
 								<label class="col-md-4">Descripción</label>
 								<div class="col-md-8">
-									<textarea name="descripcion" required="required" class="form-control"></textarea>
+									<textarea name="descripcion" required="required" class="form-control editor-redactor"></textarea>
 								</div>
 							</div> <!-- /.form-group -->
 
@@ -67,7 +70,7 @@
 
 					</div>	
 
-					<div class="col-md-6 border-left">
+					<div class="col-md-5 border-left">
 
 						<h4>Cargar imágenes</h4>
 						<input type="file" id="input-upload" name="imagenes[]" multiple=true class="file-loading" data-show-upload="false" />

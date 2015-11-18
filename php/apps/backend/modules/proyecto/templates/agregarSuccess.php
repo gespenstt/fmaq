@@ -1,6 +1,10 @@
 <?php
     use_javascript("proyecto.js");
 ?>
+<?php
+    use_stylesheet("redactor.css");
+    use_javascript("redactor.min.js");
+?>
     <div class="widget-header">
             <i class="icon-folder-open"></i>
             <h3>Proyectos</h3>
@@ -13,7 +17,7 @@
 
             <div class="col-md-8">
 
-                    <div class="col-md-10">
+                    <div class="col-md-11">
 
                     <h3>Agregar</h3>
                     <br>
@@ -47,7 +51,7 @@
                             <div class="form-group">
                                     <label class="col-md-4">Descripción</label>
                                     <div class="col-md-8">
-                                            <textarea name="descripcion" class="form-control" rows="6"></textarea>
+                                            <textarea name="descripcion" class="form-control editor-redactor" rows="6"></textarea>
                                     </div>
                             </div> <!-- /.form-group -->
 

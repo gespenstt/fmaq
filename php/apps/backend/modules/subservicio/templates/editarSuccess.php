@@ -4,7 +4,10 @@
     use_javascript("fileinput_locale_es.js");
     use_javascript("plugins/canvas-to-blob.min.js");
     use_javascript("galeria.js");
-?>   
+?> <?php
+    use_stylesheet("redactor.css");
+    use_javascript("redactor.min.js");
+?>  
     <form method="post" action="<?php echo url_for("subservicio/editar");?>" enctype="multipart/form-data" role="form" class="form-horizontal col-md-12">
         <input type="hidden" name="sub_id" value="<?php echo $subservicio->getSubId();?>" />
         <div class="widget-header">
@@ -62,7 +65,7 @@
                                 <div class="form-group">
                                         <label class="col-md-4">Descripcion</label>
                                         <div class="col-md-8">
-                                            <textarea name="descripcion" required="required" class="form-control" ><?php echo $subservicio->getSubContenido();?></textarea>
+                                            <textarea name="descripcion" required="required" class="form-control editor-redactor" ><?php echo $subservicio->getSubContenido();?></textarea>
                                         </div>
                                 </div> <!-- /.form-group -->
                                 

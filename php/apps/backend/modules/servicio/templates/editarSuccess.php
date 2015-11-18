@@ -1,3 +1,7 @@
+<?php
+    use_stylesheet("redactor.css");
+    use_javascript("redactor.min.js");
+?>
         <div class="widget-header">
                 <i class="icon-tasks"></i>
                 <h3>Servicio</h3>
@@ -27,7 +31,7 @@
                                 <div class="form-group">
                                         <label class="col-md-4">Descripción</label>
                                         <div class="col-md-8">
-                                            <textarea name="contenido" required="required" class="form-control"><?php echo $servicio->getSerContenido();?></textarea>
+                                            <textarea name="contenido" required="required" class="form-control editor-redactor"><?php echo $servicio->getSerContenido();?></textarea>
                                         </div>
                                 </div> <!-- /.form-group -->
 

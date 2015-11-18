@@ -64,5 +64,30 @@ $(document).ready(function(){
             data: {cur_id:_id,metodo:"getCv"}
         });
     })
+    
+    $("#tipo-promocion").on('change',function(){
+        var _this = $(this),
+        _val = _this.val();
+        switch(_val){
+            case "si":
+                $(".opcion-video").removeClass("hide");
+                $(".opcion-imagen").addClass("hide");
+                break;
+            case "no":
+                $(".opcion-video").addClass("hide");
+                $(".opcion-imagen").removeClass("hide");
+                break;
+            default:
+                $(".opcion-video").addClass("hide");
+                $(".opcion-imagen").addClass("hide");
+                break;
+        }
+    });
+    
+    if($(".editor-redactor").length){
+        $(".editor-redactor").redactor({
+            buttons: ['formatting', '|', 'bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|',  'link', '|', 'fontcolor', 'backcolor']
+        });
+    }
 	
 })

@@ -1,3 +1,7 @@
+<?php
+    use_stylesheet("redactor.css");
+    use_javascript("redactor.min.js");
+?>
         <div class="widget-header">
                 <i class="icon-shopping-cart"></i>
                 <h3>Promoción</h3>
@@ -5,7 +9,7 @@
 
         <div class="widget-content">	
 
-                <div class="col-md-8 border-right">
+                <div class="col-md-6 border-right">
                         <h3>Listado</h3>
                         <br>
                         <div class="table-responsive">
@@ -15,6 +19,7 @@
                                   <tr>
                                     <th>#</th>
                                     <th>Titulo</th>
+                                    <th>Tipo</th>
                                     <th>Acciones</th>
                                   </tr>
                                 </thead>
@@ -23,7 +28,8 @@
                                 foreach ($pager->getResults() as $p){ ?>
                                   <tr>
                                     <td class="col-md-1"><?php echo $count; ?></td>
-                                    <td class="col-md-7"><?php echo $p->getPromTitulo();?></td>
+                                    <td class="col-md-4"><?php echo $p->getPromTitulo();?></td>
+                                    <td class="col-md-3"><?php if($p->getPromEsvideo()){ echo "Video"; }else{ echo "Imagen"; } ?></td>
                                     <td class="col-md-4">
                                     <form action="<?php echo url_for("promocion/eliminar");?>" method="post">
                                         <input type="hidden" name="prom_id" value="<?php echo $p->getPromId(); ?>" />
@@ -79,7 +85,7 @@
                         </div> 
 
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
 
                         <h4>Agregar</h4>
                         <br>
@@ -122,7 +128,7 @@
                                 <div class="form-group">
                                         <label class="col-md-4">Descripción</label>
                                         <div class="col-md-8">
-                                                <textarea name="descripcion" required="required" class="form-control" ></textarea>
+                                                <textarea name="descripcion" required="required" class="form-control editor-redactor" ></textarea>
                                         </div>
                                 </div> <!-- /.form-group -->
 

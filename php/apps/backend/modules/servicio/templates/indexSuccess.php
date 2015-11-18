@@ -1,3 +1,7 @@
+<?php
+    use_stylesheet("redactor.css");
+    use_javascript("redactor.min.js");
+?>
         <div class="widget-header">
                 <i class="icon-tasks"></i>
                 <h3>Servicios</h3>
@@ -5,7 +9,7 @@
 
         <div class="widget-content">	
 
-                <div class="col-md-7 border-right">
+                <div class="col-md-6 border-right">
                         <h3>Listado</h3>
                         <br>
                         <div class="table-responsive">
@@ -78,7 +82,7 @@
                         </div> 
 
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
 
                         <h4>Agregar</h4>
                         <br>
@@ -94,7 +98,7 @@
                                 <div class="form-group">
                                         <label class="col-md-3">Contenido</label>
                                         <div class="col-md-9">
-                                            <textarea name="contenido" required="required" class="form-control" rows="7"></textarea>
+                                            <textarea name="contenido" required="required" class="form-control editor-redactor" rows="7"></textarea>
                                         </div>
                                 </div> <!-- /.form-group -->
                                 
