@@ -91,11 +91,31 @@
                                                 <input type="text" name="titulo" placeholder="Ingrese título" required="required" value="" class="form-control" />
                                         </div>
                                 </div> <!-- /.form-group -->
-
                                 <div class="form-group">
+                                    
+                                        <label class="col-md-4">Tipo promoción</label>
+                                        <div class="col-md-8">
+                                            <select id="tipo-promocion" name="esvideo" required="required" class="form-control">
+                                                <option value="">Seleccione</option>
+                                                <option value="si">Video</option>
+                                                <option value="no">Imagen</option>
+                                            </select>
+                                        </div>
+                                </div> <!-- /.form-group -->
+                                
+                                <div class="form-group opcion-imagen hide">
+                                        <label class="col-md-4">Imágen</label>
+                                        <div class="col-md-8">
+                                                <input type="file" name="imagen" class="form-control" />
+                                        </div>
+                                </div> <!-- /.form-group -->
+                                
+                                
+
+                                <div class="form-group opcion-video hide">
                                         <label class="col-md-4">Link vídeo youtube</label>
                                         <div class="col-md-8">
-                                                <input type="text" name="link" placeholder="Ingrese url" required="required" value="" class="form-control" />
+                                            <input type="text" name="link" placeholder="Ingrese url" value="" class="form-control" />
                                         </div>
                                 </div> <!-- /.form-group -->
 

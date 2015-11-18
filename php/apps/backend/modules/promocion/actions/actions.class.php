@@ -29,6 +29,13 @@ class promocionActions extends sfActions
             $titulo = $request->getPostParameter("titulo");
             $link = $request->getPostParameter("link");
             $descripcion = $request->getPostParameter("descripcion");
+            $esvideo = $request->getPostParameter("esvideo");
+            $imagen = $_FILES["imagen"];
+            if($esvideo=="si"){
+                $esvideo=true;
+            }else{
+                $esvideo=false;
+            }
 
             $log->debug("Datos de entrada | titulo=$titulo | link=$link | descripcion=$descripcion");
             
@@ -36,7 +43,26 @@ class promocionActions extends sfActions
             $promocion->setPromTitulo($titulo);
             $promocion->setPromUrlvideo($link);
             $promocion->setPromDescripcion($descripcion);
+            $promocion->setPromEsvideo($esvideo);
             $promocion->save();
+            $promocion_id = $promocion->getPromId();
+            
+            if(!empty($imagen) && !$esvideo){
+                $f_name = $maquinaria_foto_id."_".$imagen["name"];
+            
+                //UPLOAD DIR FRONTEND(WEB)/UPLOADS            
+                $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."promocion".DIRECTORY_SEPARATOR.$promocion_id.DIRECTORY_SEPARATOR;
+                $path_db = "uploads/promocion/$promocion_id/$f_name";
+                $path_file = $path.$f_name;
+                mkdir($path, 0755);
+            
+                move_uploaded_file($imagen["tmp_name"], $path_file);
+                
+                $promocion->setPromNombreimagen($f_name);
+                $promocion->setPromRutaimagen($path_db);
+                $promocion->save();
+                
+            }
             
             $log->debug("Promocion creada actualizado");
             
@@ -88,13 +114,41 @@ class promocionActions extends sfActions
             $titulo = $request->getPostParameter("titulo");
             $link = $request->getPostParameter("link");
             $descripcion = $request->getPostParameter("descripcion");
+            $esvideo = $request->getPostParameter("esvideo");
+            $imagen = $_FILES["imagen"];
+            if($esvideo=="si"){
+                $esvideo=true;
+            }else{
+                $esvideo=false;
+            }
+
 
             $log->debug("Datos de entrada | titulo=$titulo | link=$link | descripcion=$descripcion");
+            
             
             $promocion->setPromTitulo($titulo);
             $promocion->setPromUrlvideo($link);
             $promocion->setPromDescripcion($descripcion);
+            $promocion->setPromEsvideo($esvideo);
             $promocion->save();
+            $promocion_id = $promocion->getPromId();
+            
+            if(!empty($imagen) && !$esvideo){
+                $f_name = $maquinaria_foto_id."_".$imagen["name"];
+            
+                //UPLOAD DIR FRONTEND(WEB)/UPLOADS            
+                $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."promocion".DIRECTORY_SEPARATOR.$promocion_id.DIRECTORY_SEPARATOR;
+                $path_db = "uploads/promocion/$promocion_id/$f_name";
+                $path_file = $path.$f_name;
+                mkdir($path, 0755);
+            
+                move_uploaded_file($imagen["tmp_name"], $path_file);
+                
+                $promocion->setPromNombreimagen($f_name);
+                $promocion->setPromRutaimagen($path_db);
+                $promocion->save();
+                
+            }
             
             $log->debug("Promocion actualizada");
             
@@ -104,6 +158,7 @@ class promocionActions extends sfActions
         }
         
         $this->promocion = $promocion;
+        $this->url_frontend = sfConfig::get("app_frontend_url");
         
         
     }  catch (Exception $ex){
@@ -131,6 +186,15 @@ class promocionActions extends sfActions
         
         if(!$promocion){
             throw new Exception("La promoción seleccionada no existe.");
+        }
+        
+        if($promocion->getPromNombreimagen()&&$promocion->getPromRutaimagen()){
+            $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."promocion".DIRECTORY_SEPARATOR.$prom_id.DIRECTORY_SEPARATOR;
+            $ruta_imagen = $path.$promocion->getPromNombreimagen();
+            if(file_exists($ruta_imagen)){
+                unlink($ruta_imagen);
+            }
+
         }
         
         $promocion->delete();
