@@ -20,7 +20,7 @@ class nuestramaquinariaActions extends sfActions
     $c = new Criteria();
     $c->add(MaquinariaPeer::MAQ_VENTA,false);  
       
-    $pager = new sfPropelPager('maquinaria', 60);
+    $pager = new sfPropelPager('maquinaria', 20);
     $pager->setCriteria($c);
     $pager->setPage($request->getParameter('p', 1));
     $pager->init();
