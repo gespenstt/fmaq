@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     17/11/2015 18:58:03                          */
+/* Created on:     17/11/2015 22:51:18                          */
 /*==============================================================*/
 
 
@@ -231,6 +231,9 @@ create table promocion
    prom_titulo          varchar(50),
    prom_descripcion     text,
    prom_urlvideo        varchar(100),
+   prom_esvideo         bool default false,
+   prom_nombreimagen    text,
+   prom_rutaimagen      text,
    created_at           datetime,
    updated_at           datetime,
    primary key (prom_id)
@@ -390,8 +393,6 @@ alter table subservicio add constraint fk_servicio_subservicio foreign key (ser_
 
 alter table subservicio_archivo add constraint fk_subservicio_subservicioarchivo foreign key (sub_id)
       references subservicio (sub_id) on delete restrict on update restrict;
-
-
 
 INSERT INTO `usuario` (`usu_id`, `usu_nombre`, `usu_apellido`, `usu_correo`, `usu_usuario`, `usu_password`, `created_at`) VALUES
 (1, 'Admin', 'Futamaq', 'admin@futamaq.cl', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2015-10-17 00:57:23');
