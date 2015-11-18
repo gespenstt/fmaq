@@ -29,12 +29,11 @@
                         ============================================= -->
                         <ul id="portfolio-filter" class="clearfix">
 
-                            <li class="activeFilter"><a href="#" data-filter="*">Todos</a></li>
-                            <li><a href="#" data-filter=".pf-cocecha">Cocechadoras</a></li>
-                            <li><a href="#" data-filter=".pf-fardos">Enfardadoras</a></li>
-                            <li><a href="#" data-filter=".pf-fertilizar">Fertilizadora</a></li>
-                            <li><a href="#" data-filter=".pf-siembra">Sembradoras</a></li>
-                            <li><a href="#" data-filter=".pf-tractor">Tractores</a></li>
+                            <li class="<?php if(!$tipo){ echo "activeFilter"; }?>"><a href="<?php echo url_for("maquinarias/index");?>">Todos</a></li>
+                            <?php foreach($maquinaria_tipo as $mt){?>
+                            <li class="<?php if($tipo == $mt->getTmaId()){ echo "activeFilter"; }?>"><a href="<?php echo url_for("maquinarias/index/?tipo=".$mt->getTmaId());?>"><?php echo $mt->getTmaNombre();?></a></li>
+                            <?php } ?>
+                            
 
                         </ul><!-- #portfolio-filter end -->
 
@@ -48,20 +47,32 @@
                         ============================================= -->
                         <div id="portfolio" class="portfolio-nomargin clearfix">
                             
-                            <?php for($a=1;$a<=6;$a++){ ?>
+                            <?php foreach ($pager->getResults() as $p){ ?>
 
-                            <article class="portfolio-item pf-cocecha">
+                            <article class="portfolio-item pf-<?php echo $p->getTmaId();?>">
                                 <div class="portfolio-image">
-                                    <a href="<?php echo url_for("maquinarias/detalle");?>">
-                                        <img src="<?php echo public_path("uploads/400x300-2.jpg");?>" alt="Cocecha">
+                                    <a href="<?php echo url_for("maquinarias/detalle/?maqid=".$p->getMaqId());?>">
+                                        <?php
+                                            $imagen = null;
+                                            foreach($p->getMaquinariaFotos() as $mf){
+                                                $imagen = $mf->getMfoRuta();
+                                                break;
+                                            }
+                                            if(is_null($imagen)){
+                                                $imagen = "images/sin-imagen.gif";
+                                            }
+                                        ?>
+                                        
+                                        <div class="div-galeria" style="background-image: url(<?php echo public_path($imagen); ?>)">
+
+                                        </div>
                                     </a>
                                     <div class="portfolio-overlay">
-                                        <a href="<?php echo url_for("maquinarias/detalle");?>" class="center-icon"><i class="icon-line-ellipsis"></i></a>
+                                        <a href="<?php echo url_for("maquinarias/detalle/?maqid=".$p->getMaqId());?>" class="center-icon"><i class="icon-line-ellipsis"></i></a>
                                     </div>
                                 </div>
                                 <div class="portfolio-desc">
-                                    <h3><a href="<?php echo url_for("maquinarias/detalle");?>">Cocechadora</a></h3>
-                                    <span>John Deere, 2012</span>
+                                    <h3><a href="<?php echo url_for("maquinarias/detalle/?maqid=".$p->getMaqId());?>"><?php echo $p->getMaqModelo();?></a></h3>
                                 </div>
                             </article>
                             
@@ -79,13 +90,13 @@
 
                                 $container.isotope({ transitionDuration: '0.65s' });
 
-                                $('#portfolio-filter a').click(function(){
+                                /*$('#portfolio-filter a').click(function(){
                                     $('#portfolio-filter li').removeClass('activeFilter');
                                     $(this).parent('li').addClass('activeFilter');
                                     var selector = $(this).attr('data-filter');
                                     $container.isotope({ filter: selector });
                                     return false;
-                                });
+                                });*/
 
                                 $('#portfolio-shuffle').click(function(){
                                 $container.isotope('updateSortData').isotope({
@@ -104,7 +115,45 @@
                     </div>
 
                 </div>
+                
+                
+        
+           <div align="center">
+          
+		<?php if ($pager->haveToPaginate()){ ?>
+                    <ul class="pagination">
+                        <?php                                         
+                        $actualPagina = $pager->getPage();
+                        $ultimaPagina = $pager->getLastPage();
+                        $minimo = $actualPagina - 1;
+                        $maximo = $actualPagina + 2;
+                        $linkSaltoPrimero = $actualPagina - 3;
+                        $linkSaltoUltimo = $actualPagina + 3;
+                        $links = $pager->getLinks();
 
+                        if($linkSaltoPrimero >= 1):
+                            echo '<li><a href="'.url_for("maquinarias/index/?p=1%tipo=$tipo").'">«</a></li>';
+                        endif;
+
+                        foreach ($links as $e): 
+                            $current = '';
+                            if($actualPagina == $e):
+                                $current = ' active';
+                            endif;
+                            if(($e < $minimo && $minimo > 1) || ($e <= $maximo)):
+                            echo '<li class="'.$current.'"><a href="'.url_for("maquinarias/index/?p=$e&tipo=$tipo").'">'.$e.'</a></li>';
+                            endif;
+                        endforeach; 
+
+                        if($linkSaltoUltimo <= $ultimaPagina):                                            
+                            echo '<li><a href="'.url_for("maquinarias/index/?p=$ultimaPagina&tipo=$tipo").'">»</a></li>';
+                        endif;
+
+                        ?>                                         
+                    </ul>
+                    <?php } ?> 
+
+            </div>
                 <script type="text/javascript">
 
                     jQuery(document).ready(function($) {

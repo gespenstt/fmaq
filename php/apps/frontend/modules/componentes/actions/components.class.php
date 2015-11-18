@@ -14,6 +14,11 @@ class componentesComponents extends sfComponents
         $this->modulo = $activo;
         $this->util = new Util();
         
+        $c = new Criteria();
+        $c->addAscendingOrderByColumn(TipoMaquinariaPeer::TMA_NOMBRE);
+        $maquinaria_tipo = TipoMaquinariaPeer::doSelect($c);
+        $this->maquinaria_tipo = $maquinaria_tipo;
+        
     }
  
     

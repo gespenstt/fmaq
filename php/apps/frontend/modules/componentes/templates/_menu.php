@@ -20,8 +20,8 @@
                             </li>
                             <li class="<?php echo $util->checkMenu($modulo,"maquinarias");?>"><a href="#"><div>Maquinaria usada</div></a>
                                 <ul>
-                                    <?php for($a=1;$a<=3;$a++){ ?>
-                                    <li><a href="<?php echo url_for("maquinarias/index");?>"><div>Tipo de máquina 1</div></a></li>
+                                    <?php foreach($maquinaria_tipo as $mt){ ?>
+                                    <li><a href="<?php echo url_for("maquinarias/index/?tipo=".$mt->getTmaId());?>"><div><?php echo $mt->getTmaNombre();?></div></a></li>
                                     <?php } ?>
                                 </ul>
                             </li>

@@ -29,6 +29,8 @@ class maquinariaActions extends sfActions
     $this->pagina = $request->getParameter('p', 1);
 
     $this->pager = $pager;   
+    
+    $this->util = new Util();
   	
   }
   public function executeAgregar(sfWebRequest $request)

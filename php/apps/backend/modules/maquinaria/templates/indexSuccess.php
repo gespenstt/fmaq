@@ -24,7 +24,7 @@
 					          <tr>
 					            <td class="col-md-1"><?php echo $count; ?></td>
 					            <td class="col-md-3"><?php echo $p->getMaqModelo();?></td>
-					            <td class="col-md-6"><?php echo $p->getMaqDescripcion(); ?></td>
+					            <td class="col-md-6"><?php echo html_entity_decode($util->setLimitString(html_entity_decode($p->getMaqDescripcion()),200)); ?></td>
 					            <td class="col-md-2">
                                                         <form action="<?php echo url_for("maquinaria/eliminar");?>" method="post">
                                                             <input type="hidden" name="maq_id" value="<?php echo $p->getMaqId(); ?>" />
