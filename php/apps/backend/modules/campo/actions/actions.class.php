@@ -72,7 +72,7 @@ class campoActions extends sfActions
         
         //Listado clientes
         $cl = new Criteria();
-        $cl->addAscendingOrderByColumn(ClientePeer::CLI_NOMBRE);
+        $cl->addDescendingOrderByColumn(ClientePeer::CREATED_AT);
         $clientes = ClientePeer::doSelect($cl);
         $this->clientes = $clientes;
 

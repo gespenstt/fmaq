@@ -58,7 +58,7 @@ class servicioActions extends sfActions
       }
       
       $c = new Criteria();
-      $c->addAscendingOrderByColumn(ServicioPeer::SER_TITULO);
+      $c->addDescendingOrderByColumn(ServicioPeer::CREATED_AT);
       $pager = new sfPropelPager('servicio', 10);
       $pager->setCriteria($c);
       $pager->setPage($request->getParameter('p', 1));

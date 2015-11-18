@@ -26,7 +26,7 @@ class clienteActions extends sfActions
         $criterion->addOr($c->getNewCriterion(ClientePeer::CLI_APELLIDO,"%$buscar%",Criteria::LIKE));   
         $c->add($criterion);
     }
-      $c->addAscendingOrderByColumn(ClientePeer::CLI_NOMBRE);
+      $c->addDescendingOrderByColumn(ClientePeer::CREATED_AT);
       $pager = new sfPropelPager('cliente', 10);
       $pager->setCriteria($c);
       $pager->setPage($request->getParameter('p', 1));

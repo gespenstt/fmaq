@@ -71,7 +71,7 @@ class potreroActions extends sfActions
             $c->setIgnoreCase(true);
         }
         $c->add(PotreroPeer::CAM_ID,$cam_id);
-        $c->addAscendingOrderByColumn(PotreroPeer::POT_NOMBRE);
+        $c->addDescendingOrderByColumn(PotreroPeer::CREATED_AT);
         
         $pager = new sfPropelPager('potrero', 10);
         $pager->setCriteria($c);

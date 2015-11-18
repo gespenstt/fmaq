@@ -20,7 +20,7 @@ class nuestramaquinariaActions extends sfActions
     //GET | listar
     $c = new Criteria();
     $c->add(MaquinariaPeer::MAQ_VENTA,false);
-    $c->addAscendingOrderByColumn(MaquinariaPeer::MAQ_MODELO);
+    $c->addDescendingOrderByColumn(MaquinariaPeer::CREATED_AT);
     $pager = new sfPropelPager('maquinaria', 10);
     $pager->setCriteria($c);
     $pager->setPage($request->getParameter('p', 1));

@@ -54,7 +54,7 @@ class promocionActions extends sfActions
       }
       
       $c = new Criteria();
-      $c->addAscendingOrderByColumn(PromocionPeer::PROM_TITULO);
+      $c->addDescendingOrderByColumn(PromocionPeer::CREATED_AT);
       $pager = new sfPropelPager('promocion', 10);
       $pager->setCriteria($c);
       $pager->setPage($request->getParameter('p', 1));
