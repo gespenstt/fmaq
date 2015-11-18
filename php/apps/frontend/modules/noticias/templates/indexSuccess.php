@@ -45,7 +45,7 @@
                                         <li><i class="icon-calendar3"></i> <?php echo $noti->getCreatedAt(); ?></li>
                                     </ul>
                                     <div class="entry-content">
-                                        <p><?php echo $noti->getNotDescripcion(); ?></p>
+                                        <p><?php echo html_entity_decode($noti->getNotDescripcion()); ?></p>
                                         <a href="<?php echo $noti->getNotUrl(); ?>" target="_blank" class="more-link">leer más</a>
                                     </div>
                                 </div>
