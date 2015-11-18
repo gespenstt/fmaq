@@ -41,23 +41,11 @@ class galeriaActions extends sfActions
   {
             
             $galid = $request->getParameter("galid");
-            $c = new Criteria();
-            $c->add(GaleriaArchivoPeer::GAL_ID, $galid);
-            //$resultado = GaleriaArchivoPeer::doSelectStmt($c);
-            //print_r($resultado);exit;
-
-            $pager = new sfPropelPager('galeriaarchivo', 12);
-            $pager->setCriteria($c);
-            $pager->setPage($request->getParameter('p', 1));
-            $pager->init();
-            $this->pagina = $request->getParameter('p', 1);
-
-            $this->pager = $pager;
             
             $d = new Criteria();
             $d->add(GaleriaPeer::GAL_ID, $galid);
             $resultado = GaleriaPeer::doSelectOne($d);
-            $this->nombreGaleria = $resultado;
+            $this->galeria = $resultado;
             $this->galid=$galid;
   }
 }

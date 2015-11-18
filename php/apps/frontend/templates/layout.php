@@ -18,6 +18,7 @@
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Roboto:300,400,500,700" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="<?php echo public_path("css/bootstrap.css");?>" type="text/css" />
     <link rel="stylesheet" href="<?php echo public_path("css/style.css");?>" type="text/css" />
+    <link rel="stylesheet" href="<?php echo public_path("css/custom.css");?>" type="text/css" />
     <link rel="stylesheet" href="<?php echo public_path("css/font-icons.css");?>" type="text/css" />
     <link rel="stylesheet" href="<?php echo public_path("css/animate.css");?>" type="text/css" />
     <link rel="stylesheet" href="<?php echo public_path("css/magnific-popup.css");?>" type="text/css" />
