@@ -18,14 +18,14 @@
                                     <?php } ?>
                                 </ul>
                             </li>
-                            <li class="<?php echo $util->checkMenu($modulo,"maquinarias");?>"><a href="#"><div>Nuestra Maquinaria</div></a>
+                            <li class="<?php echo $util->checkMenu($modulo,"maquinarias");?>"><a href="#"><div>Maquinaria usada</div></a>
                                 <ul>
                                     <?php for($a=1;$a<=3;$a++){ ?>
                                     <li><a href="<?php echo url_for("maquinarias/index");?>"><div>Tipo de máquina 1</div></a></li>
                                     <?php } ?>
                                 </ul>
                             </li>
-                             <li class="<?php echo $util->checkMenu($modulo,"maquinarias");?>"><a href="<?php echo url_for("maquinarias/index");?>"><div>Maquinaria usada</div></a>
+                             <li class="<?php echo $util->checkMenu($modulo,"nuestramaquinaria");?>"><a href="<?php echo url_for("nuestramaquinaria/index");?>">Nuestra maquinaria<div></div></a>
                              
                             </li>
                             <li class="<?php echo $util->checkMenu($modulo,"galeria");?>"><a href="<?php echo url_for("galeria/index");?>"><div>Galería</div></a></li>

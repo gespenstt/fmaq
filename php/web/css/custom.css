@@ -3,4 +3,9 @@
     background-repeat: no-repeat;
     background-position: center;
     height: 200px;
+}.div-galeria-maquinaria{
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 213px;    
 }
