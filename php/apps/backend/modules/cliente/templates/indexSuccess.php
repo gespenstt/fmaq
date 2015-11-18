@@ -6,6 +6,14 @@
         <div class="widget-content">	
 
                 <h3>Listado</h3>
+                        
+                <div class="padding-bt clearfix">
+                    <form action="<?php echo url_for("cliente/index");?>" method="get">
+                        <div align="left" class="float-left">
+                                <input class="form-control input-sm" name="buscar" value="<?php echo $buscar;?>" type="text" placeholder="Buscar">
+                        </div>
+                    </form>
+                </div>
                 <br>
 
                 <div class="table-responsive">
@@ -59,7 +67,7 @@
                         $links = $pager->getLinks();
 
                         if($linkSaltoPrimero >= 1):
-                            echo '<li><a href="'.url_for("cliente/index/?p=1").'">«</a></li>';
+                            echo '<li><a href="'.url_for("cliente/index/?p=1&buscar=$buscar").'">«</a></li>';
                         endif;
 
                         foreach ($links as $e): 
@@ -68,12 +76,12 @@
                                 $current = ' active';
                             endif;
                             if(($e < $minimo && $minimo > 1) || ($e <= $maximo)):
-                            echo '<li class="'.$current.'"><a href="'.url_for("cliente/index/?p=$e").'">'.$e.'</a></li>';
+                            echo '<li class="'.$current.'"><a href="'.url_for("cliente/index/?p=$e&buscar=$buscar").'">'.$e.'</a></li>';
                             endif;
                         endforeach; 
 
                         if($linkSaltoUltimo <= $ultimaPagina):                                            
-                            echo '<li><a href="'.url_for("cliente/index/?p=$ultimaPagina").'">»</a></li>';
+                            echo '<li><a href="'.url_for("cliente/index/?p=$ultimaPagina&buscar=$buscar").'">»</a></li>';
                         endif;
 
                         ?>                                         

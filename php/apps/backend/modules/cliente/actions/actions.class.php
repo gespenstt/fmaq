@@ -17,7 +17,15 @@ class clienteActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
+      $buscar = $request->getParameter("buscar");
       $c = new Criteria();
+    if($buscar!=""){
+        //$buscar = "'%$buscar%'";
+        $criterion = $c->getNewCriterion(ClientePeer::CLI_EMPRESA,"%$buscar%",Criteria::LIKE);
+        $criterion->addOr($c->getNewCriterion(ClientePeer::CLI_NOMBRE,"%$buscar%",Criteria::LIKE)); 
+        $criterion->addOr($c->getNewCriterion(ClientePeer::CLI_APELLIDO,"%$buscar%",Criteria::LIKE));   
+        $c->add($criterion);
+    }
       $c->addAscendingOrderByColumn(ClientePeer::CLI_NOMBRE);
       $pager = new sfPropelPager('cliente', 10);
       $pager->setCriteria($c);
@@ -25,6 +33,8 @@ class clienteActions extends sfActions
       $pager->init();
       
       $this->pagina = $request->getParameter('p', 1);
+      
+      $this->buscar = $buscar;
       
       $this->pager = $pager;
   	
