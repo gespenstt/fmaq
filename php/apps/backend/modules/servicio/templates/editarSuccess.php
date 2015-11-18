@@ -17,22 +17,6 @@
                                         </div>
                                 </div> <!-- /.form-group -->
                                 
-                                <?php if($servicios->count()>0){ ?>
-                                <div class="form-group">
-                                        <label class="col-md-4">Servicio padre</label>
-                                        <div class="col-md-8">
-                                            <select name="servicio" class="form-control">
-                                                <option value="">Seleccione</option>
-                                                <?php foreach($servicios as $ser){ ?>
-                                                <option value="<?php echo $ser->getSerId();?>" <?php if($ser->getSerId()==$servicio->getSerSerId()){ echo "selected"; } ?>>
-                                                    <?php echo $ser->getSerTitulo();?>
-                                                </option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                </div> <!-- /.form-group -->
-                                <?php } ?>
-                                
                                 <div class="form-group">
                                         <label class="col-md-4">Imagen</label>
                                         <div class="col-md-8">

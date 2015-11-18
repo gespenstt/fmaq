@@ -101,11 +101,18 @@
                         </ul>     				
                 </li>
 
-                <li class="<?php echo $util->checkMenu($modulo,"servicio");?>">
-                        <a href="<?php echo url_for("servicio/index");?>">
+                <li class="dropdown <?php echo $util->checkMenu($modulo,"servicio").$util->checkMenu($modulo,"subservicio");?>">					
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="icon-tasks"></i>
                                 <span>Servicios</span>
-                        </a>                                    
+                                <b class="caret"></b>
+                        </a>	    
+
+                        <ul class="dropdown-menu">
+                                <li><a href="<?php echo url_for("servicio/index");?>">Servicios</a></li>
+                                <li class="divider"></li>
+                                <li><a href="<?php echo url_for("subservicio/index");?>">Sub-servicios</a></li>
+                        </ul>     				
                 </li>
 
                 <li class="<?php echo $util->checkMenu($modulo,"galeria");?>">

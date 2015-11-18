@@ -28,17 +28,11 @@ class servicioActions extends sfActions
             
             $titulo = $request->getPostParameter("titulo");
             $contenido = $request->getPostParameter("contenido");
-            $servicio_padre = $request->getPostParameter("servicio");
             $imagen = $_FILES["imagen"]; 
 
             $log->debug("Datos de entrada | titulo=$titulo | contenido=$contenido");
             
             $servicio = new Servicio();
-            if($servicio_padre!=""){
-                $servicio->setSerSerId($servicio_padre);                
-            }else{                
-                $servicio->setSerSerId(null); 
-            }
             $servicio->setSerTitulo($titulo);
             $servicio->setSerContenido($contenido);
             $servicio->save();
@@ -73,10 +67,6 @@ class servicioActions extends sfActions
       $this->pagina = $request->getParameter('p', 1);
       $this->util = new Util();
       
-      $cs = new Criteria();
-      $cs->addAscendingOrderByColumn(ServicioPeer::SER_TITULO);
-      $cs->add(ServicioPeer::SER_SER_ID,null);
-      $this->servicios = ServicioPeer::doSelect($cs);
       
       $this->pager = $pager;
   }
@@ -103,14 +93,7 @@ class servicioActions extends sfActions
             
             $titulo = $request->getPostParameter("titulo");
             $contenido = $request->getPostParameter("contenido");
-            $servicio_padre = $request->getPostParameter("servicio");
-            $imagen = $_FILES["imagen"];             
-            
-            if($servicio_padre!=""){
-                $servicio->setSerSerId($servicio_padre);                
-            }else{                
-                $servicio->setSerSerId(null); 
-            }
+            $imagen = $_FILES["imagen"];    
             $servicio->setSerTitulo($titulo);
             $servicio->setSerContenido($contenido);
             $servicio->save();
@@ -131,7 +114,6 @@ class servicioActions extends sfActions
       
         $cs = new Criteria();
         $cs->addAscendingOrderByColumn(ServicioPeer::SER_TITULO);
-        $cs->add(ServicioPeer::SER_SER_ID,null);
         $this->servicios = ServicioPeer::doSelect($cs);
         
         $this->url_frontend = sfConfig::get("app_frontend_url");

@@ -15,7 +15,6 @@
                                   <tr>
                                     <th>#</th>
                                     <th>Titulo</th>
-                                    <th>Servicio padre</th>
                                     <th>Acciones</th>
                                   </tr>
                                 </thead>
@@ -25,7 +24,6 @@
                                   <tr>
                                     <td class="col-md-1"><?php echo $count; ?></td>
                                     <td class="col-md-4"><?php echo $p->getSerTitulo();?></td>
-                                    <td class="col-md-3"><?php echo $util->getServicio($p->getSerSerId());?></td>
                                     <td class="col-md-4">                            
                                     <form action="<?php echo url_for("servicio/eliminar");?>" method="post">
                                         <input type="hidden" name="ser_id" value="<?php echo $p->getSerId(); ?>" />
@@ -92,22 +90,6 @@
                                                 <input type="text" name="titulo" placeholder="Ingrese titulo" required="required" value="" class="form-control" />
                                         </div>
                                 </div> <!-- /.form-group -->
-                                
-                                <?php if($servicios->count()>0){ ?>
-                                <div class="form-group">
-                                        <label class="col-md-3">Servicio padre</label>
-                                        <div class="col-md-9">
-                                            <select name="servicio" class="form-control">
-                                                <option value="">Seleccione</option>
-                                                <?php foreach($servicios as $ser){ ?>
-                                                <option value="<?php echo $ser->getSerId();?>">
-                                                    <?php echo $ser->getSerTitulo();?>
-                                                </option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                </div> <!-- /.form-group -->
-                                <?php } ?>
                                 
                                 <div class="form-group">
                                         <label class="col-md-3">Contenido</label>

@@ -169,6 +169,72 @@ class Util{
 
     }
     
+    public function setImagenesSubservicio($files,$subid,$log){
+        /*$files = $_FILES["imagenes"];
+  	$files_tmp = $files["tmp_name"];
+  	$files_name = $files["name"];
+  	print_r($files_tmp);*/
+  	$files_tmp = $files["tmp_name"];
+  	$files_name = $files["name"]; 
+        
+        $log->debug("setImagenesSubservicio");
+        
+        for($idx=0;$idx<count($files_tmp);$idx++){ 
+            if(empty($files_tmp[$idx]) || empty($files_name[$idx])){
+                continue;
+            }
+            //Get ID
+            
+            $subservicio_archivo = new SubservicioArchivo();
+            $subservicio_archivo->setSubId($subid);
+            $subservicio_archivo->save();
+            $subservicio_archivo_id = $subservicio_archivo->getSarId();
+            
+            $f_tmp = $files_tmp[$idx];
+            $f_name = $subservicio_archivo_id."_".$files_name[$idx];
+            $log->debug("Procesando $idx | tmp=$f_tmp | name=$f_name");
+            
+            //UPLOAD DIR FRONTEND(WEB)/UPLOADS            
+            $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."subservicio".DIRECTORY_SEPARATOR.$subid.DIRECTORY_SEPARATOR;
+            $path_db = "uploads/subservicio/$subid/$f_name";
+            $path_file = $path.$f_name;            
+            
+            $log->debug("id=$subservicio_archivo_id | path=$path | path_db=$path_db | path_file=$path_file");
+            
+            //Creacion carpeta
+            mkdir($path, 0755);
+            
+            move_uploaded_file($f_tmp, $path_file);
+            
+            $subservicio_archivo->setSarNombre($f_name);
+            $subservicio_archivo->setSarRuta($path_db);
+            $subservicio_archivo->save();
+            
+            $log->debug("Registro SubservicioArchivo creado | sar_id=$subservicio_archivo_id ");
+        }        
+        
+    }
+    
+    public function eliminarImagenesSubservicio($files,$subid,$log){
+        $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."subservicio".DIRECTORY_SEPARATOR.$subid.DIRECTORY_SEPARATOR;
+        $log->debug("Path=$path | sub_id=$subid");
+        foreach($files as $fi){
+            $subservicio_archivo = SubservicioArchivoPeer::retrieveByPK($fi);
+            if(!$subservicio_archivo){
+                $log->debug("La imagen del subservicio no existe. id=$fi");
+                continue;
+            }
+            $f_name = $subservicio_archivo->getSarNombre();
+            $log->debug("path=".$path.$f_name);
+            if(file_exists($path.$f_name)){
+                unlink($path.$f_name);
+            }
+            $subservicio_archivo->delete();
+            $log->debug("Archivo eliminado");
+        }
+
+    }
+    
     public function getServicio($serid){
         $servicio = ServicioPeer::retrieveByPK($serid);
         if(!$servicio){

@@ -80,7 +80,7 @@
 						          <tr>
 						            <td class="col-md-7"><?php echo $archivo->getParNombre(); ?></td>
 						            <td class="col-md-4">
-						            	<a href="<?php echo $url_frontend.$archivo->getParRuta(); ?>"><i class="icon-download-alt"></i> Descargar</a> 
+                                                                <a href="<?php echo $url_frontend.$archivo->getParRuta(); ?>" target="_blank"><i class="icon-download-alt"></i> Descargar</a> 
 						            </td>
 						          </tr>
 						          <?php } ?>

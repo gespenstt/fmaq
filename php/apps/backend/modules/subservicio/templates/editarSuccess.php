@@ -5,11 +5,11 @@
     use_javascript("plugins/canvas-to-blob.min.js");
     use_javascript("galeria.js");
 ?>   
-    <form method="post" action="<?php echo url_for("galeria/editar");?>" enctype="multipart/form-data" role="form" class="form-horizontal col-md-12">
-        <input type="hidden" name="gal_id" value="<?php echo $galeria->getGalId();?>" />
+    <form method="post" action="<?php echo url_for("subservicio/editar");?>" enctype="multipart/form-data" role="form" class="form-horizontal col-md-12">
+        <input type="hidden" name="sub_id" value="<?php echo $subservicio->getSubId();?>" />
         <div class="widget-header">
-                <i class="icon-picture"></i>
-                <h3>Galería</h3>
+                <i class="icon-tasks"></i>
+                <h3>Sub-servicio</h3>
         </div> <!-- /widget-header -->
 
         <div class="widget-content">	
@@ -19,14 +19,14 @@
                         <br>
                         <div class="table-responsive">
                             
-                            <?php if(count($galeria->getGaleriaArchivos())>0){ ?>
+                            <?php if(count($subservicio->getSubservicioArchivos())>0){ ?>
                             <ul class="gallery-container">
-                                <?php foreach($galeria->getGaleriaArchivos() as $foto){ ?>
+                                <?php foreach($subservicio->getSubservicioArchivos() as $foto){ ?>
                                     <li>
-                                            <a href="javascript:;" class="eliminar-imagen" data-id="<?php echo $foto->getGarId();?>" >
-                                            <img src="<?php echo $url_frontend.$foto->getGarRuta();?>" />
+                                            <a href="javascript:;" class="eliminar-imagen" data-id="<?php echo $foto->getSarId();?>" >
+                                            <img src="<?php echo $url_frontend.$foto->getSarRuta();?>" />
                                             <br />
-                                            <input type="checkbox" name="eliminar[]" id="imagen<?php echo $foto->getGarId();?>" value="<?php echo $foto->getGarId();?>" /> Eliminar
+                                            <input type="checkbox" name="eliminar[]" id="imagen<?php echo $foto->getSarId();?>" value="<?php echo $foto->getSarId();?>" /> Eliminar
                                             </a>
                                     </li>	
                                 <?php } ?>
@@ -42,11 +42,27 @@
 
                         <h4>Editar</h4>
                         <br>
-
                                 <div class="form-group">
                                         <label class="col-md-4">Nombre</label>
                                         <div class="col-md-8">
-                                            <input type="text" name="nombre" placeholder="Ingrese nombre" required="required" value="<?php echo $galeria->getGalNombre();?>" class="form-control" />
+                                            <input type="text" name="nombre" placeholder="Ingrese nombre" required="required" value="<?php echo $subservicio->getSubTitulo();?>" class="form-control" />
+                                        </div>
+                                </div> <!-- /.form-group -->
+                                <div class="form-group">
+                                        <label class="col-md-4">Servicio</label>
+                                        <div class="col-md-8">
+                                            <select name="servicio" class="form-control" required="required">
+                                                <option>Seleccione</option>
+                                                <?php foreach($servicios as $ser){ ?>
+                                                <option value="<?php echo $ser->getSerId();?>" <?php if($ser->getSerId()==$subservicio->getSerId()){ echo "selected"; }?>><?php echo $ser->getSerTitulo();?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                </div> <!-- /.form-group -->
+                                <div class="form-group">
+                                        <label class="col-md-4">Descripcion</label>
+                                        <div class="col-md-8">
+                                            <textarea name="descripcion" required="required" class="form-control" ><?php echo $subservicio->getSubContenido();?></textarea>
                                         </div>
                                 </div> <!-- /.form-group -->
                                 
@@ -71,7 +87,7 @@
                                         <div class="col-md-offset-4 col-md-8">
 
                                                 <button type="submit" class="btn btn-success">Actualizar</button> 
-                                                <a href="<?php echo url_for("galeria/index");?>" class="btn btn-default">Volver</a>
+                                                <a href="<?php echo url_for("subservicio/index");?>" class="btn btn-default">Volver</a>
                                         </div>
 
                                 </div> <!-- /.form-group -->

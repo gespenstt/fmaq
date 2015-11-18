@@ -6,8 +6,8 @@
     use_javascript("galeria.js");
 ?>    
         <div class="widget-header">
-                <i class="icon-picture"></i>
-                <h3>Galería</h3>
+                <i class="icon-tasks"></i>
+                <h3>Sub-servicio</h3>
         </div> <!-- /widget-header -->
 
         <div class="widget-content">	
@@ -30,12 +30,12 @@
                                 foreach ($pager->getResults() as $p){ ?>
                                   <tr>
                                     <td class="col-md-1"><?php echo $count; ?></td>
-                                    <td class="col-md-7"><?php echo $p->getGalNombre();?></td>
+                                    <td class="col-md-7"><?php echo $p->getSubTitulo();?></td>
                                     <td class="col-md-4">                            
-                                    <form action="<?php echo url_for("galeria/eliminar");?>" method="post">
-                                        <input type="hidden" name="gal_id" value="<?php echo $p->getGalId(); ?>" />
-                                        <a href="<?php echo url_for("galeria/editar/?gal_id=".$p->getGalId());?>" ><i class="icon-edit"></i> Editar</a> 
-                                        <a href="javascript:;" class="msgbox-eliminar" data-msg="¿Está seguro de eliminar la galería?"><i class="icon-remove"></i> Eliminar</a>
+                                    <form action="<?php echo url_for("subservicio/eliminar");?>" method="post">
+                                        <input type="hidden" name="sub_id" value="<?php echo $p->getSubId(); ?>" />
+                                        <a href="<?php echo url_for("subservicio/editar/?sub_id=".$p->getSubId());?>" ><i class="icon-edit"></i> Editar</a> 
+                                        <a href="javascript:;" class="msgbox-eliminar" data-msg="¿Está seguro de eliminar el sub-servicio?"><i class="icon-remove"></i> Eliminar</a>
                                     </form>
                                     </td>
                                   </tr>
@@ -61,7 +61,7 @@
                                 $links = $pager->getLinks();
 
                                 if($linkSaltoPrimero >= 1):
-                                    echo '<li><a href="'.url_for("galeria/index/?p=1").'">«</a></li>';
+                                    echo '<li><a href="'.url_for("subservicio/index/?p=1").'">«</a></li>';
                                 endif;
 
                                 foreach ($links as $e): 
@@ -70,12 +70,12 @@
                                         $current = ' active';
                                     endif;
                                     if(($e < $minimo && $minimo > 1) || ($e <= $maximo)):
-                                    echo '<li class="'.$current.'"><a href="'.url_for("galeria/index/?p=$e").'">'.$e.'</a></li>';
+                                    echo '<li class="'.$current.'"><a href="'.url_for("subservicio/index/?p=$e").'">'.$e.'</a></li>';
                                     endif;
                                 endforeach; 
 
                                 if($linkSaltoUltimo <= $ultimaPagina):                                            
-                                    echo '<li><a href="'.url_for("galeria/index/?p=$ultimaPagina").'">»</a></li>';
+                                    echo '<li><a href="'.url_for("subservicio/index/?p=$ultimaPagina").'">»</a></li>';
                                 endif;
 
                                 ?>                                         
@@ -89,12 +89,29 @@
 
                         <h4>Agregar</h4>
                         <br>
-                        <form method="post" action="<?php echo url_for("galeria/index");?>" enctype="multipart/form-data" role="form" class="form-horizontal col-md-12">
+                        <form method="post" action="<?php echo url_for("subservicio/index");?>" enctype="multipart/form-data" role="form" class="form-horizontal col-md-12">
 
                                 <div class="form-group">
                                         <label class="col-md-4">Nombre</label>
                                         <div class="col-md-8">
                                                 <input type="text" name="nombre" placeholder="Ingrese nombre" required="required" value="" class="form-control" />
+                                        </div>
+                                </div> <!-- /.form-group -->
+                                <div class="form-group">
+                                        <label class="col-md-4">Servicio</label>
+                                        <div class="col-md-8">
+                                            <select name="servicio" class="form-control" required="required">
+                                                <option>Seleccione</option>
+                                                <?php foreach($servicios as $ser){ ?>
+                                                <option value="<?php echo $ser->getSerId();?>"><?php echo $ser->getSerTitulo();?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                </div> <!-- /.form-group -->
+                                <div class="form-group">
+                                        <label class="col-md-4">Descripcion</label>
+                                        <div class="col-md-8">
+                                            <textarea name="descripcion" required="required" class="form-control" ></textarea>
                                         </div>
                                 </div> <!-- /.form-group -->
                                 
