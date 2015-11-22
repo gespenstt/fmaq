@@ -17,6 +17,24 @@ class serviciosActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
+      $ser_id = $request->getParameter("servicio");
+      $servicio = ServicioPeer::retrieveByPK($ser_id);
+      if(!$servicio){
+          $this->redirect("home/index");
+      } 
+      $this->servicio = $servicio;
+      
+  }
+  public function executeSubservicio(sfWebRequest $request)
+  {
+      $sub_id = $request->getParameter("subservicio");
+      $subservicio = SubservicioPeer::retrieveByPK($sub_id);
+      if(!$subservicio){
+          $this->redirect("home/index");
+      } 
+      $this->subservicio = $subservicio;
+      $this->servicio = $subservicio->getServicio();
+      $this->sub_id = $sub_id;
       
   }
 }

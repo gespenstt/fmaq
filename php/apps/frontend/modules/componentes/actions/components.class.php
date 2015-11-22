@@ -19,6 +19,26 @@ class componentesComponents extends sfComponents
         $maquinaria_tipo = TipoMaquinariaPeer::doSelect($c);
         $this->maquinaria_tipo = $maquinaria_tipo;
         
+        $cs = new Criteria();
+        $cs->addAscendingOrderByColumn(ServicioPeer::SER_TITULO);
+        $servicios = ServicioPeer::doSelect($cs);
+        $this->servicios = $servicios;
+        
+    }
+    
+    public function executeNuestramaquinaria(){        
+      
+        $co = new Criteria();
+        $co->add(MaquinariaPeer::MAQ_VENTA,false);
+        $co->addAscendingOrderByColumn('RAND()');
+        $co->setLimit(5);
+        $maquinaria = MaquinariaPeer::doSelect($co);
+        $this->maquinaria = $maquinaria;
+        
+    }
+    
+    public function executeShare(){  
+        $this->util = new Util();
     }
  
     

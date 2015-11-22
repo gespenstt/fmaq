@@ -70,52 +70,8 @@
                         <div class="sidebar-widgets-wrap">
 
                             <div class="widget clearfix">
-
-                                <h4>Nuestras Máquinas</h4>
-                                <div id="oc-portfolio-sidebar" class="owl-carousel portfolio-5">
-                                    
-                                    <?php for($a=1;$a<=2;$a++){ ?>
-
-                                    <div class="oc-item">
-                                        <div class="iportfolio">
-                                            <div class="portfolio-image">
-                                                <a href="#">
-                                                    <img src="<?php echo public_path("uploads/400x300-4.jpg");?>" alt="">
-                                                </a>
-                                                <div class="portfolio-overlay">
-                                                    <a href="<?php echo public_path("uploads/400x300-4.jpg");?>" class="center-icon" data-lightbox="iframe"><i class="icon-line-plus"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="portfolio-desc center nobottompadding">
-                                                <h3><a href="<?php echo url_for("maquinarias/detalle");?>">Tractor</a></h3>
-                                                <span><a href="<?php echo url_for("maquinarias/detalle");?>">John Deere - 7210R</a></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <?php } ?>
-
-                                </div>
-
-                                <script type="text/javascript">
-
-                                    jQuery(document).ready(function($) {
-
-                                        var ocClients = $("#oc-portfolio-sidebar");
-
-                                        ocClients.owlCarousel({
-                                            items: 1,
-                                            margin: 10,
-                                            loop: true,
-                                            nav: false,
-                                            autoplay: true,
-                                            dots: true,
-                                            autoplayHoverPause: true
-                                        });
-
-                                    });
-
-                                </script>
+                     
+                                <?php include_component("componentes", "nuestramaquinaria"); ?>
 
                             </div>
                             

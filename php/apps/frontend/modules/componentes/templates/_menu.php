@@ -13,8 +13,8 @@
                             <li class="<?php echo $util->checkMenu($modulo,"quienessomos");?>"><a href="<?php echo url_for("quienessomos/index");?>"><div>Cómo trabajamos</div></a></li>
                             <li class="<?php echo $util->checkMenu($modulo,"servicios");?>"><a href="#"><div>Servicios</div></a>
                                 <ul>
-                                    <?php for($a=1;$a<=3;$a++){ ?>
-                                    <li><a href="<?php echo url_for("servicios/index");?>"><div>Tipo de Servicio 1</div></a></li>
+                                    <?php foreach($servicios as $se){ ?>
+                                    <li><a href="<?php echo url_for("servicios/index/?servicio=".$se->getSerId());?>"><div><?php echo $se->getSerTitulo();?></div></a></li>
                                     <?php } ?>
                                 </ul>
                             </li>
