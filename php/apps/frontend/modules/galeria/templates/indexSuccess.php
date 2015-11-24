@@ -27,7 +27,18 @@
                 <div class="feature-box media-box">
                     <a href="<?php echo url_for("galeria/detalle/?galid=".$p->getGalId());?>">
                         <div class="fbox-media">
-                            <div class="div-galeria" style="background-image: url(<?php echo public_path($p->getGaleriaArchivos()[0]->getGarRuta()); ?>)">
+                            <?php
+                            $imagen = null;
+                            foreach($p->getGaleriaArchivos() as $mf){
+                                $imagen = $mf->getGarRuta();
+                                break;
+                            }
+                            if(is_null($imagen)){
+                                $imagen = "images/sin-imagen.gif";
+                            }
+                            
+                            ?>
+                            <div class="div-galeria" style="background-image: url(<?php echo public_path($imagen); ?>)">
                                 
                             </div>
                         </div>
