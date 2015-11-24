@@ -30,6 +30,15 @@ class homeActions extends sfActions
             $d->setLimit(5);
             $noticias = NoticiaPeer::doSelect($d);
             $this->notis = $noticias;
-        
+            
+            $e = new Criteria();
+            $servicios = ServicioPeer::doSelect($e);
+            $this->servicios = $servicios;
+            
+            $f = new Criteria();
+            $f->add(MaquinariaPeer::MAQ_VENTA,false);
+            $f->setLimit(4);
+            $nuestra = MaquinariaPeer::doSelect($f);
+            $this->nuestras = $nuestra;
   }
 }

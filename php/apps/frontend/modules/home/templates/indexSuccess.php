@@ -80,11 +80,11 @@
 					<div class="clear-bottommargin">
 						<div class="row common-height clearfix">
                                                     
-                                                    <?php for($a=1;$a<=6;$a++){?>
+                                                    <?php foreach($servicios as $servicio){ ?>
 							<div class="col-md-4 col-sm-6 bottommargin">
 								<div class="feature-box fbox-plain">
-									<h3>Algo que hacemos <?php echo $a; ?></h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem minima, facere distinctio placeat.</p>
+									<h3><?php echo $servicio->getSerTitulo() ?></h3>
+									<p><?php echo html_entity_decode($servicio->getSerContenido()) ?></p>
 								</div>
 							</div>
                                                     <?php } ?>
@@ -99,23 +99,32 @@
 					</div>
 				</a>
 				<div class="heading-block center">
-					<h2 class="">Nuestras máquinas:</h2>
+					<h2 class="">Nuestra maquinaria</h2>
 				</div>
 
 				<div id="portfolio" class="portfolio-full clearfix">
                                     
-                                    <?php for($a=1;$a<=4;$a++){?>
+                                    <?php foreach($nuestras as $nuestra){ ?>
 
 					<article class="portfolio-item pf-media pf-icons">
 						<div class="portfolio-image">
-                                                    <img src="<?php echo public_path("uploads/800x600-maquinas-1.jpg");?>" alt="">
+                                                    <?php  
+                                                    $imagen = null;
+                                                    foreach($nuestra->getMaquinariaFotos() as $mf){
+                                                        $imagen = $mf->getMfoRuta();
+                                                        break;
+                                                    }
+                                                    if(is_null($imagen)){
+                                                        $imagen = "images/sin-imagen.gif";
+                                                    } ?>
+                                                    <img src="<?php echo public_path($imagen);?>" alt="">
 							<div class="portfolio-overlay">
-								<a href="#" class="center-icon"><i class="icon-line-ellipsis"></i></a>
+								<a href="<?php echo url_for("nuestramaquinaria/detalle?maqid=".$nuestra->getMaqId()); ?>" class="center-icon"><i class="icon-line-ellipsis"></i></a>
 							</div>
 						</div>
 						<div class="portfolio-desc">
-							<h3><a href="#">Tipo de máquina</a></h3>
-							<span>Modelo de máquina</span>
+							<h3><a href="<?php echo url_for("nuestramaquinaria/detalle?maqid=".$nuestra->getMaqId()); ?>"><?php echo $nuestra->getMaqModelo();  ?></a></h3>
+							
 						</div>
 					</article>
                                     
@@ -163,12 +172,8 @@
 									
 									<div class="entry-content">
                                                                             <p><?php
-                                                                            $string = htmlentities($noti->getNotDescripcion(), null, 'utf-8');
-                                                                            $content = str_replace("&nbsp;", "", $string);
-                                                                            $content = html_entity_decode($content);
-                                                                            
-                                                                            
-                                                                            echo substr(  preg_replace("/&#?[a-z0-9]+;/i","", $content)  ,0,100); ?></p>
+                                                                            echo html_entity_decode($noti->getNotDescripcion());
+                                                                         ?></p>
 									</div>
 								</div>
 							</div>
