@@ -19,8 +19,11 @@ class loginActions extends sfActions
   {
     $this->setLayout("layout_login");
     $this->msg = false;
-    
+        
     if($request->isMethod("post")){
+        if(!$this->getUser()->hasFlash('referer') && !empty($this->getRequest()->getReferer())){
+          $this->getUser()->setFlash('referer',$this->getRequest()->getReferer());
+        }
         $tra_id = date("U").rand(111,999);
         $util = new Util();
         $log = $util->setLog("loginIndex[$tra_id]");
@@ -42,7 +45,13 @@ class loginActions extends sfActions
                 $log->debug("Contrasena valida | Login OK");
                 $this->getUser()->setAuthenticated(true);
                 $this->getUser()->setAttribute("usu_id", $resCu->getUsuId());
-                $this->redirect("home/index");
+                if($this->getUser()->hasFlash('referer') && !empty($this->getUser()->getFlash('referer')) && strpos($this->getUser()->getFlash('referer'), "login")===FALSE){
+                  $referer = $this->getUser()->getFlash('referer');
+                  $this->getUser()->setFlash('referer', null);  
+                  $this->redirect($referer);
+                }else{
+                  $this->redirect("home/index");
+                }
             }else{
                 $this->msg = "La contraseña ingresada es incorrecta.";
                 $log->warning("Contraseña ingresada incorrecta");
