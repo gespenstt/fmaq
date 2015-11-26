@@ -75,4 +75,41 @@ class Util{
                 break;
         }
     }
+    
+    public function setEmailNotificacion($mensaje,$url){
+        
+        if(empty($mensaje)||empty($url)){
+            return false;
+        }
+        
+        $email = sfConfig::get("app_notificacion_email");
+        $asunto = "Notificación desde web Futamaq";
+        $ruta_template_email = sfconfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").
+                DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."assets".DIRECTORY_SEPARATOR."email_template.html";
+        
+        if(!is_file($ruta_template_email)){
+            return false;
+        }
+        
+        $contenido_template_email = file_get_contents($ruta_template_email);
+        
+        if(strpos($contenido_template_email, "{{MENSAJE}}")===FALSE || strpos($contenido_template_email, "{{URL}}")===FALSE){
+            return false;
+        }
+        
+        $contenido_template_email = str_replace("{{MENSAJE}}", $mensaje, $contenido_template_email);
+        $contenido_template_email = str_replace("{{URL}}", $url, $contenido_template_email);
+        
+        $headers = "From: no-responder@futamaq.cl\r\n";
+        $headers .= "Reply-To: no-responder@futamaq.cl\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+        
+        mail($email, $asunto, $contenido_template_email, $headers);
+        
+    }
+    
+    function setArchivoCV($archivo,$cvid){
+        
+    }
 }

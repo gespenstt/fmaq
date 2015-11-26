@@ -1,4 +1,6 @@
-
+<?php
+    use_javascript("https://www.google.com/recaptcha/api.js");
+?>
 		<!-- Page Title
 		============================================= -->
 		<section id="page-title" class="page-title-parallax page-title-dark" style="background-image: url('<?php echo public_path("uploads/trabajos-header-bg.jpg");?>'); padding: 120px 0;" data-stellar-background-ratio="0.3">
@@ -66,45 +68,45 @@
 
 						<div id="job-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
 
-						<form action="include/jobs-file.php" id="template-jobform" name="template-jobform" method="post" role="form">
+                                                <form onsubmit="return validarForm();" action="<?php echo url_for("trabaja/index");?>" enctype="multipart/form-data" id="template-jobform" name="template-jobform" method="post" role="form">
 
 							<div class="form-process"></div>
 
 							<div class="col_full">
 								<label for="template-jobform-fname">Nombre completo <small>*</small></label>
-								<input type="email" id="template-jobform-fname" name="template-jobform-fname" value="" class="required email sm-form-control" />
+								<input type="text" id="template-jobform-fname" name="cv_nombre" value="" class=" sm-form-control" required="required" />
 							</div>
 
 							<div class="col_full">
 								<label for="template-jobform-email">Email <small>*</small></label>
-								<input type="email" id="template-jobform-email" name="template-jobform-email" value="" class="required email sm-form-control" />
+								<input type="email" id="template-jobform-email" name="cv_email" value="" class="sm-form-control" required="required" />
 							</div>
 
 							<div class="col_half">
 								<label for="template-jobform-rut">Rut <small>*</small></label>
-								<input type="text" name="template-jobform-rut" id="template-jobform-age" value="" size="22" tabindex="4" class="sm-form-control required" />
+								<input type="text" name="cv_rut" id="template-jobform-age" value="" size="22" tabindex="4" class="sm-form-control " required="required" />
 							</div>
 
 							<div class="col_half col_last">
 								<label for="template-jobform-phone">Telefono <small>*</small></label>
-								<input type="text" name="template-jobform-phone" id="template-jobform-phone" value="" size="22" tabindex="5" class="sm-form-control required" />
+								<input type="text" name="cv_telefono" id="template-jobform-phone" value="" size="22" tabindex="5" class="sm-form-control " required="required" />
 							</div>
 
 							<div class="clear"></div>
 
 							<div class="col_full">
 								<label for="template-jobform-application">Solicitud <small>*</small></label>
-								<textarea name="template-jobform-application" id="template-jobform-application" rows="6" tabindex="11" class="sm-form-control required"></textarea>
+								<textarea name="cv_solicitud" id="template-jobform-application" rows="6" tabindex="11" class="sm-form-control " required="required"></textarea>
 							</div>
 
 							<div class="col_full">
 								<label for="template-jobform-cvfile">Cargar CV <small>*</small></label>
-								<input type="file" id="template-jobform-cvfile" name="template-jobform-cvfile" value="" class="required sm-form-control" />
+                                                                <input type="file" id="template-jobform-cvfile" name="cv_archivo" value="" class=" sm-form-control" required="required" />
 							</div>
-
-							<div class="col_full hidden">
-								<input type="text" id="template-jobform-botcheck" name="template-jobform-botcheck" value="" class="sm-form-control" />
-							</div>
+                                                        
+                                                        <div class="col_full">
+                                                            <div class="g-recaptcha" data-sitekey="6LevyxETAAAAANqmnlYLc00_5mww9VudEiMyZNHK" ></div>
+                                                        </div>
 
 							<div class="col_full">
 								<button class="button button-3d button-large btn-block nomargin" name="template-jobform-apply" type="submit" value="apply">Enviar postulación</button>
@@ -113,22 +115,16 @@
 						</form>
 
 						<script type="text/javascript">
-
-							jQuery("#template-jobform").validate({
-								submitHandler: function(form) {
-									jQuery('.form-process').fadeIn();
-									jQuery(form).ajaxSubmit({
-										target: '#job-form-result',
-										success: function() {
-											jQuery('.form-process').fadeOut();
-											jQuery(form).find('.sm-form-control').val('');
-											jQuery('#job-form-result').attr('data-notify-msg', jQuery('#job-form-result').html()).html('');
-											SEMICOLON.widget.notifications(jQuery('#job-form-result'));
-										}
-									});
-								}
-							});
-
+                                                    
+                                                    function validarForm(){
+                                                        var cr = grecaptcha.getResponse();
+                                                        if(cr.length>1){
+                                                            return true
+                                                        }else{
+                                                            return false;
+                                                        }
+                                                    }
+                                                        
 						</script>
 
 					</div>

@@ -277,7 +277,7 @@
     <!-- Footer Scripts
     ============================================= -->
     <script type="text/javascript" src="<?php echo public_path("js/functions.js");?>"></script>
+    <?php include_javascripts(); ?>
     <script type="text/javascript" src="<?php echo public_path("js/base.js");?>"></script>
-
 </body>
 </html>
