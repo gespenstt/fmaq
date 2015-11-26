@@ -46,7 +46,8 @@ class loginActions extends sfActions
                 $log->debug("Contrasena valida | Login OK");
                 $this->getUser()->setAuthenticated(true);
                 $this->getUser()->setAttribute("usu_id", $resCu->getUsuId());
-                if($this->getUser()->hasFlash('referer') && !empty($this->getUser()->getFlash('referer')) && strpos($this->getUser()->getFlash('referer'), "login")===FALSE){
+                $user_ref = $this->getUser()->getFlash('referer');
+                if($this->getUser()->hasFlash('referer') && !empty($user_ref) && strpos($this->getUser()->getFlash('referer'), "login")===FALSE){
                   $referer = $this->getUser()->getFlash('referer');
                   $this->getUser()->setFlash('referer', null);  
                   $this->redirect($referer);
