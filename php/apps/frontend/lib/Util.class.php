@@ -100,12 +100,15 @@ class Util{
         $contenido_template_email = str_replace("{{MENSAJE}}", $mensaje, $contenido_template_email);
         $contenido_template_email = str_replace("{{URL}}", $url, $contenido_template_email);
         
-        $headers = "From: no-responder@futamaq.cl\r\n";
-        $headers .= "Reply-To: no-responder@futamaq.cl\r\n";
-        $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+        // Para enviar un correo HTML, debe establecerse la cabecera Content-type
+        $cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+        $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+        // Cabeceras adicionales
+        $cabeceras .= 'To: Admin <'.$email.'>' . "\r\n";
+        //$cabeceras .= 'From: Recordatorio <cumples@example.com>' . "\r\n";
         
-        mail($email, $asunto, $contenido_template_email, $headers);
+        mail($email, $asunto, $contenido_template_email, $cabeceras);
         
     }
     
