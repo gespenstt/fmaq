@@ -39,30 +39,5 @@ class homeActions extends sfActions
     $f->setLimit(4);
     $nuestra = MaquinariaPeer::doSelect($f);
     $this->nuestras = $nuestra;
-
-    //$util = new Util();
-    //$url_admin = sfConfig::get("app_backend_url")."index.php/noticia/editar/not_id/1";
-    //$util->setEmailNotificacion("Hay un nuevo CV cargado en Futamaq.", $url_admin);
-
-    $this->msg = false;
-
-    if($request->isMethod("post")){
-
-        $nombre = $request->getPostParameter("cv_nombre");
-        $email = $request->getPostParameter("cv_email");
-        $rut = $request->getPostParameter("cv_rut");
-        $telefono = $request->getPostParameter("cv_telefono");
-        $solicitud = $request->getPostParameter("cv_solicitud");
-        $archivo = $_FILES["cv_archivo"];
-        
-        $cv = new Curriculum();
-        $cv->setCurNombre($nombre);
-        $cv->setCurEmail($email);
-        $cv->setCurCartaPresentacion($solicitud);
-        $cv->setCurTelefono($telefono);
-        $cv->save();
-        $cur_id = $cv->getCurId();
-        
-    }
   }
 }

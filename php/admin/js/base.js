@@ -56,6 +56,7 @@ $(document).ready(function(){
                     $("#modal-cv-telefono").html(data.contenido.telefono);
                     $("#modal-cv-carta").html(data.contenido.carta_presentacion);
                     $("#modal-cv-archivo").attr("href",data.contenido.ruta);
+                    $("#modal-cv-email").html(data.contenido.email)
 
                     $("#modal-cv").modal();
                     

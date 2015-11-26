@@ -151,6 +151,12 @@
                             </div> <!-- /.form-group -->
 
                             <div class="form-group">
+                                    <label class="col-md-4">Email</label>
+                                    <div id="modal-cv-email" class="col-md-8">
+                                    </div>
+                            </div> <!-- /.form-group -->
+
+                            <div class="form-group">
                                     <label class="col-md-4">Telefono</label>
                                     <div id="modal-cv-telefono" class="col-md-8">
                                     </div>

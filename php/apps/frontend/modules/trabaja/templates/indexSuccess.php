@@ -1,5 +1,6 @@
 <?php
     use_javascript("https://www.google.com/recaptcha/api.js");
+    use_javascript("jquery.Rut.min.js");
 ?>
 		<!-- Page Title
 		============================================= -->
@@ -65,6 +66,12 @@
 							<h2>Postula ahora</h2>
 							<span>Nos pondremos en contacto contigo.</span>
 						</div>
+                                            
+                                                <?php if($msg){ ?>
+                                                <div class="alert alert-<?php echo $tipo_msg;?>">
+                                                    <?php echo $msg; ?>
+                                                </div>
+                                                <?php } ?>
 
 						<div id="job-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
 
@@ -84,7 +91,7 @@
 
 							<div class="col_half">
 								<label for="template-jobform-rut">Rut <small>*</small></label>
-								<input type="text" name="cv_rut" id="template-jobform-age" value="" size="22" tabindex="4" class="sm-form-control " required="required" />
+								<input type="text" name="cv_rut" id="template-jobform-age" value="" size="22" tabindex="4" class="sm-form-control rut" required="required" />
 							</div>
 
 							<div class="col_half col_last">
@@ -101,7 +108,7 @@
 
 							<div class="col_full">
 								<label for="template-jobform-cvfile">Cargar CV <small>*</small></label>
-                                                                <input type="file" id="template-jobform-cvfile" name="cv_archivo" value="" class=" sm-form-control" required="required" />
+                                                                <input type="file" id="template-jobform-cvfile" name="cv_archivo" class=" sm-form-control" required="required" />
 							</div>
                                                         
                                                         <div class="col_full">
@@ -124,6 +131,13 @@
                                                             return false;
                                                         }
                                                     }
+                                                    
+                                                    $(document).ready(function(){
+                                                        $(".rut").Rut({
+                                                            format_on: 'keyup',
+                                                            on_error: function(){ $(".rut").val(""); }
+                                                        })
+                                                    })
                                                         
 						</script>
 

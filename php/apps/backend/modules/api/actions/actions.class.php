@@ -43,6 +43,7 @@ class apiActions extends sfActions
                         "nombre" => $curriculum->getCurNombre(),
                         "rut" => $curriculum->getCurRut(),
                         "telefono" => $curriculum->getCurTelefono(),
+                        "email" => $curriculum->getCurEmail(),
                     );
                 break;
                 

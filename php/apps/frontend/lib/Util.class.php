@@ -110,6 +110,22 @@ class Util{
     }
     
     function setArchivoCV($archivo,$cvid){
+        $cv = CurriculumPeer::retrieveByPK($cvid);
+        if(!$cv){
+            return false;
+        }     
+        $f_name = $cvid."_".$archivo["name"];
+        $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."cv".DIRECTORY_SEPARATOR.$cvid.DIRECTORY_SEPARATOR;
+        $path_db = "uploads/cv/$cvid/$f_name";    
+        $path_file = $path.$f_name;          
+            
+        //Creacion carpeta
+        mkdir($path, 0755);
+        move_uploaded_file($archivo["tmp_name"], $path_file);
+        
+        $cv->setCurNombreArchivo($f_name);
+        $cv->setCurRuta($path_db);
+        $cv->save();            
         
     }
 }
