@@ -50,6 +50,6 @@ all:
         transport:
           class: Swift_SmtpTransport
           param:    
-            host:       mail.insydev.com
-            username:   notificacion@insydev.com
+            host:       mail.idioteque.ninja
+            username:   notificacion@idioteque.ninja
             password:   notificacion2015

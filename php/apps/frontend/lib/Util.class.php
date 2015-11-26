@@ -103,12 +103,13 @@ class Util{
 
         $mailer = sfContext::getInstance()->getMailer();
         $mensaje = Swift_Message::newInstance()
-                      ->setFrom(array("notificacion@futamaq.cl" => "Notificación Futamaq"))
+                      ->setFrom(array("notificacion@idioteque.ninja" => "Notificación Futamaq"))
                       ->setTo($email)
                       ->setSubject($asunto)
                       ->setBody($contenido_template_email,'text/html')
                   ;
-                  $mailer->send($mensaje);        
+                  $mailer->send($mensaje);    
+                  
     }
     
     function setArchivoCV($archivo,$cvid){
