@@ -243,7 +243,7 @@ class maquinariaActions extends sfActions
             foreach($maquinaria->getMaquinariaFotos() as $mf){
                 $log->debug("Eliminando imagen");
                 
-                $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."maquinaria".DIRECTORY_SEPARATOR.$maq_id.DIRECTORY_SEPARATOR;
+                $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."maquinaria".DIRECTORY_SEPARATOR.$maq_id.DIRECTORY_SEPARATOR;
                 $path_file = $path.$mf->getMfoNombre();
 
                 unlink($path_file);
@@ -285,7 +285,7 @@ class maquinariaActions extends sfActions
         $maquinaria_foto = MaquinariaFotoPeer::retrieveByPK($mfo_id);
         $maquinaria_id = $maquinaria_foto->getMaqId();
         
-        $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."maquinaria".DIRECTORY_SEPARATOR.$maquinaria_id.DIRECTORY_SEPARATOR;
+        $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."maquinaria".DIRECTORY_SEPARATOR.$maquinaria_id.DIRECTORY_SEPARATOR;
         $path_file = $path.$maquinaria_foto->getMfoNombre();
         
         unlink($path_file);

@@ -49,7 +49,7 @@ class Util{
             $log->debug("Procesando $idx | tmp=$f_tmp | name=$f_name");
             
             //UPLOAD DIR FRONTEND(WEB)/UPLOADS            
-            $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."maquinaria".DIRECTORY_SEPARATOR.$mqid.DIRECTORY_SEPARATOR;
+            $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."maquinaria".DIRECTORY_SEPARATOR.$mqid.DIRECTORY_SEPARATOR;
             $path_db = "uploads/maquinaria/$mqid/$f_name";
             $path_file = $path.$f_name;            
             
@@ -75,7 +75,7 @@ class Util{
         
         //UPLOAD DIR FRONTEND(WEB)/UPLOADS       
         $f_name = $par_id."_".$archivo["name"];
-        $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."proyecto".DIRECTORY_SEPARATOR.$pro_id.DIRECTORY_SEPARATOR;
+        $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."proyecto".DIRECTORY_SEPARATOR.$pro_id.DIRECTORY_SEPARATOR;
         $path_db = "uploads/proyecto/$pro_id/$f_name";    
         $path_file = $path.$f_name;       
             
@@ -93,7 +93,7 @@ class Util{
         
         //UPLOAD DIR FRONTEND(WEB)/UPLOADS       
         $f_name = $ser_id."_".$archivo["name"];
-        $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."servicio".DIRECTORY_SEPARATOR.$ser_id.DIRECTORY_SEPARATOR;
+        $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."servicio".DIRECTORY_SEPARATOR.$ser_id.DIRECTORY_SEPARATOR;
         $path_db = "uploads/servicio/$ser_id/$f_name";    
         $path_file = $path.$f_name;       
             
@@ -129,7 +129,7 @@ class Util{
             $log->debug("Procesando $idx | tmp=$f_tmp | name=$f_name");
             
             //UPLOAD DIR FRONTEND(WEB)/UPLOADS            
-            $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."galeria".DIRECTORY_SEPARATOR.$galid.DIRECTORY_SEPARATOR;
+            $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."galeria".DIRECTORY_SEPARATOR.$galid.DIRECTORY_SEPARATOR;
             $path_db = "uploads/galeria/$galid/$f_name";
             $path_file = $path.$f_name;            
             
@@ -151,7 +151,7 @@ class Util{
     }
     
     public function eliminarImagenesGaleria($files,$galid,$log){
-        $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."galeria".DIRECTORY_SEPARATOR.$galid.DIRECTORY_SEPARATOR;
+        $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."galeria".DIRECTORY_SEPARATOR.$galid.DIRECTORY_SEPARATOR;
         $log->debug("Path=$path | gal_id=$galid");
         foreach($files as $fi){
             $galeria_archivo = GaleriaArchivoPeer::retrieveByPK($fi);
@@ -195,7 +195,7 @@ class Util{
             $log->debug("Procesando $idx | tmp=$f_tmp | name=$f_name");
             
             //UPLOAD DIR FRONTEND(WEB)/UPLOADS            
-            $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."subservicio".DIRECTORY_SEPARATOR.$subid.DIRECTORY_SEPARATOR;
+            $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."subservicio".DIRECTORY_SEPARATOR.$subid.DIRECTORY_SEPARATOR;
             $path_db = "uploads/subservicio/$subid/$f_name";
             $path_file = $path.$f_name;            
             
@@ -216,7 +216,7 @@ class Util{
     }
     
     public function eliminarImagenesSubservicio($files,$subid,$log){
-        $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."subservicio".DIRECTORY_SEPARATOR.$subid.DIRECTORY_SEPARATOR;
+        $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."subservicio".DIRECTORY_SEPARATOR.$subid.DIRECTORY_SEPARATOR;
         $log->debug("Path=$path | sub_id=$subid");
         foreach($files as $fi){
             $subservicio_archivo = SubservicioArchivoPeer::retrieveByPK($fi);

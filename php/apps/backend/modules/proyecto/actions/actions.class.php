@@ -229,7 +229,7 @@ class proyectoActions extends sfActions
                 //Archivos
                 if($proyecto->getProyectoArchivos()){
                     foreach($proyecto->getProyectoArchivos() as $par){
-                        $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."proyecto".DIRECTORY_SEPARATOR.$pro_id.DIRECTORY_SEPARATOR;
+                        $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."proyecto".DIRECTORY_SEPARATOR.$pro_id.DIRECTORY_SEPARATOR;
                         $path_file = $path.$par->getParDescripcion();  
                 
                         unlink($path_file);
@@ -328,7 +328,7 @@ class proyectoActions extends sfActions
                     throw new Exception("El archivo seleccionado no existe.");
                 }
                 
-                $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."proyecto".DIRECTORY_SEPARATOR.$pro_id.DIRECTORY_SEPARATOR;
+                $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."proyecto".DIRECTORY_SEPARATOR.$pro_id.DIRECTORY_SEPARATOR;
                 $path_file = $path.$f_name;  
                 
                 unlink($path_file);

@@ -51,7 +51,7 @@ class promocionActions extends sfActions
                 $f_name = $maquinaria_foto_id."_".$imagen["name"];
             
                 //UPLOAD DIR FRONTEND(WEB)/UPLOADS            
-                $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."promocion".DIRECTORY_SEPARATOR.$promocion_id.DIRECTORY_SEPARATOR;
+                $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."promocion".DIRECTORY_SEPARATOR.$promocion_id.DIRECTORY_SEPARATOR;
                 $path_db = "uploads/promocion/$promocion_id/$f_name";
                 $path_file = $path.$f_name;
                 mkdir($path, 0755);
@@ -137,7 +137,7 @@ class promocionActions extends sfActions
                 $f_name = $maquinaria_foto_id."_".$imagen["name"];
             
                 //UPLOAD DIR FRONTEND(WEB)/UPLOADS            
-                $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."promocion".DIRECTORY_SEPARATOR.$promocion_id.DIRECTORY_SEPARATOR;
+                $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."promocion".DIRECTORY_SEPARATOR.$promocion_id.DIRECTORY_SEPARATOR;
                 $path_db = "uploads/promocion/$promocion_id/$f_name";
                 $path_file = $path.$f_name;
                 mkdir($path, 0755);
@@ -189,7 +189,7 @@ class promocionActions extends sfActions
         }
         
         if($promocion->getPromNombreimagen()&&$promocion->getPromRutaimagen()){
-            $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR."web".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."promocion".DIRECTORY_SEPARATOR.$prom_id.DIRECTORY_SEPARATOR;
+            $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."promocion".DIRECTORY_SEPARATOR.$prom_id.DIRECTORY_SEPARATOR;
             $ruta_imagen = $path.$promocion->getPromNombreimagen();
             if(file_exists($ruta_imagen)){
                 unlink($ruta_imagen);
