@@ -21,7 +21,7 @@ class loginActions extends sfActions
     $this->msg = false;
         
     if($request->isMethod("post")){
-        if(!$this->getUser()->hasFlash('referer') && !empty($this->getRequest()->getReferer())){
+        if(!$this->getUser()->hasFlash('referer') && !@empty($this->getRequest()->getReferer())){
           $this->getUser()->setFlash('referer',$this->getRequest()->getReferer());
         }
         $tra_id = date("U").rand(111,999);
