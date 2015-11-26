@@ -2,6 +2,12 @@
     use_javascript("https://www.google.com/recaptcha/api.js");
     use_javascript("jquery.Rut.min.js");
 ?>
+<?php
+    use_stylesheet("fileinput.min.css");
+    use_javascript("fileinput.min.js");
+    use_javascript("fileinput_locale_es.js");
+    use_javascript("plugins/canvas-to-blob.min.js");
+?> 
 		<!-- Page Title
 		============================================= -->
 		<section id="page-title" class="page-title-parallax page-title-dark" style="background-image: url('<?php echo public_path("uploads/trabajos-header-bg.jpg");?>'); padding: 120px 0;" data-stellar-background-ratio="0.3">
@@ -108,7 +114,7 @@
 
 							<div class="col_full">
 								<label for="template-jobform-cvfile">Cargar CV <small>*</small></label>
-                                                                <input type="file" id="template-jobform-cvfile" name="cv_archivo" class=" sm-form-control" required="required" />
+                                                                <input class="file-loading" data-show-upload="false" type="file" id="cv_archivo" name="cv_archivo" required="required" />
 							</div>
                                                         
                                                         <div class="col_full">
@@ -136,7 +142,11 @@
                                                         $(".rut").Rut({
                                                             format_on: 'keyup',
                                                             on_error: function(){ $(".rut").val(""); }
-                                                        })
+                                                        });
+                                                        $("#cv_archivo").fileinput({
+                                                            language: "es",
+                                                            allowedFileExtensions: ["doc", "docx", "pdf"]
+                                                        });
                                                     })
                                                         
 						</script>
