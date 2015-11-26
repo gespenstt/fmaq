@@ -118,7 +118,7 @@
 							</div>
                                                         
                                                         <div class="col_full">
-                                                            <div class="g-recaptcha" data-sitekey="6LevyxETAAAAANqmnlYLc00_5mww9VudEiMyZNHK" ></div>
+                                                            <div class="g-recaptcha" data-sitekey="6Lft3hETAAAAAGMeo0kPjdS_M8TP1MP15v0Q-pn2"></div>
                                                         </div>
 
 							<div class="col_full">
