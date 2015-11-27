@@ -50,6 +50,8 @@ class trabajaActions extends sfActions
             $cur_id = $cv->getCurId();
             
             $util->setArchivoCV($archivo, $cur_id);
+            $url_backend = sfConfig::get("app_backend_url")."index.php/cv";
+            $util->setEmailNotificacion("Hay un nuevo CV cargado en la web.",$url_backend);
             
             $this->msg = "El currículum ha sido cargado con éxito.";
             

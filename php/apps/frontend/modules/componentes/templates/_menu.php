@@ -34,7 +34,7 @@
                         </ul>
 
                         <!-- Top Search
-                        ============================================= -->
+                        =============================================
                         <div id="top-search">
                             <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
                             <form action="<?php echo url_for("buscar/index");?>" method="get">
