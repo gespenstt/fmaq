@@ -95,15 +95,24 @@
 								<input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" class="required sm-form-control" />
 							</div>
 
-							<div class="col_one_third col_last">
-								<label for="template-contactform-service">Servicios</label>
+							<div class="col_one_third col_last cambiaOpcion">
+								<label for="template-contactform-service">Tipo Contacto</label>
 								<select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
-									<option value="">-- Elige un servico --</option>
-									<option value="Servicio 1">Servicio 1</option>
-									<option value="Servicio 2">Servicio 2</option>
+									<option value="consulta">Consulta</option>
+									<option value="cotización">Cotización</option>
 								</select>
 							</div>
-
+                                                        <div id="camposCotizacion" style="display: none;">
+                                                        <div class="col_two_third">
+								<label for="template-contactform-subject">Dirección</label>
+								<input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" class="sm-form-control" />
+							</div>
+                                                        
+                                                        <div class="col_one_third col_last">
+								<label for="template-contactform-phone">Cantidad </label>
+								<input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" class="sm-form-control" />
+							</div>
+                                                            </div>
 							<div class="clear"></div>
 
 							<div class="col_full">
@@ -137,6 +146,21 @@
 									});
 								}
 							});
+                                                        
+                                                        $( ".cambiaOpcion" ).change(function() {
+                                                            
+                                                             $( "select option:selected" ).each(function() {
+                                                                  
+                                                                    var valor = $( this ).val();
+                                                                    if(valor=="consulta"){
+                                                                        $("#camposCotizacion").hide();
+                                                                    }else{
+                                                                        $("#camposCotizacion").show();
+                                                                    }       
+                                                                  });
+                                                            
+                                                            
+                                                          });
 
 						</script>
 
