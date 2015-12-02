@@ -116,7 +116,7 @@ class Util{
      public function setEmailNotificacionContacto($mensaje,$url=""){
         
          
-        if(empty($mensaje)||empty($url)){
+        if(empty($mensaje)){
             return false;
         }
         
@@ -139,6 +139,8 @@ class Util{
         if($url!=""){
             $url = '<a href="'.$url.'">Ver en el administrador</a>';
             $contenido_template_email = str_replace("{{URL}}", $url, $contenido_template_email);        
+        }else{
+            $contenido_template_email = str_replace("{{URL}}", "", $contenido_template_email); 
         }
       
 
