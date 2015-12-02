@@ -113,7 +113,7 @@ class Util{
     }
     
     
-     public function setEmailNotificacionContacto($mensaje,$url){
+     public function setEmailNotificacionContacto($mensaje,$url=""){
         
          
         if(empty($mensaje)||empty($url)){
@@ -131,18 +131,20 @@ class Util{
         
         $contenido_template_email = file_get_contents($ruta_template_email);
         
-        if(strpos($contenido_template_email, "{{MENSAJE}}")===FALSE || strpos($contenido_template_email, "{{URL}}")===FALSE){
+        if(strpos($contenido_template_email, "{{MENSAJE}}")===FALSE){
             return false;
         }
         
         $contenido_template_email = str_replace("{{MENSAJE}}", $mensaje, $contenido_template_email);
-        if($url!="")
-            $contenido_template_email = str_replace("{{URL}}", $url, $contenido_template_email);
+        if($url!=""){
+            $url = '<a href="'.$url.'">Ver en el administrador</a>';
+            $contenido_template_email = str_replace("{{URL}}", $url, $contenido_template_email);        
+        }
       
 
         $mailer = sfContext::getInstance()->getMailer();
         $mensaje = Swift_Message::newInstance()
-                      ->setFrom(array("contacto@futamaq.cl" => "Notificación Futamaq"))
+                      ->setFrom(array("notificacion@idioteque.ninja" => "Notificación Futamaq"))
                       ->setTo($email)
                       ->setSubject($asunto)
                       ->setBody($contenido_template_email,'text/html')
