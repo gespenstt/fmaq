@@ -66,10 +66,14 @@
 					<div class="postcontent nobottommargin">
 
 						<h3>Escríbenos un mail</h3>
-
+ <?php if($msg){ ?>
+                                                <div class="alert alert-<?php echo $tipo_msg;?>">
+                                                    <?php echo $msg; ?>
+                                                </div>
+                                                <?php } ?>
 						<div id="contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
 
-						<form class="nobottommargin" id="template-contactform" name="template-contactform" action="include/sendemail.php" method="post">
+						<form class="nobottommargin" id="template-contactform" name="template-contactform" action="" method="post">
 
 							<div class="form-process"></div>
 
@@ -105,12 +109,12 @@
                                                         <div id="camposCotizacion" style="display: none;">
                                                         <div class="col_two_third">
 								<label for="template-contactform-subject">Dirección</label>
-								<input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" class="sm-form-control" />
+								<input type="text" id="template-contactform-subject" name="template-contactform-address" value="" class="sm-form-control" />
 							</div>
                                                         
                                                         <div class="col_one_third col_last">
 								<label for="template-contactform-phone">Cantidad </label>
-								<input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" class="sm-form-control" />
+								<input type="text" id="template-contactform-phone" name="template-contactform-mount" value="" class="sm-form-control" />
 							</div>
                                                             </div>
 							<div class="clear"></div>
@@ -132,12 +136,19 @@
 
 						<script type="text/javascript">
 
-							$("#template-contactform").validate({
+							/*$("#template-contactform").validate({
 								submitHandler: function(form) {
 									$('.form-process').fadeIn();
 									$(form).ajaxSubmit({
-										target: '#contact-form-result',
+										
+                                                                                target: '#contact-form-result',
 										success: function() {
+                                                                                    
+                                                                                    
+                                                                                    
+                                                                                    
+                                                                                    
+                                                                                    
 											$('.form-process').fadeOut();
 											$(form).find('.sm-form-control').val('');
 											$('#contact-form-result').attr('data-notify-msg', $('#contact-form-result').html()).html('');
@@ -145,8 +156,8 @@
 										}
 									});
 								}
-							});
-                                                        
+							*/
+                                                       
                                                         $( ".cambiaOpcion" ).change(function() {
                                                             
                                                              $( "select option:selected" ).each(function() {

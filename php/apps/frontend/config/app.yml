@@ -1,7 +1,7 @@
 
 all:
     notificacion:
-        email: rodrigoxv@gmail.com
+        email: kirkgosu@gmail.com
     backend:
         #URL CON / AL FINAL
         url: http://localhost/git/fmaq/php/admin/

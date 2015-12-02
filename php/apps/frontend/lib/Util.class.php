@@ -112,6 +112,46 @@ class Util{
                   
     }
     
+    
+     public function setEmailNotificacionContacto($mensaje,$url){
+        
+         
+        if(empty($mensaje)||empty($url)){
+            return false;
+        }
+        
+        $email = sfConfig::get("app_notificacion_email");
+        $asunto = "Notificación Contacto desde web Futamaq";
+        $ruta_template_email = sfconfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").
+                DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."assets".DIRECTORY_SEPARATOR."email_template_con.html";
+        
+        if(!is_file($ruta_template_email)){
+            return false;
+        }
+        
+        $contenido_template_email = file_get_contents($ruta_template_email);
+        
+        if(strpos($contenido_template_email, "{{MENSAJE}}")===FALSE || strpos($contenido_template_email, "{{URL}}")===FALSE){
+            return false;
+        }
+        
+        $contenido_template_email = str_replace("{{MENSAJE}}", $mensaje, $contenido_template_email);
+        if($url!="")
+            $contenido_template_email = str_replace("{{URL}}", $url, $contenido_template_email);
+      
+
+        $mailer = sfContext::getInstance()->getMailer();
+        $mensaje = Swift_Message::newInstance()
+                      ->setFrom(array("contacto@futamaq.cl" => "Notificación Futamaq"))
+                      ->setTo($email)
+                      ->setSubject($asunto)
+                      ->setBody($contenido_template_email,'text/html')
+                  ;
+                  $mailer->send($mensaje);    
+                  
+    }
+    
+    
     function setArchivoCV($archivo,$cvid){
         $cv = CurriculumPeer::retrieveByPK($cvid);
         if(!$cv){
