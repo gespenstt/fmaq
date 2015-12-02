@@ -1,4 +1,6 @@
-
+<?php
+    use_javascript("https://www.google.com/recaptcha/api.js");
+?>
                 <!-- Page Title
 		============================================= -->
 		<section id="page-title">
@@ -73,7 +75,7 @@
                                                 <?php } ?>
 						<div id="contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
 
-						<form class="nobottommargin" id="template-contactform" name="template-contactform" action="" method="post">
+						<form onsubmit="return validarForm();" class="nobottommargin" id="template-contactform" name="template-contactform" action="" method="post">
 
 							<div class="form-process"></div>
 
@@ -127,6 +129,10 @@
 							<div class="col_full hidden">
 								<input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
 							</div>
+                                                        
+                                                        <div class="col_full">
+                                                            <div class="g-recaptcha" data-sitekey="6Lft3hETAAAAAGMeo0kPjdS_M8TP1MP15v0Q-pn2"></div>
+                                                        </div>
 
 							<div class="col_full">
 								<button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Enviar mensaje</button>
@@ -135,28 +141,6 @@
 						</form>
 
 						<script type="text/javascript">
-
-							/*$("#template-contactform").validate({
-								submitHandler: function(form) {
-									$('.form-process').fadeIn();
-									$(form).ajaxSubmit({
-										
-                                                                                target: '#contact-form-result',
-										success: function() {
-                                                                                    
-                                                                                    
-                                                                                    
-                                                                                    
-                                                                                    
-                                                                                    
-											$('.form-process').fadeOut();
-											$(form).find('.sm-form-control').val('');
-											$('#contact-form-result').attr('data-notify-msg', $('#contact-form-result').html()).html('');
-											SEMICOLON.widget.notifications($('#contact-form-result'));
-										}
-									});
-								}
-							*/
                                                        
                                                         $( ".cambiaOpcion" ).change(function() {
                                                             

@@ -33,27 +33,39 @@ class trabajaActions extends sfActions
         $allowed =  array('doc','docx' ,'pdf');
         $filename = $archivo['name'];
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        if(!in_array($ext,$allowed) ) {
-            $this->msg = "El tipo de archivo cargado no es válido. Solo se permiten word y pdf.";
-            $this->tipo_msg = "warning";
-        }else{
-            
-            $util = new Util();
         
-            $cv = new Curriculum();
-            $cv->setCurNombre($nombre);
-            $cv->setCurEmail($email);
-            $cv->setCurCartaPresentacion($solicitud);
-            $cv->setCurTelefono($telefono);
-            $cv->setCurRut($rut);
-            $cv->save();
-            $cur_id = $cv->getCurId();
+        $recaptcha = new \ReCaptcha\ReCaptcha("6Lft3hETAAAAABVCISZx8HuEc1dY0rvph_LAf1uK");
+        $resp = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
+        if(!$resp->isSuccess()){
             
-            $util->setArchivoCV($archivo, $cur_id);
-            $url_backend = sfConfig::get("app_backend_url")."index.php/cv";
-            $util->setEmailNotificacion("Hay un nuevo CV cargado en la web.",$url_backend);
+            $this->msg = "Captcha inválido. Intente nuevamente.";
+            $this->tipo_msg = "warning";
             
-            $this->msg = "El currículum ha sido cargado con éxito.";
+        }else{
+        
+            if(!in_array($ext,$allowed) ) {
+                $this->msg = "El tipo de archivo cargado no es válido. Solo se permiten word y pdf.";
+                $this->tipo_msg = "warning";
+            }else{
+
+                $util = new Util();
+
+                $cv = new Curriculum();
+                $cv->setCurNombre($nombre);
+                $cv->setCurEmail($email);
+                $cv->setCurCartaPresentacion($solicitud);
+                $cv->setCurTelefono($telefono);
+                $cv->setCurRut($rut);
+                $cv->save();
+                $cur_id = $cv->getCurId();
+
+                $util->setArchivoCV($archivo, $cur_id);
+                $url_backend = sfConfig::get("app_backend_url")."index.php/cv";
+                $util->setEmailNotificacion("Hay un nuevo CV cargado en la web.",$url_backend);
+
+                $this->msg = "El currículum ha sido cargado con éxito.";
+
+            }
             
         }
         
