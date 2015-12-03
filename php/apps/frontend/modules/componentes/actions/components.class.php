@@ -40,6 +40,21 @@ class componentesComponents extends sfComponents
     public function executeShare(){  
         $this->util = new Util();
     }
+    
+    public function executeFooter(){  
+        $this->util = new Util();
+        $cn = new Criteria();
+        $cn->addDescendingOrderByColumn(NoticiaPeer::CREATED_AT);
+        $cn->setLimit(2);
+        $this->noticias = NoticiaPeer::doSelect($cn);
+        
+        
+        
+        $cs = new Criteria();
+        $cs->addAscendingOrderByColumn(ServicioPeer::SER_TITULO);
+        $servicios = ServicioPeer::doSelect($cs);
+        $this->servicios = $servicios;
+    }
  
     
 }
