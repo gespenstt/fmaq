@@ -36,6 +36,7 @@
     ============================================= -->
     <script type="text/javascript" src="<?php echo public_path("js/jquery.js");?>"></script>
     <script type="text/javascript" src="<?php echo public_path("js/plugins.js");?>"></script>
+    <script src="jquery.simpleWeather.js" charset="utf-8"></script>
 
     <!-- Document Title
     ============================================= -->
@@ -89,7 +90,7 @@
                         <i class="i-plain icon-call nomargin"></i>
                         <div class="he-text">
                             Llámanos
-                            <span>+56 (65) 2 254567</span>
+                            <span>+56(9)66558216</span>
                         </div>
                     </li>
                     <li>

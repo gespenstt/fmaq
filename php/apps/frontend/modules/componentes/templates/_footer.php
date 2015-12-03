@@ -24,16 +24,13 @@
                                         <table>
                                                 <tr>
                                                         <td style="min-width:100px;"><strong>Oficinas:</strong></td>
-                                                        <td>Osorno<br>Los Lagos</td>
+                                                        <td>Fundo Futahuete km 54<br>Río Bueno<br>Osorno</td>
                                                 </tr>
                                                 <tr>
                                                         <td><abbr title="Teléfono"><strong>Teléfono:</strong></abbr></td>
-                                                        <td>+56 (65) 2 2123456</td>
+                                                        <td>+56 (9) 66558216</td>
                                                 </tr>
-                                                <tr>
-                                                        <td><abbr title="Fax"><strong>Fax:</strong></abbr></td>
-                                                        <td>+56 (65) 2 2123456</td>
-                                                </tr>
+                                               
                                                 <tr>
                                                         <td><abbr title="Email"><strong>Email:</strong></abbr></td>
                                                         <td>info@futamaq.com</td>
@@ -126,7 +123,7 @@
 
                     <div class="clear"></div>
 
-                    <i class="icon-envelope2"></i> info@futamaq.cl <span class="middot">&middot;</span> <i class="icon-phone"></i> +91-11-6541-6369
+                    <i class="icon-envelope2"></i> info@futamaq.cl <span class="middot">&middot;</span> <i class="icon-phone"></i> +569 66558216
                 </div>
 
                 <div class="col_half col_last tright">
