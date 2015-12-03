@@ -5,6 +5,40 @@ class Util{
 
 
 
+    
+    public function setFecha($date,$formato_salida,$formato_entrada='d/m/Y H:i:s'){ //"13/05/2014 10:15:28"
+        try{
+            if(is_null($date) || empty($date) || $date=="null"){
+                return "";
+            }
+            $fecha = DateTime::createFromFormat($formato_entrada, $date);
+            $fecha_retorno = $fecha->format($formato_salida);
+            switch(true){
+                case (strpos($formato_salida, "F")!==FALSE):
+                        $mes_ingles = array(
+                            "January","February","March","April","May","June","July","August","September","October","November","December",
+                        );
+                        $mes_esp = array(
+                            "Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre",
+                        );
+                        $fecha_retorno = str_replace($mes_ingles, $mes_esp, $fecha_retorno);                        
+                    break;
+                case (strpos($formato_salida, "M")!==FALSE):
+                        $mes_ingles = array(
+                            "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec",
+                        );
+                        $mes_esp = array(
+                            "Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic",
+                        );
+                        $fecha_retorno = str_replace($mes_ingles, $mes_esp, $fecha_retorno);
+                    break;
+                
+            }
+            return $fecha_retorno;
+        } catch (Exception $ex) {
+            return "";
+        }
+    }
 
     public function checkMenu($current_modulo,$modulo){
             if($current_modulo==$modulo){

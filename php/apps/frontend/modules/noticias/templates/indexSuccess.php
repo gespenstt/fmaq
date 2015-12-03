@@ -42,7 +42,7 @@
                                         <h2><a href="<?php echo $noti->getNotUrl(); ?>" target="_blank"><?php echo $noti->getNotTitulo(); ?></a></h2>
                                     </div>
                                     <ul class="entry-meta clearfix">
-                                        <li><i class="icon-calendar3"></i> <?php echo $noti->getCreatedAt(); ?></li>
+                                        <li><i class="icon-calendar3"></i> <?php echo $util->setFecha($noti->getCreatedAt("U"),"d F Y","U"); ?></li>
                                     </ul>
                                     <div class="entry-content">
                                         <p><?php echo html_entity_decode($noti->getNotDescripcion()); ?></p>

@@ -22,5 +22,6 @@ class noticiasActions extends sfActions
             $d->setLimit(10);
             $noticias = NoticiaPeer::doSelect($d);
             $this->notis = $noticias;
+            $this->util = new Util();
   }
 }
