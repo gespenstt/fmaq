@@ -60,18 +60,18 @@
                     <!-- Top Links
                     ============================================= -->
                     <div class="top-links">
-                       <div>
-                        <div style="float:left; width: 300px;"><!-- www.TuTiempo.net - Ancho:269px - Alto:50px -->
-<div id="TT_tC1wbBtBtzW2zswUXfzkEE1E1YnULzB2rtEdksCoaEj" style="width: 269px; height: 50px; color: rgb(255, 255, 255); overflow: hidden;"><iframe id="TTF_tC1wbBtBtzW2zswUXfzkEE1E1YnULzB2rtEdksCoaEj" src="http://www.tutiempo.net/V4/widget/tt_NHx8MzgyNjI2fHN8bnxzfDU1NzI1fDQwfDE0fDh8MXw1fDV8MjV8c3xzfG58RTg2RjZGfDcxQjlGMHx8fEZGRkZGRnw0M3w0MHw0MHwyNjl8NTB8NTZ8NDN8MTl8MTl8MzJ8NTd8MzZ8aHp8MXw%2C" frameborder="0" scrolling="no" width="100%" height="100%" allowtransparency="allowtransparency" style="overflow:hidden;"></iframe></div>
+                        <div>
+                            <div style="float:left; width: 300px;"><!-- www.TuTiempo.net - Ancho:269px - Alto:50px -->
+<div id="TT_tC1wbBtBtzW2zswUXfzkEE1E1YnULzB2rtEdksCoaEj" style="width: 269px; height: 45px; color: rgb(255, 255, 255); overflow: hidden;"><iframe id="TTF_tC1wbBtBtzW2zswUXfzkEE1E1YnULzB2rtEdksCoaEj" src="http://www.tutiempo.net/V4/widget/tt_NHx8MzgyNjI2fHN8bnxzfDU1NzI1fDQwfDE0fDh8MXw1fDV8MjV8c3xzfG58RTg2RjZGfDcxQjlGMHx8fEZGRkZGRnw0M3w0MHw0MHwyNjl8NTB8NTZ8NDN8MTl8MTl8MzJ8NTd8MzZ8aHp8MXw%2C" frameborder="0" scrolling="no" width="100%" height="100%" allowtransparency="allowtransparency" style="overflow:hidden;"></iframe></div>
 <script type="text/javascript" src="http://www.tutiempo.net/widget/eltiempo_tC1wbBtBtzW2zswUXfzkEE1E1YnULzB2rtEdksCoaEj"></script>
-                        </div>
-                        <div style="float:right">
-                            <ul>
-                                 <li><a href="<?php echo url_for("trabaja/index");?>">Trabaja con nosotros</a></li>
-                            <li><a href="<?php echo url_for("contacto/index");?>">Contacto</a></li>
-                            </ul>
-                        </div>
                             </div>
+                            <div style="float:right">
+                                <ul>
+                                    <li><a href="<?php echo url_for("trabaja/index");?>">Trabaja con nosotros</a></li>
+                                    <li><a href="<?php echo url_for("contacto/index");?>">Contacto</a></li>
+                                </ul>
+                            </div>
+                        </div>
                         
                       
                     </div><!-- .top-links end -->
