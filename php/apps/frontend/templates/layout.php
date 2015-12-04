@@ -36,7 +36,6 @@
     ============================================= -->
     <script type="text/javascript" src="<?php echo public_path("js/jquery.js");?>"></script>
     <script type="text/javascript" src="<?php echo public_path("js/plugins.js");?>"></script>
-    <script src="jquery.simpleWeather.js" charset="utf-8"></script>
 
     <!-- Document Title
     ============================================= -->
