@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     26/11/2015 17:12:17                          */
+/* Created on:     09/12/2015 15:21:26                          */
 /*==============================================================*/
 
 
@@ -102,8 +102,8 @@ create table curriculum
 (
    cur_id               int not null auto_increment,
    cur_carta_presentacion text,
-   cur_nombre_archivo   varchar(100),
-   cur_ruta             varchar(100),
+   cur_nombre_archivo   text,
+   cur_ruta             text,
    cur_nombre           varchar(100),
    cur_rut              varchar(15),
    cur_telefono         varchar(15),
@@ -172,8 +172,8 @@ create table maquinaria_foto
 (
    mfo_id               int not null auto_increment,
    maq_id               int,
-   mfo_nombre           varchar(100),
-   mfo_ruta             varchar(100),
+   mfo_nombre           text,
+   mfo_ruta             text,
    created_at           datetime,
    primary key (mfo_id)
 )
@@ -264,8 +264,8 @@ create table proyecto_archivo
 (
    par_id               int not null auto_increment,
    pro_id               int,
-   par_nombre           varchar(100),
-   par_ruta             varchar(100),
+   par_nombre           text,
+   par_ruta             text,
    par_descripcion      text,
    created_at           datetime,
    primary key (par_id)
@@ -309,8 +309,8 @@ create table subservicio_archivo
 (
    sar_id               int not null auto_increment,
    sub_id               int not null,
-   sar_nombre           varchar(300),
-   sar_ruta             varchar(300),
+   sar_nombre           text,
+   sar_ruta             text,
    created_at           datetime,
    primary key (sar_id)
 )
@@ -394,8 +394,6 @@ alter table subservicio add constraint fk_servicio_subservicio foreign key (ser_
 
 alter table subservicio_archivo add constraint fk_subservicio_subservicioarchivo foreign key (sub_id)
       references subservicio (sub_id) on delete restrict on update restrict;
-
-
 
 INSERT INTO `usuario` (`usu_id`, `usu_nombre`, `usu_apellido`, `usu_correo`, `usu_usuario`, `usu_password`, `created_at`) VALUES
 (1, 'Admin', 'Futamaq', 'admin@futamaq.cl', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2015-10-17 00:57:23');
