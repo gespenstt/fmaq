@@ -1248,7 +1248,7 @@ body.stretched #header.full-header #primary-menu ul li.mega-menu .mega-menu-cont
 	border-top: 0;
 }
 #logo { height: 100px; width: 190px; display:block; }
-#logo a { background: url(../images/futamaq-logo-b.svg) 0 0 no-repeat; display:block; height: 100%; width: auto; }
+#logo a { background: url(../images/futamaq-logo-b.svg) 0 0 no-repeat; display:block; height: 100%; width: 100%; }
 
 #primary-menu.style-2 > div > ul > li > a { line-height: 60px; }
 
@@ -11128,7 +11128,7 @@ body:not(.no-transition) #wrapper,
 
 #header { background-color: #194D2F; }
 
-#header-wrap { background-color: #FFF; }
+//#header-wrap { background-color: #FFF; }
 
 
 #primary-menu.style-2 > div > ul > li > a i { line-height: 57px; }

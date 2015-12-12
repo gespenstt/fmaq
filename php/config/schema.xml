@@ -105,7 +105,7 @@
       <parameter name="Index_length" value="16384"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:39"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:31"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -207,7 +207,7 @@
       <parameter name="Index_length" value="0"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:39"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:31"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -319,7 +319,7 @@
       <parameter name="Index_length" value="0"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:39"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:32"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -349,20 +349,20 @@
         <parameter name="Extra" value=""/>
       </vendor>
     </column>
-    <column name="cur_nombre_archivo" phpName="CurNombreArchivo" type="VARCHAR" size="100" required="false">
+    <column name="cur_nombre_archivo" phpName="CurNombreArchivo" type="LONGVARCHAR" required="false">
       <vendor type="mysql">
         <parameter name="Field" value="cur_nombre_archivo"/>
-        <parameter name="Type" value="varchar(100)"/>
+        <parameter name="Type" value="text"/>
         <parameter name="Null" value="YES"/>
         <parameter name="Key" value=""/>
         <parameter name="Default" value=""/>
         <parameter name="Extra" value=""/>
       </vendor>
     </column>
-    <column name="cur_ruta" phpName="CurRuta" type="VARCHAR" size="100" required="false">
+    <column name="cur_ruta" phpName="CurRuta" type="LONGVARCHAR" required="false">
       <vendor type="mysql">
         <parameter name="Field" value="cur_ruta"/>
-        <parameter name="Type" value="varchar(100)"/>
+        <parameter name="Type" value="text"/>
         <parameter name="Null" value="YES"/>
         <parameter name="Key" value=""/>
         <parameter name="Default" value=""/>
@@ -409,6 +409,16 @@
         <parameter name="Extra" value=""/>
       </vendor>
     </column>
+    <column name="cur_email" phpName="CurEmail" type="LONGVARCHAR" required="false">
+      <vendor type="mysql">
+        <parameter name="Field" value="cur_email"/>
+        <parameter name="Type" value="text"/>
+        <parameter name="Null" value="YES"/>
+        <parameter name="Key" value=""/>
+        <parameter name="Default" value=""/>
+        <parameter name="Extra" value=""/>
+      </vendor>
+    </column>
     <column name="created_at" phpName="CreatedAt" type="TIMESTAMP" required="false">
       <vendor type="mysql">
         <parameter name="Field" value="created_at"/>
@@ -431,7 +441,7 @@
       <parameter name="Index_length" value="0"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:40"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:32"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -503,7 +513,7 @@
       <parameter name="Index_length" value="0"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:40"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:32"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -596,7 +606,7 @@
       <parameter name="Index_length" value="16384"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:40"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:32"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -800,7 +810,7 @@
       <parameter name="Index_length" value="32768"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:40"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:33"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -830,20 +840,20 @@
         <parameter name="Extra" value=""/>
       </vendor>
     </column>
-    <column name="mfo_nombre" phpName="MfoNombre" type="VARCHAR" size="100" required="false">
+    <column name="mfo_nombre" phpName="MfoNombre" type="LONGVARCHAR" required="false">
       <vendor type="mysql">
         <parameter name="Field" value="mfo_nombre"/>
-        <parameter name="Type" value="varchar(100)"/>
+        <parameter name="Type" value="text"/>
         <parameter name="Null" value="YES"/>
         <parameter name="Key" value=""/>
         <parameter name="Default" value=""/>
         <parameter name="Extra" value=""/>
       </vendor>
     </column>
-    <column name="mfo_ruta" phpName="MfoRuta" type="VARCHAR" size="100" required="false">
+    <column name="mfo_ruta" phpName="MfoRuta" type="LONGVARCHAR" required="false">
       <vendor type="mysql">
         <parameter name="Field" value="mfo_ruta"/>
-        <parameter name="Type" value="varchar(100)"/>
+        <parameter name="Type" value="text"/>
         <parameter name="Null" value="YES"/>
         <parameter name="Key" value=""/>
         <parameter name="Default" value=""/>
@@ -893,7 +903,7 @@
       <parameter name="Index_length" value="16384"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:40"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:33"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -945,7 +955,7 @@
       <parameter name="Index_length" value="0"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:41"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:33"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -1037,7 +1047,7 @@
       <parameter name="Index_length" value="0"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:41"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:33"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -1150,7 +1160,7 @@
       <parameter name="Index_length" value="16384"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:41"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:33"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -1262,7 +1272,7 @@
       <parameter name="Index_length" value="0"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:41"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:34"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -1396,7 +1406,7 @@
       <parameter name="Index_length" value="32768"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:41"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:34"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -1426,20 +1436,20 @@
         <parameter name="Extra" value=""/>
       </vendor>
     </column>
-    <column name="par_nombre" phpName="ParNombre" type="VARCHAR" size="100" required="false">
+    <column name="par_nombre" phpName="ParNombre" type="LONGVARCHAR" required="false">
       <vendor type="mysql">
         <parameter name="Field" value="par_nombre"/>
-        <parameter name="Type" value="varchar(100)"/>
+        <parameter name="Type" value="text"/>
         <parameter name="Null" value="YES"/>
         <parameter name="Key" value=""/>
         <parameter name="Default" value=""/>
         <parameter name="Extra" value=""/>
       </vendor>
     </column>
-    <column name="par_ruta" phpName="ParRuta" type="VARCHAR" size="100" required="false">
+    <column name="par_ruta" phpName="ParRuta" type="LONGVARCHAR" required="false">
       <vendor type="mysql">
         <parameter name="Field" value="par_ruta"/>
-        <parameter name="Type" value="varchar(100)"/>
+        <parameter name="Type" value="text"/>
         <parameter name="Null" value="YES"/>
         <parameter name="Key" value=""/>
         <parameter name="Default" value=""/>
@@ -1499,7 +1509,7 @@
       <parameter name="Index_length" value="16384"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:42"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:34"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -1581,7 +1591,7 @@
       <parameter name="Index_length" value="0"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:42"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:34"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -1684,7 +1694,7 @@
       <parameter name="Index_length" value="16384"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:42"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:34"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -1714,20 +1724,20 @@
         <parameter name="Extra" value=""/>
       </vendor>
     </column>
-    <column name="sar_nombre" phpName="SarNombre" type="VARCHAR" size="300" required="false">
+    <column name="sar_nombre" phpName="SarNombre" type="LONGVARCHAR" required="false">
       <vendor type="mysql">
         <parameter name="Field" value="sar_nombre"/>
-        <parameter name="Type" value="varchar(300)"/>
+        <parameter name="Type" value="text"/>
         <parameter name="Null" value="YES"/>
         <parameter name="Key" value=""/>
         <parameter name="Default" value=""/>
         <parameter name="Extra" value=""/>
       </vendor>
     </column>
-    <column name="sar_ruta" phpName="SarRuta" type="VARCHAR" size="300" required="false">
+    <column name="sar_ruta" phpName="SarRuta" type="LONGVARCHAR" required="false">
       <vendor type="mysql">
         <parameter name="Field" value="sar_ruta"/>
-        <parameter name="Type" value="varchar(300)"/>
+        <parameter name="Type" value="text"/>
         <parameter name="Null" value="YES"/>
         <parameter name="Key" value=""/>
         <parameter name="Default" value=""/>
@@ -1777,7 +1787,7 @@
       <parameter name="Index_length" value="16384"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:42"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:35"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -1829,7 +1839,7 @@
       <parameter name="Index_length" value="0"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:42"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:35"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -1881,7 +1891,7 @@
       <parameter name="Index_length" value="0"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="1"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:43"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:35"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
@@ -1973,7 +1983,7 @@
       <parameter name="Index_length" value="0"/>
       <parameter name="Data_free" value="0"/>
       <parameter name="Auto_increment" value="2"/>
-      <parameter name="Create_time" value="2015-11-17 22:52:43"/>
+      <parameter name="Create_time" value="2015-12-09 15:24:35"/>
       <parameter name="Update_time" value=""/>
       <parameter name="Check_time" value=""/>
       <parameter name="Collation" value="latin1_swedish_ci"/>
