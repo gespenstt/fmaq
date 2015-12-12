@@ -17,7 +17,7 @@
 						<div class="container clearfix">
 							<div  class="slider-caption">
 								<h2>Control Georeferenciado</h2>
-								<p>Voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+								<p></p>
 							</div>
 						</div>
 					</div>
@@ -26,7 +26,7 @@
 						<div class="container clearfix">
 							<div  class="slider-caption">
 								<h2>Agricultura de precisión</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+								<p></p>
 							</div>
 						</div>
 					</div>
@@ -147,10 +147,14 @@
 
 						<p>Nos esforzamos para entregarle a nuestros clientes lo mejor. Es por esto que en Futamaq trabajamos con las mejores marcas en el rubro agrícola.</p>
 
-						<ul class="clients-grid grid-3 nobottommargin clearfix">
-                                                    <?php for($a=1;$a<=6;$a++){?>
-							<li style="padding: 20px;"><img src="<?php echo public_path("uploads/320x240-brand-logos.png");?>" alt="Nombre cliente"></li>
-                                                    <?php } ?>
+						<ul class="clients-grid grid-2 nobottommargin clearfix">
+                                                  
+							<li style="padding: 20px;"><img src="<?php echo public_path("uploads/LEMKEN_Logo.gif");?>" alt="LEMKEN" height="23"s></li>
+                                                       
+                                                        <li style="padding: 20px;"><img src="<?php echo public_path("uploads/logoclaas.png");?>" alt="CLAAS" height="23"></li>
+                                                         <li style="padding: 20px;"><img src="<?php echo public_path("uploads/logo_joskin.png");?>" alt="JOSKIN" height="23"></li>
+                                                        <li style="padding: 20px;"><img src="<?php echo public_path("uploads/logokrone.png");?>" alt="KRONE" height="23"></li>
+                                                  
 						</ul>
 					</div>
 

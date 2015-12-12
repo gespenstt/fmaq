@@ -27,13 +27,13 @@
 
 			$('#google-map').gMap({
 
-				address: 'Osorno, Chile',
+				address: 'T-941, Río Bueno, Región de los Ríos, Chile',
 				maptype: 'ROADMAP',
-				zoom: 14,
+				zoom: 10,
 				markers: [
 					{
-						address: "Osorno, Chile",
-						html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Futamaq</h4><p class="nobottommargin">Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p></div>',
+						address: "T-941, Río Bueno, Región de los Ríos, Chile",
+						html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Futamaq</h4><p class="nobottommargin"></p></div>',
 						icon: {
 							image: "<?php echo public_path("images/icons/map-icon-red.png");?>",
 							iconsize: [32, 39],
