@@ -1,4 +1,4 @@
-
+<?php if(count($maquinaria)>0){ ?>
 
                                 <h4>Nuestras Máquinas</h4>
                                 <div id="oc-portfolio-sidebar" class="owl-carousel portfolio-5">                                    
@@ -51,3 +51,4 @@
                                     });
 
                                 </script>
+<?php } ?>                                
