@@ -31,7 +31,7 @@
                                     <?php } ?>
 
                                 </div>
-
+                                <?php if(count($maquinaria)>1){ ?>
                                 <script type="text/javascript">
 
                                     jQuery(document).ready(function($) {
@@ -51,4 +51,5 @@
                                     });
 
                                 </script>
+                                <?php } ?>
 <?php } ?>                                
