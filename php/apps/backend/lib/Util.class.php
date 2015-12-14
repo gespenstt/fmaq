@@ -45,7 +45,7 @@ class Util{
             $maquinaria_foto_id = $maquinaria_foto->getMfoId();
             
             $f_tmp = $files_tmp[$idx];
-            $f_name = $maquinaria_foto_id."_".$files_name[$idx];
+            $f_name = strtolower($maquinaria_foto_id."_".$files_name[$idx]);
             $log->debug("Procesando $idx | tmp=$f_tmp | name=$f_name");
             
             //UPLOAD DIR FRONTEND(WEB)/UPLOADS            
@@ -74,7 +74,7 @@ class Util{
     public function setArchivoProyecto($nombre,$archivo,$pro_id,$par_id){
         
         //UPLOAD DIR FRONTEND(WEB)/UPLOADS       
-        $f_name = $par_id."_".$archivo["name"];
+        $f_name = strtolower($par_id."_".$archivo["name"]);
         $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."proyecto".DIRECTORY_SEPARATOR.$pro_id.DIRECTORY_SEPARATOR;
         $path_db = "uploads/proyecto/$pro_id/$f_name";    
         $path_file = $path.$f_name;       
@@ -92,7 +92,7 @@ class Util{
     public function setArchivoServicio($archivo,$ser_id){
         
         //UPLOAD DIR FRONTEND(WEB)/UPLOADS       
-        $f_name = $ser_id."_".$archivo["name"];
+        $f_name = strtolower($ser_id."_".$archivo["name"]);
         $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."servicio".DIRECTORY_SEPARATOR.$ser_id.DIRECTORY_SEPARATOR;
         $path_db = "uploads/servicio/$ser_id/$f_name";    
         $path_file = $path.$f_name;       
@@ -125,7 +125,7 @@ class Util{
             $galeria_archivo_id = $galeria_archivo->getGarId();
             
             $f_tmp = $files_tmp[$idx];
-            $f_name = $galeria_archivo_id."_".$files_name[$idx];
+            $f_name = strtolower($galeria_archivo_id."_".$files_name[$idx]);
             $log->debug("Procesando $idx | tmp=$f_tmp | name=$f_name");
             
             //UPLOAD DIR FRONTEND(WEB)/UPLOADS            
@@ -191,7 +191,7 @@ class Util{
             $subservicio_archivo_id = $subservicio_archivo->getSarId();
             
             $f_tmp = $files_tmp[$idx];
-            $f_name = $subservicio_archivo_id."_".$files_name[$idx];
+            $f_name = strtolower($subservicio_archivo_id."_".$files_name[$idx]);
             $log->debug("Procesando $idx | tmp=$f_tmp | name=$f_name");
             
             //UPLOAD DIR FRONTEND(WEB)/UPLOADS            

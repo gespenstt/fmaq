@@ -195,7 +195,7 @@ class Util{
         if(!$cv){
             return false;
         }     
-        $f_name = $cvid."_".$archivo["name"];
+        $f_name = strtolower($cvid."_".$archivo["name"]);
         $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."cv".DIRECTORY_SEPARATOR.$cvid.DIRECTORY_SEPARATOR;
         $path_db = "uploads/cv/$cvid/$f_name";    
         $path_file = $path.$f_name;          

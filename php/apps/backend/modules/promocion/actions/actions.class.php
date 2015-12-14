@@ -48,7 +48,7 @@ class promocionActions extends sfActions
             $promocion_id = $promocion->getPromId();
             
             if(!empty($imagen) && !$esvideo){
-                $f_name = $maquinaria_foto_id."_".$imagen["name"];
+                $f_name = strtolower($maquinaria_foto_id."_".$imagen["name"]);
             
                 //UPLOAD DIR FRONTEND(WEB)/UPLOADS            
                 $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."promocion".DIRECTORY_SEPARATOR.$promocion_id.DIRECTORY_SEPARATOR;
@@ -134,7 +134,7 @@ class promocionActions extends sfActions
             $promocion_id = $promocion->getPromId();
             
             if(!empty($imagen) && !$esvideo){
-                $f_name = $maquinaria_foto_id."_".$imagen["name"];
+                $f_name = strtolower($maquinaria_foto_id."_".$imagen["name"]);
             
                 //UPLOAD DIR FRONTEND(WEB)/UPLOADS            
                 $path = sfConfig::get("sf_root_dir").DIRECTORY_SEPARATOR.sfConfig::get("app_frontend_webcarpeta").DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."promocion".DIRECTORY_SEPARATOR.$promocion_id.DIRECTORY_SEPARATOR;
