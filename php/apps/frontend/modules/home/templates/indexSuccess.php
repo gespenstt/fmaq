@@ -135,7 +135,7 @@
 					<div class="container clearfix">
 						<h3 style="letter-spacing: 2px;">¿Estás interesado en trabajar con nosotros?</h3>
 						<span>Contáctanos completando el siguiente formulario y se parte de nuestro equipo</span>
-						<a href="<?php echo url_for("contacto/index");?>" class="button button-large button-border button-rounded">Contactar aquí</a>
+						<a href="<?php echo url_for("trabaja/index");?>" class="button button-large button-border button-rounded">Contactar aquí</a>
 					</div>
 				</div>
 				
@@ -216,7 +216,7 @@
 
 				<div class="line topmargin-sm"></div>
 
-				<div class="section nobg notopmargin nopadding footer-stick">
+				<!--<div class="section nobg notopmargin nopadding footer-stick">
 					<div class="container clearfix">
 
 						<div class="row">
@@ -238,7 +238,7 @@
 						</div>
 
 					</div>
-				</div>
+				</div> -->
 
 			</div>
 
