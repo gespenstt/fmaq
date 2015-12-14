@@ -61,10 +61,10 @@
                     ============================================= -->
                     <div class="top-links">
                         <div>
-                            <div class="hidden-sm hidden-xs" style="float:left; width: 300px;"><!-- www.TuTiempo.net - Ancho:269px - Alto:50px -->
+                            <?php /*<div class="hidden-sm hidden-xs" style="float:left; width: 300px;"><!-- www.TuTiempo.net - Ancho:269px - Alto:50px -->
 <div id="TT_tC1wbBtBtzW2zswUXfzkEE1E1YnULzB2rtEdksCoaEj" style="width: 269px; height: 45px; color: rgb(255, 255, 255); overflow: hidden;"><iframe id="TTF_tC1wbBtBtzW2zswUXfzkEE1E1YnULzB2rtEdksCoaEj" src="http://www.tutiempo.net/V4/widget/tt_NHx8MzgyNjI2fHN8bnxzfDU1NzI1fDQwfDE0fDh8MXw1fDV8MjV8c3xzfG58RTg2RjZGfDcxQjlGMHx8fEZGRkZGRnw0M3w0MHw0MHwyNjl8NTB8NTZ8NDN8MTl8MTl8MzJ8NTd8MzZ8aHp8MXw%2C" frameborder="0" scrolling="no" width="100%" height="100%" allowtransparency="allowtransparency" style="overflow:hidden;"></iframe></div>
 <script type="text/javascript" src="http://www.tutiempo.net/widget/eltiempo_tC1wbBtBtzW2zswUXfzkEE1E1YnULzB2rtEdksCoaEj"></script>
-                            </div>
+                            </div>*/?>
                             <div style="float:right">
                                 <ul>
                                     <li><a href="<?php echo url_for("trabaja/index");?>">Trabaja con nosotros</a></li>
