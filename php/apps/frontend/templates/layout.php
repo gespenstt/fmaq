@@ -96,6 +96,13 @@
 
                 <ul class="header-extras">
                     <li>
+                        <i class="i-plain icon-angle-up nomargin"></i>
+                        <div class="he-text">
+                            Panel Clientes
+                            <span> <a href="http://cliente.futamaq.cl" target="_blank">Entrar</a></span>
+                        </div>
+                    </li>
+                    <li>
                         <i class="i-plain icon-call nomargin"></i>
                         <div class="he-text">
                             Llámanos
