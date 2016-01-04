@@ -138,6 +138,6 @@
     ============================================= -->
     <script type="text/javascript" src="<?php echo public_path("js/functions.js");?>"></script>
     <?php include_javascripts(); ?>
-    <script type="text/javascript" src="<?php echo public_path("js/base.js");?>"></script>
+    <script type="text/javascript" src="<?php echo public_path("js/base.js?v=1.0");?>"></script>
 </body>
 </html>
