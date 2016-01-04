@@ -37,30 +37,31 @@
 							<h3>¿Qué buscamos en Futamaq?</h3>
 						</div>
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, natus voluptatibus adipisci porro magni dolore eos eius ducimus corporis quos perspiciatis quis iste, vitae autem libero ullam omnis cupiditate quam.</p>
+						<p>Buscamos personas comprometidas, responsables y con criterio en el desarrollo de su trabajo,  ya este se verá reflejado en el futuro resultado del agricultor.</p>
 
 						<div class="accordion accordion-bg clearfix">
 
 							<div class="acctitle"><i class="acc-closed icon-ok-circle"></i><i class="acc-open icon-remove-circle"></i>Requerimientos</div>
 							<div class="acc_content clearfix">
 								<ul class="iconlist iconlist-color nobottommargin">
-									<li><i class="icon-ok"></i>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-									<li><i class="icon-ok"></i>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-									<li><i class="icon-ok"></i>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+									<li><i class="icon-ok"></i>Licencia de conducir clase D.</li>
+									<li><i class="icon-ok"></i>Antecedentes y carta de recomendación.</li>
+									<li><i class="icon-ok"></i>Experiencia en maquinaria agrícola.</li>
 								</ul>
 							</div>
 
 							<div class="acctitle"><i class="acc-closed icon-ok-circle"></i><i class="acc-open icon-remove-circle"></i>¿Qué se espera de ti?</div>
 							<div class="acc_content clearfix">
 								<ul class="iconlist iconlist-color nobottommargin">
-									<li><i class="icon-plus-sign"></i>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-									<li><i class="icon-plus-sign"></i>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-									<li><i class="icon-plus-sign"></i>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+									<li><i class="icon-plus-sign"></i>Compromiso con tu trabajo.</li>
+									<li><i class="icon-plus-sign"></i>Buena disposición al trabajo.</li>
+									<li><i class="icon-plus-sign"></i>Mantener el equipo asignado en óptimas condiciones.</li>
+                                                                        <li><i class="icon-plus-sign"></i>Buena convivencia con el grupo de trabajo.</li>
 								</ul>
 							</div>
 
 							<div class="acctitle"><i class="acc-closed icon-ok-circle"></i><i class="acc-open icon-remove-circle"></i>¿Qué ofrecemos?</div>
-							<div class="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, natus voluptatibus adipisci porro magni dolore eos eius ducimus corporis quos perspiciatis quis iste, vitae autem libero ullam omnis cupiditate quam.</div>
+							<div class="acc_content clearfix">Ofrecemos un ambiente de trabajo en el cual puedas desarrollar todas tus capacidades, logres una estabilidad laboral y puedas aprender a usar nuevas tecnologías.</div>
 
 						</div>
 

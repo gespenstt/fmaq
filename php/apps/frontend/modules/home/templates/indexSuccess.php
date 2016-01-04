@@ -145,11 +145,11 @@
 					<div class="col_two_fifth">
 						<h4>Nuestras Marcas</h4>
 
-						<p>Nos esforzamos para entregarle a nuestros clientes lo mejor. Es por esto que en Futamaq trabajamos con las mejores marcas en el rubro agrícola.</p>
+						<p>Nuestra prioridad es entregar a nuestros clientes la mejor tecnología posible, y para ello debemos trabajar con los mejores.</p>
 
 						<ul class="clients-grid grid-2 nobottommargin clearfix">
-                                                  
-							<li style="padding: 20px;"><img src="<?php echo public_path("uploads/LEMKEN_Logo.gif");?>" alt="LEMKEN" height="23"s></li>
+                                                  <li style="padding: 20px;"><img src="<?php echo public_path("uploads/John_Deere_logo.png");?>" alt="JOHN DEERE" height="23"></li>
+							<li style="padding: 20px;"><img src="<?php echo public_path("uploads/LEMKEN_Logo.gif");?>" alt="LEMKEN" height="23"></li>
                                                        
                                                         <li style="padding: 20px;"><img src="<?php echo public_path("uploads/logoclaas.png");?>" alt="CLAAS" height="23"></li>
                                                          <li style="padding: 20px;"><img src="<?php echo public_path("uploads/logo_joskin.png");?>" alt="JOSKIN" height="23"></li>

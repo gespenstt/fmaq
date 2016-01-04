@@ -26,13 +26,28 @@
                     <div class="sidebar nomargin clearfix">
                         <div class="sidebar-widgets-wrap">
                             <blockquote class="bottommargin">
-								<p>Human rights healthcare immunize; advancement grantees. Medical supplies; meaningful, truth technology catalytic effect. Promising development capacity building international enable poverty.</p>
+								<p>Somos una empresa que busca mayor eficiencia en la agricultura de hoy en día, donde cada vez los márgenes de utilidad son menores. Para esto, les ofrecemos a nuestros clientes mejorar el rendimiento de sus campos a través de tecnología de punta.</p>
 							</blockquote>
 						</div>
 
                     </div><!-- .sidebar end -->
 
-					<div class="postcontent col_last">Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.</div>
+					<div class="postcontent col_last">
+                                            <h2>¿Cómo Trabajamos?</h2>
+                                            Trabajamos y desarrollamos agricultura de precisión para lograr mejores resultados productivos.<br><br>
+
+                                            ¿Cómo logramos desarrollar agricultura de precisión?<br><br>
+
+                                            A través de los siguientes pasos:<br><br>
+
+                                            1. Crear límites de los campos a trabajar en el software.<br>
+
+                                            2. Pedir al agricultor datos de rendimiento de sus cultivos.<br>
+
+                                            3. Trabajar con algún especialista para que realice una recomendación en base a los datos recopilados . <br>
+
+                                            4. Aplicar en terreno las recomendaciones. 
+                                        </div>
 
 				</div>
 
