@@ -5,6 +5,7 @@ var swiperSlider = new Swiper('.swiper-parent',{
         simulateTouch: false,
         grabCursor: false,
         loop: true,
+        autoplay: 7000,
         onSwiperCreated: function(swiper){
                 $('[data-caption-animate]').each(function(){
                         var $toAnimateElement = $(this);
