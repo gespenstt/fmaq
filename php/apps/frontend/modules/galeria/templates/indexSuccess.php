@@ -38,7 +38,7 @@
                             }
                             
                             ?>
-                            <div class="div-galeria" style="background-image: url('<?php echo public_path($imagen); ?>'')">
+                            <div class="div-galeria" style="background-image: url('<?php echo public_path($imagen); ?>')">
                                 
                             </div>
                         </div>
