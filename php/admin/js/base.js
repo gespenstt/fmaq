@@ -4,10 +4,17 @@ $(document).ready(function(){
             $.datepicker.regional['es']
             $( ".fecha" ).datepicker( "option", "dateFormat", "dd-mm-yy" );
             $( ".fecha" ).datepicker('option', 'firstDay', 1);
-            var _fecha = $( ".fecha" ).data("fecha");
+            /*var _fecha = $( ".fecha" ).data("fecha");
             if(_fecha!=""){
                 $(".fecha").datepicker('setDate', _fecha);
-            }
+            }*/
+			$(".fecha").each(function(){
+				var _this = $(this),
+				_fecha = _this.data("fecha");
+				if(_fecha!=""){
+					_this.datepicker('setDate', _fecha);
+				}	
+			});
     }
 
     $('.msgbox-eliminar').on ('click', function (e) {
