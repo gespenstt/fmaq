@@ -28,6 +28,8 @@ class proyectoActions extends sfActions
                 
                 $cliente = $request->getPostParameter("combocliente");
                 $tipoProyecto = $request->getPostParameter("combotipoProyecto");
+                $fechadesde = $request->getPostParameter("fechadesde");
+                $fechahasta = $request->getPostParameter("fechahasta");
                 $texto = $request->getPostParameter("textoBusqueda");
                 $this->combocliente = $cliente;
                 $this->texto = $texto;
@@ -42,6 +44,12 @@ class proyectoActions extends sfActions
                 }
                 if($tipoProyecto!=""){
                     $c->add(TipoProyectoPeer::TPR_ID, $tipoProyecto);                    
+                }
+                if($fechadesde!=""){
+                    $c->add(ProyectoPeer::PRO_FECHA, $fechadesde,  Criteria::GREATER_EQUAL );
+                }
+                if($fechahasta!=""){
+                    $c->add(ProyectoPeer::PRO_FECHA, $fechahasta,  Criteria::LESS_EQUAL );
                 }
                 $pager = new sfPropelPager('proyecto', 15);
                 $pager->setCriteria($c);

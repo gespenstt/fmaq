@@ -34,7 +34,18 @@
 										</select>
 									</div>
 								</div> <!-- /.form-group -->
-                                                                
+                                                                <div class="form-group col-md-5">
+                                                                        <label class="col-md-4">Fecha Desde:</label>
+                                                                        <div class="col-md-8">
+                                                                                <input type="text" name="fechadesde" placeholder="" required="required" value="" class="form-control fecha" />
+                                                                        </div>
+                                                                </div> <!-- /.form-group -->
+                                                                 <div class="form-group col-md-5">
+                                                                        <label class="col-md-4">Fecha Hasta:</label>
+                                                                        <div class="col-md-8">
+                                                                                <input type="text" name="fechahasta" placeholder="" required="required" value="" class="form-control fecha" />
+                                                                        </div>
+                                                                </div> <!-- /.form-group -->
                                                                 
 								<div class="form-group  col-md-5">
 									<label class="col-md-2">Buscar:</label>
