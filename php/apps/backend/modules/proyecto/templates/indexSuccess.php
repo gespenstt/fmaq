@@ -23,6 +23,19 @@
 									</div>
 								</div> <!-- /.form-group -->
 							
+                                                                <div class="form-group col-md-5">
+									<label class="col-md-2">Tipo Proyecto:</label>
+									<div class="col-md-10">
+                                                                            <select name="combotipoProyecto" class="form-control">
+                                                                                <option value="">Seleccione tipo</option>
+											<?php foreach($tipoProyecto as $m){ ?>
+                                                                                        <option value="<?php echo $m->getTprId();?>" <?php if($m->getTprId()==$combocliente){ echo "selected"; }?>><?php echo $m->getTprNombre();?></option>
+                                                                                        <?php } ?>
+										</select>
+									</div>
+								</div> <!-- /.form-group -->
+                                                                
+                                                                
 								<div class="form-group  col-md-5">
 									<label class="col-md-2">Buscar:</label>
 									<div class="col-md-10">

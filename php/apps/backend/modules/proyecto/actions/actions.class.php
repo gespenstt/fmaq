@@ -27,6 +27,7 @@ class proyectoActions extends sfActions
             if($request->isMethod("post")){
                 
                 $cliente = $request->getPostParameter("combocliente");
+                $tipoProyecto = $request->getPostParameter("combotipoProyecto");
                 $texto = $request->getPostParameter("textoBusqueda");
                 $this->combocliente = $cliente;
                 $this->texto = $texto;
@@ -38,6 +39,9 @@ class proyectoActions extends sfActions
                 $c->addJoin(ClientePeer::CLI_ID, CampoPeer::CLI_ID);
                 if($cliente!=""){
                     $c->add(ClientePeer::CLI_ID, $cliente);                    
+                }
+                if($tipoProyecto!=""){
+                    $c->add(TipoProyectoPeer::TPR_ID, $tipoProyecto);                    
                 }
                 $pager = new sfPropelPager('proyecto', 15);
                 $pager->setCriteria($c);
@@ -69,7 +73,9 @@ class proyectoActions extends sfActions
             $this->clientes = $clientes;
             
             
-            
+            $e = new Criteria();
+            $tipoProyecto = TipoProyectoPeer::doSelect($e);
+            $this->tipoProyecto = $tipoProyecto;
             
         }catch(Exception $e){
             $this->msg = "Ha ocurrido un error inesperado al obtener los proyectos";
