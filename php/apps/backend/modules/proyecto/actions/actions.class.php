@@ -51,11 +51,11 @@ class proyectoActions extends sfActions
                 }
                 if($fechadesde!=""){
                     //$c->add(ProyectoPeer::PRO_FECHA, date_format($fechadesde, "\'%Y-%m-%d\'"),  Criteria::GREATER_EQUAL) ;
-                    $c->add(ProyectoPeer::PRO_FECHA, strtotime($fechadesde),  Criteria::GREATER_EQUAL) ;
+                    $c->addAnd(ProyectoPeer::PRO_FECHA, strtotime($fechadesde),  Criteria::GREATER_EQUAL) ;
                 }
                 if($fechahasta!=""){
                     //$c->add(ProyectoPeer::PRO_FECHA, date_format($fechahasta, "\'%Y-%m-%d\'"),  Criteria::LESS_EQUAL) ;
-                    $c->add(ProyectoPeer::PRO_FECHA, strtotime($fechahasta),  Criteria::LESS_EQUAL) ;
+                    $c->addAnd(ProyectoPeer::PRO_FECHA, strtotime($fechahasta),  Criteria::LESS_EQUAL) ;
                 }
                 $pager = new sfPropelPager('proyecto', 15);
                 $pager->setCriteria($c);
