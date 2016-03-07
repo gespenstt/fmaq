@@ -46,10 +46,10 @@ class proyectoActions extends sfActions
                     $c->add(TipoProyectoPeer::TPR_ID, $tipoProyecto);                    
                 }
                 if($fechadesde!=""){
-                    $c->add(ProyectoPeer::PRO_FECHA, new DateTime($fechadesde),  Criteria::GREATER_EQUAL) ;
+                    $c->add(ProyectoPeer::PRO_FECHA, $fechadesde,  Criteria::GREATER_EQUAL) ;
                 }
                 if($fechahasta!=""){
-                    $c->add(ProyectoPeer::PRO_FECHA, new DateTime($fechahasta),  Criteria::LESS_EQUAL) ;
+                    $c->add(ProyectoPeer::PRO_FECHA, $fechahasta,  Criteria::LESS_EQUAL) ;
                 }
                 $pager = new sfPropelPager('proyecto', 15);
                 $pager->setCriteria($c);
