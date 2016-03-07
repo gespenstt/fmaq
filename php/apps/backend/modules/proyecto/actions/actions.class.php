@@ -22,6 +22,8 @@ class proyectoActions extends sfActions
         $log = $util->setLog("IndexClienteProyecto[$tra_id]"); 
         $this->combocliente = "";
         $this->texto = "";
+        $this->fechadesde = "";
+        $this->fechahasta = "";
         try{
             
             if($request->isMethod("post")){
@@ -33,6 +35,8 @@ class proyectoActions extends sfActions
                 $texto = $request->getPostParameter("textoBusqueda");
                 $this->combocliente = $cliente;
                 $this->texto = $texto;
+                $this->fechadesde = $fechadesde;
+                $this->fechahasta = $fechahasta;
                 $c = new Criteria();
                 $c->addDescendingOrderByColumn(ProyectoPeer::PRO_FECHA);
                 $c->addJoin(TipoProyectoPeer::TPR_ID, ProyectoPeer::TPR_ID);
@@ -46,10 +50,12 @@ class proyectoActions extends sfActions
                     $c->add(TipoProyectoPeer::TPR_ID, $tipoProyecto);                    
                 }
                 if($fechadesde!=""){
-                    $c->add(ProyectoPeer::PRO_FECHA, date_format($fechadesde, "\'%Y-%m-%d\'"),  Criteria::GREATER_EQUAL) ;
+                    //$c->add(ProyectoPeer::PRO_FECHA, date_format($fechadesde, "\'%Y-%m-%d\'"),  Criteria::GREATER_EQUAL) ;
+                    $c->add(ProyectoPeer::PRO_FECHA, strtotime($fechadesde),  Criteria::GREATER_EQUAL) ;
                 }
                 if($fechahasta!=""){
-                    $c->add(ProyectoPeer::PRO_FECHA, date_format($fechahasta, "\'%Y-%m-%d\'"),  Criteria::LESS_EQUAL) ;
+                    //$c->add(ProyectoPeer::PRO_FECHA, date_format($fechahasta, "\'%Y-%m-%d\'"),  Criteria::LESS_EQUAL) ;
+                    $c->add(ProyectoPeer::PRO_FECHA, strtotime($fechahasta),  Criteria::LESS_EQUAL) ;
                 }
                 $pager = new sfPropelPager('proyecto', 15);
                 $pager->setCriteria($c);
