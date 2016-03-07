@@ -37,13 +37,13 @@
                                                                 <div class="form-group col-md-5">
                                                                         <label class="col-md-4">Fecha Desde:</label>
                                                                         <div class="col-md-8">
-                                                                                <input type="text" name="fechadesde" placeholder="" value="<?php echo $fechadesde; ?>" class="form-control fecha" />
+                                                                                <input type="text" name="fechadesde" placeholder="" data-fecha="<?php echo $fechadesde; ?>" value="<?php echo $fechadesde; ?>" class="form-control fecha" />
                                                                         </div>
                                                                 </div> <!-- /.form-group -->
                                                                  <div class="form-group col-md-5">
                                                                         <label class="col-md-4">Fecha Hasta:</label>
                                                                         <div class="col-md-8">
-                                                                                <input type="text" name="fechahasta" placeholder="" value="<?php echo $fechahasta; ?>" class="form-control fecha" />
+                                                                                <input type="text" name="fechahasta" placeholder="" data-fecha="<?php echo $fechahasta; ?>" value="<?php echo $fechahasta; ?>" class="form-control fecha" />
                                                                         </div>
                                                                 </div> <!-- /.form-group -->
                                                                 
