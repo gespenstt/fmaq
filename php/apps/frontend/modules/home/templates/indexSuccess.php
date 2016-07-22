@@ -66,7 +66,7 @@
                                                             <?php } ?>
 							</div>
 							<div class="fbox-desc">
-                                                            <h3><?php echo $promo->getPromTitulo(); ?><span class="subtitle"><?php echo htmlentities($promo->getPromDescripcion()); ?></span></h3>
+                                                            <h3><?php echo $promo->getPromTitulo(); ?><span class="subtitle"><?php echo html_entity_decode($promo->getPromDescripcion()); ?></span></h3>
 								
 							</div>
 						</div>
