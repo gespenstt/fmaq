@@ -59,10 +59,14 @@
                                         <div class="col_one_third nobottommargin <?php if($count==3){ echo "col_last"; }?>">
 						<div class="feature-box media-box">
 							<div class="fbox-media">
+                                                            <?php if($promo->getPromEsvideo()){ ?>
                                                             <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo substr($promo->getPromUrlvideo(),strpos($promo->getPromUrlvideo(), 'v=')+2,15);   ?>" frameborder="0" allowfullscreen></iframe>
+                                                            <?php } else { ?>
+                                                            <img src="<?php echo public_path($promo->getPromRutaimagen()); ?>" />
+                                                            <?php } ?>
 							</div>
 							<div class="fbox-desc">
-								<h3><?php echo $promo->getPromTitulo(); ?><span class="subtitle"><?php echo $promo->getPromDescripcion(); ?></span></h3>
+                                                            <h3><?php echo $promo->getPromTitulo(); ?><span class="subtitle"><?php echo htmlentities($promo->getPromDescripcion()); ?></span></h3>
 								
 							</div>
 						</div>
@@ -90,6 +94,7 @@
                                                     <?php } ?>
                                                     
 						</div>
+                                            
 					</div>
 
 				</div>
